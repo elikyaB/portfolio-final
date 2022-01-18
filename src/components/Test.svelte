@@ -17,3 +17,7 @@
 	on:click={handleClick}
 	style="transform: scale({$size}); transform-origin: 0 0"
 >embiggen</button>
+
+<style>
+    button {margin-top: 20vh;}
+</style>
