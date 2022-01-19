@@ -1,14 +1,16 @@
-const titles = ["coder", "programmer", "developer", "engineer"]
-let title = "coder"
-
-console.log(title)
-
-function titleSwitch (t) {
-    const current = titles.findIndex((w) => {return w === t})
-    const next = current < titles.length-1 ? current+1 : 0
-    title = titles[next]
-    console.log(title)
-    setTimeout(() => {titleSwitch(title)}, 3000)
+function rollUp(node, {delay=0, duration=1000}) {
+    return {delay, duration, css: t => `
+        transform: rotateX(${-90+t*90}deg)
+        translateZ(2vw)
+    `}
 }
 
-titleSwitch(title)
+function rollDown(node, {delay=0, duration=1000}) {
+    return {delay, duration, css: t => `
+        transform: rotateX(${90-t*90}deg)
+        translateZ(2vw)
+    `}
+}
+
+const o = +getComputedStyle(node).opacity;
+css: t => `opacity: ${t * o}`

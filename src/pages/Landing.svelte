@@ -4,51 +4,40 @@
     import {elasticOut} from 'svelte/easing'
     import Test from '../components/Test.svelte'
 
-    const titles = ["coder", "programmer", "developer", "engineer"]
-    let title = "coder"
+    const titles = ["abc", "def", "ghi", "klm"]
+    let index = []
+    let title = "abc"
+    
 
     function titleSwitch (t) {
         // console.log(title)
         const current = titles.findIndex((w) => {return w === t})
         const next = current < titles.length-1 ? current+1 : 0
+        index = [current, next]
         title = titles[next]
-        setTimeout(() => {titleSwitch(title)}, 3000)
+        setTimeout(() => {titleSwitch(title)}, 10000)
     }
 
     onMount(() => titleSwitch(title))
-    
 
-    function testFade(node, {delay = 0, duration = 200}) {
-        const o = +getComputedStyle(node).opacity;
-        return {delay, duration, css: t => `opacity: ${t * o}`}
+    let cipher = {'in': [], 'out': []}
+
+    function wordlock(node, {delay=0, duration=1000, tr, ind}) {
+        console.log(tr, node.textContent, ind)
+        const word = tr === 'in'? index[0] : index[0]
+        cipher[tr].push()
+        
     }
-
-    function rollUp(node, {delay=0, duration=500}) {
-        console.log(node.textContent)
-        return {delay, duration, css: t => `
-            transform: rotateX(${-90+t*90}deg)
-            translateZ(2vw)
-        `}
-    }
-
-    function rollDown(node, {delay=0, duration=500}) {
-        return {delay, duration, css: t => `
-            transform: rotateX(${90-t*90}deg)
-            translateZ(2vw)
-        `}
-    }
-
-    let direction = false
 </script>
 
 <div>
     <h1>Hi!<br/>I'm Eli,</h1>
     {#key title}
         <h1 id="title">
-            {#each title as letter}
+            {#each title[0] as letter}
                 <div 
-                    in:rollUp
-                    out:rollDown
+                    in:wordlock="{{tr:'in', ind:index}}"
+                    out:wordlock="{{tr:'out', ind:index}}"
                 >{letter}</div>
             {/each}
         </h1>
