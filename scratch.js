@@ -12,5 +12,16 @@ function rollDown(node, {delay=0, duration=1000}) {
     `}
 }
 
-const o = +getComputedStyle(node).opacity;
-css: t => `opacity: ${t * o}`
+// const o = +getComputedStyle(node).opacity;
+// css: t => `opacity: ${t * o}`
+
+let cipher = {'in': [], 'out': []}
+
+function wordlock(node, {delay=0, duration=1000, tr, ind}) {
+    console.log(tr, node.textContent, ind)
+    const word = tr === 'in'? index[0] : index[0]
+    cipher[tr].push()   
+}
+
+// in:wordlock="{{tr:'in', ind:index}}"
+// out:wordlock="{{tr:'out', ind:index}}"
