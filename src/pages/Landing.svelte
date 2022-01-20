@@ -1,8 +1,5 @@
 <script>
     import { onMount } from 'svelte'
-    import {fade, fly} from 'svelte/transition'
-    import {elasticOut} from 'svelte/easing'
-    import Test from '../components/Test.svelte'
 
     const titles = ["coder", "programmer", "developer", "engineer"]
     let index = []
@@ -25,33 +22,33 @@
         if (title[i] === node.textContent) {
             return {delay, duration, css: t => `
                 transform: rotateX(${i%2===0? -90+t*90: 90-t*90}deg)
-                translateZ(2vw)
+                translateZ(3vw)
             `}
         } else {
             return {delay, duration, css: t => `
                 transform: rotateX(${i%2===1? -90+t*90: 90-t*90}deg)
-                translateZ(2vw)
+                translateZ(3vw)
             `}
         } 
     }
 
 </script>
 
-<div>
-    <h1>Hi!<br/>I'm Eli,</h1>
+<section>
+    <h1 class="title m-0">Hi,<br/>I'm Eli</h1>
     {#key title}
-        <h1 id="title">
+        <div id="wordlock" class='is-flex direction-row'>
             {#each title as letter, i}
-                <div 
+                <div class="title"
                     in:roll="{{i:i}}"
                     out:roll="{{i:i}}"
                 >{letter}</div>
             {/each}
-        </h1>
+        </div>
     {/key}
-</div>
+</section>
 
 <style>
-    #title {display: flex; position:fixed;}
-    h1 {margin: 0;}
+    #wordlock {position:absolute;}
+    h1, div {font-family: 'Share Tech Mono', monospace;}
 </style>
