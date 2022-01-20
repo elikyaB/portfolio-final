@@ -3,7 +3,7 @@
 
     const titles = ["coder", "programmer", "developer", "engineer"]
     let index = []
-    let title = "abc"
+    let title = "coder"
     
 
     function titleSwitch (t) {
@@ -34,7 +34,7 @@
 
 </script>
 
-<section>
+<section id="landing">
     <h1 class="title m-0">Hi,<br/>I'm Eli</h1>
     {#key title}
         <div id="wordlock" class='is-flex direction-row'>
@@ -49,6 +49,7 @@
 </section>
 
 <style>
+    #landing {height: 100vh;}
     #wordlock {position:absolute;}
     h1, div {font-family: 'Share Tech Mono', monospace;}
 </style>

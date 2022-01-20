@@ -16,13 +16,11 @@
 	</style>
 </svelte:head>
 
-<body>
-	<Landing />
-	<Header />
-	<main>
-		<About />
-		<Portfolio />
-		<Contact />
-	</main>
-	<Footer />
-</body>
+<Landing />
+<Header />
+<main>
+	<About />
+	<Portfolio />
+	<Contact />
+</main>
+<Footer />

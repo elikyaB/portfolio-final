@@ -2,8 +2,8 @@
 
 </script>
 
-<nav >
-
+<nav class="navbar">
+    
 </nav>
 
 <style>
