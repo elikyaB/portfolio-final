@@ -49,7 +49,7 @@
 </section>
 
 <style>
-    #landing {height: 100vh;}
+    #landing {height: 50vh;}
     #wordlock {position:absolute;}
     h1, div {font-family: 'Share Tech Mono', monospace;}
 </style>
