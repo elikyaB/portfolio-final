@@ -1,24 +1,23 @@
 <script>
 	import 'bulma/bulma.sass'
+	import './styles.scss'
 	import Landing from "./pages/Landing.svelte";
 	import Header from "./components/Header.svelte";
 	import About from "./pages/About.svelte";
 	import Portfolio from "./pages/Portfolio.svelte";
 	import Contact from "./pages/Contact.svelte";
 	import Footer from "./components/Footer.svelte";
+	import Test from './components/Test.svelte';
 </script>
 
 <svelte:head>
 	<title>Eli B3 Web Dev</title>
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-	<style>
-		/* @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"; */
-		@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-	</style>
+	<style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');</style>
 </svelte:head>
 
 <Landing />
 <Header />
+<Test/>
 <main>
 	<About />
 	<Portfolio />

@@ -31,7 +31,6 @@
             `}
         } 
     }
-
 </script>
 
 <section id="landing">
@@ -49,6 +48,6 @@
 </section>
 
 <style>
-    #landing {height: 50vh; font-family: 'Share Tech Mono', monospace;}
+    #landing {font-family: 'Share Tech Mono', monospace;}
     #wordlock {position:absolute;}
 </style>

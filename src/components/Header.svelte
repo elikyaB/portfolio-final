@@ -1,10 +1,20 @@
 <script>
+    import { onMount } from 'svelte'
+    
+    let postHero = false
+    function fixNavbar(){
+        if (window.scrollY>screen.height) {postHero = true}
+        else {postHero=false}
+        setTimeout(() => {fixNavbar()}, 20)
+    }
+
+    onMount(() => fixNavbar())
+
     let active = false
     function activate(){active = !active}
-    function test(){console.log('test')}
 </script>
 
-<nav class="navbar" aria-label="main navigation">
+<nav id="navi" class="{`navbar ${postHero?'is-fixed-top':''}`}" aria-label="main navigation">
     <div class="navbar-brand">
         <a href="/" class="navbar-item">Eli B3 | Web Dev</a>
         <div 
