@@ -18,7 +18,7 @@
     onMount(() => titleSwitch(title))
 
     function roll(node, {delay=0, duration=1000, i}) {
-        console.log(node.textContent, title, i)
+        // console.log(node.textContent, title, i)
         if (title[i] === node.textContent) {
             return {delay, duration, css: t => `
                 transform: rotateX(${i%2===0? -90+t*90: 90-t*90}deg)
@@ -49,7 +49,6 @@
 </section>
 
 <style>
-    #landing {height: 50vh;}
+    #landing {height: 50vh; font-family: 'Share Tech Mono', monospace;}
     #wordlock {position:absolute;}
-    h1, div {font-family: 'Share Tech Mono', monospace;}
 </style>

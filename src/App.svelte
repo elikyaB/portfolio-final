@@ -1,5 +1,5 @@
 <script>
-	import 'bulma/css/bulma.css'
+	import 'bulma/bulma.sass'
 	import Landing from "./pages/Landing.svelte";
 	import Header from "./components/Header.svelte";
 	import About from "./pages/About.svelte";
@@ -10,8 +10,9 @@
 
 <svelte:head>
 	<title>Eli B3 Web Dev</title>
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 	<style>
-		@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+		/* @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"; */
 		@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 	</style>
 </svelte:head>
