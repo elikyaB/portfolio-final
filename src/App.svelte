@@ -7,7 +7,6 @@
 	import Portfolio from "./pages/Portfolio.svelte";
 	import Contact from "./pages/Contact.svelte";
 	import Footer from "./components/Footer.svelte";
-	import Test from './components/Test.svelte';
 </script>
 
 <svelte:head>
