@@ -1,6 +1,6 @@
 <script>
     import { onMount } from 'svelte'
-    
+
     let postHero = false
     function fixNavbar(){
         if (window.scrollY>screen.height) {postHero = true}
@@ -14,9 +14,10 @@
     function activate(){active = !active}
 </script>
 
-<nav id="navi" class="{`navbar ${postHero?'is-fixed-top':''}`}" aria-label="main navigation">
+<nav id="navi" class="{`navbar ${postHero?'is-fixed-top':''}`}">
     <div class="navbar-brand">
         <a href="/" class="navbar-item">Eli B3 | Web Dev</a>
+        <!-- <div class="navbar-item">Test</div> -->
         <div 
             class="{`navbar-burger has-dropdown is-arrowless is-right${active?' is-active':''}`}"
             on:click|stopPropagation={activate}
@@ -36,6 +37,7 @@
             <a href="#about" class="navbar-item">About</a>
             <a href="#portfolio" class="navbar-item">Portfolio</a>
             <a href="#contact" class="navbar-item">Contact</a>
+            <hr class="navbar-divider"/>
             <a href="#about" class="navbar-item">Resume</a>
             <a href="#portfolio" class="navbar-item">Github</a>
             <!-- <a href="#contact" class="navbar-item">Blog (Coming Soon)</a> -->

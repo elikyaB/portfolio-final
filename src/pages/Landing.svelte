@@ -34,11 +34,11 @@
 </script>
 
 <section id="landing">
-    <h1 class="title m-0">Hi,<br/>I'm Eli</h1>
+    <h1 class="title is-1 m-0">Hi,<br/>I'm Eli</h1>
     {#key title}
         <div id="wordlock" class='is-flex direction-row'>
             {#each title as letter, i}
-                <div class="title"
+                <div class="title is-1"
                     in:roll="{{i:i}}"
                     out:roll="{{i:i}}"
                 >{letter}</div>

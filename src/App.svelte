@@ -17,7 +17,6 @@
 
 <Landing />
 <Header />
-<Test/>
 <main>
 	<About />
 	<Portfolio />
