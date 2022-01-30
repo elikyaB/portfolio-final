@@ -2,44 +2,44 @@
     import { onMount } from 'svelte'
 
     let postHero = false
-    function fixNavbar(){
-        if (window.scrollY>screen.height) {postHero = true}
+    function showNav(){
+        console.log(window.scrollY, window.innerHeight, window.innerWidth)
+        if (window.scrollY>window.innerHeight-52) {postHero = true}
         else {postHero=false}
-        setTimeout(() => {fixNavbar()}, 20)
+        setTimeout(() => {showNav()}, 20)
     }
 
-    onMount(() => fixNavbar())
+    onMount(() => showNav())
 
     let active = false
     function activate(){active = !active}
 </script>
 
-<nav id="navi" class="{`navbar ${postHero?'is-fixed-top':''}`}">
+<nav id="navi" class="{`navbar is-fixed-top ${postHero?'':'hide'}`}" >
     <div class="navbar-brand">
         <a href="/" class="navbar-item">Eli B3 | Web Dev</a>
         <!-- <div class="navbar-item">Test</div> -->
         <div 
             class="{`navbar-burger has-dropdown is-arrowless is-right${active?' is-active':''}`}"
-            on:click|stopPropagation={activate}
+            on:click={activate}
             on:pointerenter={activate}
-            on:pointerleave={activate}
         >
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
         </div>
     </div>
-    <div class="{`navbar-menu ${active?' is-active':''}`}">
+    <div class="{`navbar-menu${active?' is-active':''}`}">
         <div class="navbar-start">
             <!-- <div class="navbar-item">... pulsing dot bridge ...</div> -->
         </div>
-        <div class="navbar-end">
-            <a href="#about" class="navbar-item">About</a>
-            <a href="#portfolio" class="navbar-item">Portfolio</a>
-            <a href="#contact" class="navbar-item">Contact</a>
-            <hr class="navbar-divider"/>
-            <a href="#about" class="navbar-item">Resume</a>
-            <a href="#portfolio" class="navbar-item">Github</a>
+        <div class="navbar-end" on:pointerleave={activate}>
+            <a on:click={activate} href="#about" class="navbar-item">About</a>
+            <a on:click={activate} href="#portfolio" class="navbar-item">Portfolio</a>
+            <a on:click={activate} href="#contact" class="navbar-item">Contact</a>
+            <!-- <hr class="navbar-divider"/> -->
+            <a on:click={activate} href="#about" class="navbar-item">Resume</a>
+            <a on:click={activate} href="#portfolio" class="navbar-item">Github</a>
             <!-- <a href="#contact" class="navbar-item">Blog (Coming Soon)</a> -->
         </div>
     </div>
@@ -47,4 +47,5 @@
     
 <style>
     .navbar-menu {justify-content:space-between; margin: 0 auto;}
+    .hide {display: none;}
 </style>

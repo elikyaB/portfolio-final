@@ -1,8 +1,8 @@
 <script>
 	import 'bulma/bulma.sass'
 	import './styles.scss'
-	import Landing from "./pages/Landing.svelte";
-	import Header from "./components/Header.svelte";
+	import Header from "./pages/Header.svelte";
+	import Navbar from "./components/Navbar.svelte";
 	import About from "./pages/About.svelte";
 	import Portfolio from "./pages/Portfolio.svelte";
 	import Contact from "./pages/Contact.svelte";
@@ -14,8 +14,8 @@
 	<style>@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');</style>
 </svelte:head>
 
-<Landing />
 <Header />
+<Navbar />
 <main>
 	<About />
 	<Portfolio />

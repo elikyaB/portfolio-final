@@ -22,32 +22,38 @@
         if (title[i] === node.textContent) {
             return {delay, duration, css: t => `
                 transform: rotateX(${i%2===0? -90+t*90: 90-t*90}deg)
-                translateZ(3vw)
+                translateZ(2vw)
             `}
         } else {
             return {delay, duration, css: t => `
                 transform: rotateX(${i%2===1? -90+t*90: 90-t*90}deg)
-                translateZ(3vw)
+                translateZ(2vw)
             `}
         } 
     }
 </script>
 
-<section id="landing">
-    <h1 class="title is-1 m-0">Hi,<br/>I'm Eli</h1>
-    {#key title}
-        <div id="wordlock" class='is-flex direction-row'>
-            {#each title as letter, i}
-                <div class="title is-1"
-                    in:roll="{{i:i}}"
-                    out:roll="{{i:i}}"
-                >{letter}</div>
-            {/each}
-        </div>
-    {/key}
-</section>
+<header class="hero is-dark">
+    <div class="hero-body">
+        <h1 class="title m-0">Hi,<br/>I'm Eli</h1>
+        {#key title}
+            <div id="wordlock" class='title m-0 is-flex direction-row'>
+                {#each title as letter, i}
+                    <div
+                        in:roll="{{i:i}}"
+                        out:roll="{{i:i}}"
+                    >{letter}</div>
+                {/each}
+            </div>
+        {/key}
+    </div>
+</header>
 
 <style>
-    #landing {font-family: 'Share Tech Mono', monospace;}
+    header {
+        font-family: 'Share Tech Mono', monospace; 
+        height:100vh;
+    }
+    .title {font-size:15vw}
     #wordlock {position:absolute;}
 </style>
