@@ -15,10 +15,12 @@
 </svelte:head>
 
 <Header />
-<Navbar />
-<main>
-	<About />
-	<Portfolio />
-	<Contact />
-</main>
+<div class="container">
+	<Navbar />
+	<main>
+		<About />
+		<Portfolio />
+		<Contact />
+	</main>
+</div>
 <Footer />

@@ -34,7 +34,7 @@
 </script>
 
 <header class="hero is-dark">
-    <div class="hero-body">
+    <div class="hero-body py-0">
         <h1 class="title m-0">Hi,<br/>I'm Eli</h1>
         {#key title}
             <div id="wordlock" class='title m-0 is-flex direction-row'>
@@ -53,7 +53,9 @@
     header {
         font-family: 'Share Tech Mono', monospace; 
         height:100vh;
+        /* vertical-align: middle; */
     }
-    .title {font-size:15vw}
+    /* .hero-body {padding-top: 20vh;} */
+    .title {font-size:14vw}
     #wordlock {position:absolute;}
 </style>

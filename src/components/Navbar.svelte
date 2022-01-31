@@ -22,7 +22,6 @@
         <div 
             class="{`navbar-burger has-dropdown is-arrowless is-right${active?' is-active':''}`}"
             on:click={activate}
-            on:pointerenter={activate}
         >
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -33,7 +32,7 @@
         <div class="navbar-start">
             <!-- <div class="navbar-item">... pulsing dot bridge ...</div> -->
         </div>
-        <div class="navbar-end" on:pointerleave={activate}>
+        <div class="navbar-end">
             <a on:click={activate} href="#about" class="navbar-item">About</a>
             <a on:click={activate} href="#portfolio" class="navbar-item">Portfolio</a>
             <a on:click={activate} href="#contact" class="navbar-item">Contact</a>
