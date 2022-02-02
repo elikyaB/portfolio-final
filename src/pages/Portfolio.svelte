@@ -1,1 +1,1 @@
-<section id="portfolio">k</section>
+<section id="portfolio" class="page--with-nav">k</section>

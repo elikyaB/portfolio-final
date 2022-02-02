@@ -3,8 +3,8 @@
 
     let postHero = false
     function showNav(){
-        console.log(window.scrollY, window.innerHeight, window.innerWidth)
-        if (window.scrollY>window.innerHeight-52) {postHero = true}
+        console.log(window.scrollY, 4*window.innerHeight)
+        if (window.innerHeight-52<window.scrollY) {postHero = true}
         else {postHero=false}
         setTimeout(() => {showNav()}, 20)
     }
@@ -16,7 +16,7 @@
 </script>
 
 <nav id="navi" class="{`navbar is-fixed-top ${postHero?'':'hide'}`}" >
-    <div class="navbar-brand">
+    <div class="navbar-brand m-0">
         <a href="/" class="navbar-item">Eli B3 | Web Dev</a>
         <!-- <div class="navbar-item">Test</div> -->
         <div 
@@ -28,7 +28,7 @@
             <span aria-hidden="true"></span>
         </div>
     </div>
-    <div class="{`navbar-menu${active?' is-active':''}`}">
+    <div class="{`navbar-menu m-0${active?' is-active':''}`}">
         <div class="navbar-start">
             <!-- <div class="navbar-item">... pulsing dot bridge ...</div> -->
         </div>
@@ -45,6 +45,6 @@
 </nav>
     
 <style>
-    .navbar-menu {justify-content:space-between; margin: 0 auto;}
+    .navbar-menu {justify-content:space-between;}
     .hide {display: none;}
 </style>

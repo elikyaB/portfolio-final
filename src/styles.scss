@@ -1,4 +1,7 @@
-section {height: 100vh}
-.hero-body > .title {
-    
+.page {
+    height: 100vh;
+    &--with-nav {
+        @extend .page;
+        padding-top: 3.25rem;
+    }
 }

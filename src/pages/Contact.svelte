@@ -1,6 +1,6 @@
 <script></script>
 
-<section id="contact" class="container">
+<section id="contact" class="page--with-nav">
     <form action="mailto:elikyabokanga+webdev@gmail.com" method="post">
         <div class="">
             <div class="field is-horizontal">

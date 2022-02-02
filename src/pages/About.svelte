@@ -1,6 +1,6 @@
 <script></script>
 
-<section id="about" class="columns is-mobile is-gapless pt-nav">
+<section id="about" class="page--with-nav columns is-mobile is-gapless">
     <!-- <h2 class="title is-2">About</h2> -->
     <div id="photo" class="column">
         <figure class="image"><img class="image is-rounded" src="https://i.imgur.com/sncPP.jpg" alt="pic of me"/></figure>

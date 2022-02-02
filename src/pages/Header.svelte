@@ -38,7 +38,7 @@
     }
 </script>
 
-<header class="hero is-dark">
+<header class="hero is-dark page">
     <div class="hero-body pb-0" style:padding-top={padding_top}>
         <h1 class="title m-0" bind:clientHeight={hello}>Hi,<br/>I'm Eli</h1>
         {#key title}
@@ -55,12 +55,7 @@
 </header>
 
 <style>
-    header {
-        font-family: 'Share Tech Mono', monospace; 
-        height:100vh;
-        /* vertical-align: middle; */
-    }
-    /* .hero-body {padding-top: 20vh;} */
+    header {font-family: 'Share Tech Mono', monospace; }
     .title {font-size:14vw}
     #wordlock {position:absolute;}
 </style>
