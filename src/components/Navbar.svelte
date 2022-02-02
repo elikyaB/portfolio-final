@@ -17,12 +17,12 @@
     function activate(){active = !active}
 </script>
 
-<nav id="navi" class="{`navbar is-fixed-top is-dark ${postHero?'':'hide'}`}" >
+<nav id="navi" class="{`navbar is-fixed-top ${postHero?'':'hide'}`}" >
     <div class="navbar-brand m-0">
         <a href="/" class="navbar-item is-tab">Eli B3 | Web Dev</a>
         <!-- <div class="navbar-item is-expanded">... pulsing dot bridge ...</div> -->
         <div 
-            class="{`navbar-burger has-dropdown is-arrowless is-right${active?' is-active':''}`}"
+            class="{`navbar-burger ${active?'is-active':''}`}"
             on:click={activate}
         >
             <span aria-hidden="true"></span>
@@ -30,7 +30,7 @@
             <span aria-hidden="true"></span>
         </div>
     </div>
-    <div class="{`navbar-menu m-0${active?' is-active':''}`}">
+    <div class="{`navbar-menu m-0 ${active?'is-active':''}`}">
         <div class="navbar-start"/>
         <div class="navbar-end m-0">
             {#each links as link}
