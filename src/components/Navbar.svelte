@@ -1,6 +1,8 @@
 <script>
     import { onMount } from 'svelte'
 
+    let links = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','#resume'],['Github','#github']]
+
     let postHero = false
     function showNav(){
         console.log(window.scrollY, 4*window.innerHeight)
@@ -15,10 +17,10 @@
     function activate(){active = !active}
 </script>
 
-<nav id="navi" class="{`navbar is-fixed-top ${postHero?'':'hide'}`}" >
+<nav id="navi" class="{`navbar is-fixed-top is-dark ${postHero?'':'hide'}`}" >
     <div class="navbar-brand m-0">
-        <a href="/" class="navbar-item">Eli B3 | Web Dev</a>
-        <!-- <div class="navbar-item">Test</div> -->
+        <a href="/" class="navbar-item is-tab">Eli B3 | Web Dev</a>
+        <!-- <div class="navbar-item is-expanded">... pulsing dot bridge ...</div> -->
         <div 
             class="{`navbar-burger has-dropdown is-arrowless is-right${active?' is-active':''}`}"
             on:click={activate}
@@ -29,17 +31,11 @@
         </div>
     </div>
     <div class="{`navbar-menu m-0${active?' is-active':''}`}">
-        <div class="navbar-start">
-            <!-- <div class="navbar-item">... pulsing dot bridge ...</div> -->
-        </div>
-        <div class="navbar-end">
-            <a on:click={activate} href="#about" class="navbar-item">About</a>
-            <a on:click={activate} href="#portfolio" class="navbar-item">Portfolio</a>
-            <a on:click={activate} href="#contact" class="navbar-item">Contact</a>
-            <!-- <hr class="navbar-divider"/> -->
-            <a on:click={activate} href="#about" class="navbar-item">Resume</a>
-            <a on:click={activate} href="#portfolio" class="navbar-item">Github</a>
-            <!-- <a href="#contact" class="navbar-item">Blog (Coming Soon)</a> -->
+        <div class="navbar-start"/>
+        <div class="navbar-end m-0">
+            {#each links as link}
+                <a href={link[1]} on:click={activate} class="navbar-item is-tab">{link[0]}</a>
+            {/each}
         </div>
     </div>
 </nav>

@@ -4,10 +4,6 @@
     const titles = ["coder", "programmer", "developer", "engineer"]
     let index = []
     let title = "coder"
-    
-    let hello
-    let word
-    let padding_top    
 
     function titleSwitch (t) {
         const current = titles.findIndex((w) => {return w === t})
@@ -16,6 +12,10 @@
         title = titles[next]
         setTimeout(() => {titleSwitch(title)}, 3000)
     }
+
+    let hello
+    let word
+    let padding_top    
 
     onMount(() => {
         titleSwitch(title)
