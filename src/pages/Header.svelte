@@ -2,25 +2,22 @@
     import { onMount } from 'svelte'
 
     const titles = ["coder", "programmer", "developer", "engineer"]
-    let index = []
+    // let index = []
     let title = "coder"
 
     function titleSwitch (t) {
         const current = titles.findIndex((w) => {return w === t})
         const next = current < titles.length-1 ? current+1 : 0
-        index = [current, next]
+        // index = [current, next]
         title = titles[next]
         setTimeout(() => {titleSwitch(title)}, 3000)
     }
 
     let hello
     let word
-    let padding_top    
+    $: padding_top = `${(window.innerHeight-hello-word)/2}px`
 
-    onMount(() => {
-        titleSwitch(title)
-        padding_top = `${(window.innerHeight-hello-word)/2}px`
-    })
+    onMount(() => {titleSwitch(title)})
 
     function roll(node, {delay=0, duration=1000, i}) {
         // console.log(node.textContent, title, i)

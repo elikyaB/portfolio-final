@@ -1,3 +1,5 @@
+html {scroll-behavior: smooth;}
+
 .page {
     height: 100vh;
     &--with-nav {
@@ -5,5 +7,3 @@
         padding-top: 3.25rem;
     }
 }
-
-body {background-color: black;}
