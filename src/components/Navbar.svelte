@@ -5,7 +5,6 @@
 
     let postHero = false
     function showNav(){
-        // console.log(window.scrollY, 4*window.innerHeight)
         if (window.innerHeight-52<window.scrollY) {postHero = true}
         else {postHero=false}
         setTimeout(() => {showNav()}, 20)

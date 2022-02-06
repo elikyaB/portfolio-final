@@ -4,11 +4,6 @@
     const titles = ["coder", "programmer", "developer", "engineer"]
     let title = "coder"
 
-    let hello
-    let word
-    export let vH
-    $: paddingTop = `${(vH-hello-word)/2}px`
-
     function titleSwitch (t) {
         const current = titles.findIndex((w) => {return w === t})
         const next = current < titles.length-1 ? current+1 : 0
@@ -32,12 +27,16 @@
             `}
         } 
     }
+
+    let hello
+    let word
+    let vH
 </script>
 
 <svelte:window bind:innerHeight={vH}/>
 
 <header class="hero is-dark page">
-    <div class="hero-body pb-0" style:padding-top={paddingTop}>
+    <div class="hero-body pb-0" style:padding-top={`${(vH-hello-word)/2}px`}>
         <h1 class="title m-0" bind:clientHeight={hello}>Hi!<br/>I'm Eli</h1>
         {#key title}
             <div id="wordlock" class='title m-0 is-flex direction-row' bind:clientHeight={word}>
@@ -53,7 +52,7 @@
 </header>
 
 <style>
-    header {font-family: 'Share Tech Mono', monospace; }
-    .title {font-size:14vw}
+    header {font-family: 'Share Tech Mono', monospace;}
+    .title {font-size:14vw;}
     #wordlock {position:absolute;}
 </style>
