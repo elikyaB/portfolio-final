@@ -2,9 +2,13 @@ html {scroll-behavior: smooth;}
 
 .page {
     height: 100vh;
-    // background-color: white;
+    // background-color: $grey-dark;
     &--with-nav {
         @extend .page;
         padding-top: 3.25rem;
     }
 }
+
+// bulma changes:
+// $navbar-breakpoint: $mobile !default
+// $mobile: 576px !default
