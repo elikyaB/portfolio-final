@@ -7,6 +7,7 @@
 	import Portfolio from "./pages/Portfolio.svelte";
 	import Contact from "./pages/Contact.svelte";
 	import Footer from "./components/Footer.svelte";
+	import Logo from './components/Logo.svelte';
 </script>
 
 <svelte:head>
@@ -15,7 +16,9 @@
 </svelte:head>
 
 <Header/>
-<div class="container">
+<Logo/>
+
+<!-- <div class="container">
 	<Navbar/>
 	<main>
 		<About/>
@@ -23,4 +26,4 @@
 		<Contact/>
 	</main>
 </div>
-<Footer/>
+<Footer/> -->
