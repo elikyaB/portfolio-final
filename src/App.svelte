@@ -16,9 +16,9 @@
 </svelte:head>
 
 <Header/>
-<Logo/>
+<!-- <Logo/> -->
 
-<!-- <div class="container">
+<div class="container">
 	<Navbar/>
 	<main>
 		<About/>
@@ -26,4 +26,4 @@
 		<Contact/>
 	</main>
 </div>
-<Footer/> -->
+<Footer/>

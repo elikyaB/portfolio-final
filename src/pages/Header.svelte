@@ -41,7 +41,7 @@
         {#key title}
             <div id="wordlock" class='title m-0 is-flex direction-row' bind:clientHeight={word}>
                 {#each title as letter, i}
-                    <div
+                    <div class="letter"
                         in:roll="{{i:i}}"
                         out:roll="{{i:i}}"
                     >{letter}</div>
@@ -55,4 +55,5 @@
     header {font-family: 'Share Tech Mono', monospace;}
     .title {font-size:14vw;}
     #wordlock {position:absolute;}
+    /* .letter {outline: 1px dashed white} */
 </style>

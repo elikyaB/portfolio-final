@@ -46,9 +46,4 @@
 <style>
     #about {overflow: hidden;}
     img {position: relative; z-index: -1;}
-    .block {
-        transform: translate3d(10,10,10);
-        outline: 2px dashed black;
-        background: linear-gradient(165deg, yellow 0 50%, white 50% 100%);
-    }
 </style>
