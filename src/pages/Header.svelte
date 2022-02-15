@@ -3,6 +3,7 @@
 
     const titles = ["coder", "programmer", "developer", "engineer"]
     let title = "coder"
+    // letters that overlap transition wrong
 
     function titleSwitch (t) {
         const current = titles.findIndex((w) => {return w === t})
@@ -41,7 +42,7 @@
         {#key title}
             <div id="wordlock" class='title m-0 is-flex direction-row' bind:clientHeight={word}>
                 {#each title as letter, i}
-                    <div class="letter"
+                    <div class="letter has-text-warning"
                         in:roll="{{i:i}}"
                         out:roll="{{i:i}}"
                     >{letter}</div>
@@ -53,7 +54,7 @@
 
 <style>
     header {font-family: 'Share Tech Mono', monospace;}
-    .title {font-size:14vw;}
+    .title {font-size:13vw;}
     #wordlock {position:absolute;}
     /* .letter {outline: 1px dashed white} */
 </style>

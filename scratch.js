@@ -25,3 +25,9 @@ function wordlock(node, {delay=0, duration=1000, tr, ind}) {
 
 // in:wordlock="{{tr:'in', ind:index}}"
 // out:wordlock="{{tr:'out', ind:index}}"
+
+function test(sY, vH){
+    for (let i=2; sY>=vH*(i+1); i--) {console.log(i)}
+}
+
+test(500, 100)

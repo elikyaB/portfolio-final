@@ -17,13 +17,10 @@
 
 <Header/>
 <!-- <Logo/> -->
-
-<div class="container">
-	<Navbar/>
-	<main>
-		<About/>
-		<Portfolio/>
-		<Contact/>
-	</main>
-</div>
+<Navbar/>
+<main>
+	<About/>
+	<Portfolio/>
+	<Contact/>
+</main>
 <Footer/>
