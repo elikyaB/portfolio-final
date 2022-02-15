@@ -30,7 +30,6 @@
 <svelte:window bind:scrollY={sY} bind:innerHeight={vH} bind:innerWidth={vW}/>
 
 <section id="about" class="page--with-nav has-background-dark has-text-light">
-    <div id="tag" class="block has-text-warning">{"<about>"}</div>
     <div>
         <p>I'm a full stack developer trying to make the web a better place.</p>
         <p>For a long time I've wanted to code, from TI-89 math hacks and VBScript stack overflow 'viruses' in high school to being an Excel macro maximalist working full-time in college. I have grand visions, and wanted to be that guy who could just take any idea and run with it. So in 2021 I finally bit the bullet.</p>
