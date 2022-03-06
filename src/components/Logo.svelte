@@ -25,5 +25,5 @@
             rotate(20deg)
             /* rotateY(60deg) */
     }
-    #tri {}
+    /* #tri {} */
 </style>
