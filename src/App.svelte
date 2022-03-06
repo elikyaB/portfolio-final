@@ -1,6 +1,8 @@
 <script>
 	import 'bulma/bulma.sass'
 	import './styles.scss'
+	import { writable } from 'svelte/store';
+	
 	import Header from "./pages/Header.svelte";
 	import Navbar from "./components/Navbar.svelte";
 	import About from "./pages/About.svelte";

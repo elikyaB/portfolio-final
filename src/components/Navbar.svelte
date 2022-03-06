@@ -55,5 +55,5 @@
 <style>
     .navbar-menu {justify-content:space-between;}
     .hide {display: none;}
-    .highlight {}
+    /* .highlight {} */
 </style>
