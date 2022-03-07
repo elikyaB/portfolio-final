@@ -6,22 +6,21 @@
     let vW
     let vH
     let sY
+    let section
     let highlight = [false, false, false, false]
 
-    // $: {
-    //     let mobile = vW<576 ? true : false
-    //     let pos = Math.floor((sY+52)/vH)
-    //     console.log(mobile, pos)
-    //     if (mobile) {
-    //         document.querySelector('#section').innerText = pos>0 && pos<4? `<${links[pos-1][0].toLowerCase()}>` : ''
-    //     } else {
-    //         if (document.querySelector('#section') !== null) {document.querySelector('#section').innerText = ''}
-    //         if (pos>0 && pos<4) {
-    //             highlight = [false, false, false, false]
-    //             highlight[pos-1] = true
-    //         }
-    //     }
-    // }
+    $: {
+        let pos = Math.floor((sY+52)/vH)
+        if (vW<576) {
+            section = pos>0? `<${links[pos-1][0].toLowerCase()}>` : ''
+        } else {
+            if (section !== null) {section = ''}
+            if (pos>0) {
+                highlight = [false, false, false, false]
+                highlight[pos-1] = true
+            }
+        }
+    }
 
     let active = false
     function activate(){active = !active}
@@ -32,7 +31,9 @@
 <nav id="navi" class="{`navbar is-fixed-top is-dark`}" >
     <div class="navbar-brand m-0">
         <a href="/" class="navbar-item is-tab">EB3</a>
-        <div id="section" class="navbar-item is-expanded is-justify-content-center has-text-warning"/>
+        <div id="section" class="navbar-item is-expanded is-justify-content-center has-text-warning"
+        contenteditable="true"
+        bind:textContent={section}/>
         <div class="{`navbar-burger has-text-warning ${active?'is-active':''}`}" on:click={activate}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>

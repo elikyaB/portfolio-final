@@ -3,6 +3,7 @@
     import About from "$lib/Home/About.svelte";
     import Portfolio from "$lib/Home/Portfolio.svelte";
     import Contact from "$lib/Home/Contact.svelte";
+    import Footer from "$lib/Footer.svelte";
 </script>
 
 <svelte:head>
@@ -15,8 +16,3 @@
     <Portfolio/>
     <Contact/>
 </main>
-
-
-<style>
-
-</style>
