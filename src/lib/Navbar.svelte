@@ -3,15 +3,16 @@
 
     const links = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','#resume']]
 
-    let vW
-    let vH
-    let sY
+    export let w
+    export let h
+    export let y
     let section
     let highlight = [false, false, false, false]
 
     $: {
-        let pos = Math.floor((sY+52)/vH)
-        if (vW<576) {
+        let pos = Math.floor((y+52)/h)
+        console.log(w)
+        if (w<576) {
             section = pos>0? `<${links[pos-1][0].toLowerCase()}>` : ''
         } else {
             if (section !== null) {section = ''}
@@ -26,7 +27,6 @@
     function activate(){active = !active}
 </script>
 
-<svelte:window bind:innerWidth={vW} bind:innerHeight={vH} bind:scrollY={sY}/>
 
 <nav id="navi" class="{`navbar is-fixed-top is-dark`}" >
     <div class="navbar-brand m-0">

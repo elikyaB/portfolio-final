@@ -1,19 +1,19 @@
 <script>
     import { fade } from 'svelte/transition'
     import { onMount } from 'svelte'
-    let sY
-    let vH
-    let vW
+    // export let w
+    // export let h
+    // export let y
     const bio = [
         "For a long time I've wanted to code, from TI-89 math hacks and VBScript stack overflow 'viruses' in high school to being an Excel macro maximalist working full-time in college. In 2021 I finally decided to bite the bullet and pursue my dreams in app, crypto, and game development."
     ]
 
-    // function checkVar() {
-    //     console.log(sY, vH, vW)
+    // function checkVar(a,b,c) {
+    //     console.log(a,b,c)
     //     setTimeout(()=>{checkVar()}, 20)
     // }
 
-    // onMount(() => checkVar())
+    // onMount(() => checkVar(w,h,y))
 
     // function sticky(node, {duration = 400, i}) {
     //     console.log(node.textContent, i)
@@ -26,8 +26,6 @@
 
     
 </script>
-
-<svelte:window bind:scrollY={sY} bind:innerHeight={vH} bind:innerWidth={vW}/>
 
 <section id="about" class="page--with-nav has-background-dark has-text-light">
     <div>
