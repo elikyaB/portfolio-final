@@ -31,10 +31,7 @@
 
     let hello
     let word
-    // export let w
     export let h
-    // export let y
-    // console.log($$restProps)
     
 </script>
 
