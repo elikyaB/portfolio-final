@@ -9,9 +9,10 @@ html {scroll-behavior: smooth;}
 
 .page {
     height: 100vh;
-    // background-color: $grey-dark;
     &--with-nav {
         @extend .page;
         padding-top: 3.25rem;
     }
 }
+
+.hide {display: none;}

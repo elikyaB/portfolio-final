@@ -4,13 +4,15 @@
     export let w
     export let h
     export let y
+    let mobile
     let section
     let highlight
 
     $: {
         let pos = Math.floor((y+52)/h)
+        mobile = w<576
         highlight = [false, false, false, false]
-        if (w<576) {
+        if (mobile) {
             section = pos>0? `<${links[pos-1][0].toLowerCase()}>` : ''
         } else {
             if (section !== null) {section = ''}
@@ -18,14 +20,14 @@
         }
     }
 
-    let active = false
+    let active = true
     function activate(){active = !active}
 </script>
 
 
 <nav id="navi" class="{`navbar is-fixed-top is-dark`}" >
     <div class="navbar-brand m-0">
-        <a href="/" class="navbar-item is-tab">EB3</a>
+        <a id="logo" href="/" class="navbar-item">EB3</a>
         <div id="section" class="navbar-item is-expanded is-justify-content-center has-text-warning"
         contenteditable="true"
         bind:textContent={section}/>
@@ -35,13 +37,14 @@
             <span aria-hidden="true"></span>
         </div>
     </div>
-    <div class="{`navbar-menu m-0 has-background-dark ${active?'is-active':''}`}">
+    <div class="{`navbar-menu m-0 py-0 has-background-dark ${active?'is-active':''}`}">
         <div class="navbar-start"/>
-        <div class="navbar-end m-0">
+        <div class="navbar-end m-0 {mobile?'dividers':''}">
             {#each links as link, i}
                 <a href={link[1]} on:click={activate} id={`nav${i}`}
-                class="navbar-item is-tab is-spaced {highlight[i]?'has-background-warning has-text-dark':'has-text-warning'} 
-                {true}">
+                class="navbar-item is-spaced {i!==3?'divide-bot':''}
+                {i===3&&!mobile?'button is-warning is-outlined':'is-tab'}
+                {highlight[i]?'has-background-warning has-text-dark' :'has-text-warning'} ">
                     {link[0]}
                 </a>
             {/each}
@@ -51,9 +54,23 @@
     
 <style>
     .navbar-menu {justify-content:space-between;}
-    .hide {display: none;}
-    #nav3 {
-        border: 5px !important;
-        border-color: hsl(48, 100%, 67%);
+    .dividers {
+        padding: 0 auto;
+        border-top: solid hsl(48, 100%, 67%);
+        border-bottom: solid hsl(48, 100%, 67%);
+    }
+    .divide-bot {border-bottom: 1px solid hsl(48, 100%, 67%) !important;}
+    .is-spaced {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: right;
+    }
+    .is-tab {border-bottom: solid hsl(0, 0%, 21%);}
+    .is-tab:hover {border-color: hsl(48, 100%, 67%);}
+    .button {margin: 0.5rem 0.75rem;}
+    .is-outlined:hover {
+        background-color: hsl(48, 100%, 67%) !important;
+        color: hsl(0, 0%, 21%) !important;
     }
 </style>
