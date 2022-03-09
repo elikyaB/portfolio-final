@@ -1,24 +1,20 @@
 <script>
-    import { onMount } from 'svelte'
-
     const links = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','#resume']]
 
     export let w
     export let h
     export let y
     let section
-    let highlight = [false, false, false, false]
+    let highlight
 
     $: {
         let pos = Math.floor((y+52)/h)
+        highlight = [false, false, false, false]
         if (w<576) {
             section = pos>0? `<${links[pos-1][0].toLowerCase()}>` : ''
         } else {
             if (section !== null) {section = ''}
-            if (pos>0) {
-                highlight = [false, false, false, false]
-                highlight[pos-1] = true
-            }
+            if (pos>0) {highlight[pos-1] = true}
         }
     }
 
@@ -44,7 +40,8 @@
         <div class="navbar-end m-0">
             {#each links as link, i}
                 <a href={link[1]} on:click={activate} id={`nav${i}`}
-                class="navbar-item is-tab is-spaced has-background-dark has-text-warning {highlight[i]?'highlight':''}">
+                class="navbar-item is-tab is-spaced {highlight[i]?'has-background-warning has-text-dark':'has-text-warning'} 
+                {true}">
                     {link[0]}
                 </a>
             {/each}
@@ -55,5 +52,8 @@
 <style>
     .navbar-menu {justify-content:space-between;}
     .hide {display: none;}
-    /* .highlight {} */
+    #nav3 {
+        border: 5px !important;
+        border-color: hsl(48, 100%, 67%);
+    }
 </style>

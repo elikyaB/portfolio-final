@@ -30,7 +30,7 @@
 <section id="about" class="page--with-nav has-background-dark has-text-light">
     <div>
         <p>I'm a full stack developer trying to make the web a better place.</p>
-        <p>For a long time I've wanted to code, from TI-89 math hacks and VBScript stack overflow 'viruses' in high school to being an Excel macro maximalist working full-time in college. I have grand visions, and wanted to be that guy who could just take any idea and run with it. So in 2021 I finally bit the bullet.</p>
+        <p>I have grand visions, and wanted to be that guy who could just take any idea and run with it.</p>
         <p>Here's a few technologies I've been working with recently: JavaScript, React, Svelte, MongoDB, Bulma, SASS</p>
     </div>
 </section>
