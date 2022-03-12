@@ -1,12 +1,9 @@
 <script>
     import { fade } from 'svelte/transition'
     import { onMount } from 'svelte'
-    // export let w
-    // export let h
-    // export let y
-    const bio = [
-        "For a long time I've wanted to code, from TI-89 math hacks and VBScript stack overflow 'viruses' in high school to being an Excel macro maximalist working full-time in college. In 2021 I finally decided to bite the bullet and pursue my dreams in app, crypto, and game development."
-    ]
+    export let w
+    export let h
+    export let y
 
     // function checkVar(a,b,c) {
     //     console.log(a,b,c)
@@ -29,14 +26,13 @@
 
 <section id="about" class="page--with-nav has-background-dark has-text-light">
     <div>
-        <p>I'm a full stack developer trying to make the web a better place.</p>
+        <p>From ideation to realization</p>
+        <p>I'm a full stack developer trying to make the web a better place. {y}</p>
         <p>I have grand visions, and wanted to be that guy who could just take any idea and run with it.</p>
         <p>Here's a few technologies I've been working with recently: JavaScript, React, Svelte, MongoDB, Bulma, SASS</p>
     </div>
 </section>
 
 <style>
-    /* #about {overflow: hidden;font-size: 2vh;} */
-    /* img {position: relative; z-index: -1;} */
-    /* #tag {position:absolute} */
+   
 </style>

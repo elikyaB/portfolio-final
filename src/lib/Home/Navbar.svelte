@@ -7,43 +7,48 @@
     let mobile
     let section
     let highlight
+    let active = true
+
+    function activate(){active = !active}
 
     $: {
         let pos = Math.floor((y+52)/h)
         mobile = w<576
         highlight = [false, false, false, false]
-        if (mobile) {
+        if (mobile && active == false) {
             section = pos>0? `<${links[pos-1][0].toLowerCase()}>` : ''
         } else {
             if (section !== null) {section = ''}
-            if (pos>0) {highlight[pos-1] = true}
+            if (pos>0 && active == false) {highlight[pos-1] = true}
         }
     }
 
-    let active = true
-    function activate(){active = !active}
+    $: {y; active = false}
 </script>
 
 
-<nav id="navi" class="{`navbar is-fixed-top is-dark`}" >
-    <div class="navbar-brand m-0">
+<nav id="navi" class="navbar is-fixed-top">
+    <div id="bar" class="navbar-brand m-0 has-background-dark">
         <a id="logo" href="/" class="navbar-item">EB3</a>
         <div id="section" class="navbar-item is-expanded is-justify-content-center has-text-warning"
         contenteditable="true"
         bind:textContent={section}/>
-        <div class="{`navbar-burger has-text-warning ${active?'is-active':''}`}" on:click={activate}>
+        <div class="navbar-burger has-text-warning {active?'is-active':''}" on:click={activate}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
         </div>
     </div>
-    <div class="{`navbar-menu m-0 py-0 has-background-dark ${active?'is-active':''}`}">
+    <div class="navbar-menu m-0 py-0 has-background-dark 
+    {active?'is-active':''}
+    {mobile?'mobile-nav':''}">
         <div class="navbar-start"/>
-        <div class="navbar-end m-0 {mobile?'dividers':''}">
+        <div class="navbar-end {mobile&&active?'mb-5':''}">
             {#each links as link, i}
                 <a href={link[1]} on:click={activate} id={`nav${i}`}
-                class="navbar-item is-spaced {i!==3?'divide-bot':''}
-                {i===3&&!mobile?'button is-warning is-outlined':'is-tab'}
+                class="navbar-item is-spaced 
+                {mobile?'is-align-items-center':''}
+                {i===3?'button is-warning is-outlined':'is-tab'}
                 {highlight[i]?'has-background-warning has-text-dark' :'has-text-warning'} ">
                     {link[0]}
                 </a>
@@ -53,13 +58,10 @@
 </nav>
     
 <style>
+    #navi {background-color: transparent;}
+    #logo {color: white;}
     .navbar-menu {justify-content:space-between;}
-    .dividers {
-        padding: 0 auto;
-        border-top: solid hsl(48, 100%, 67%);
-        border-bottom: solid hsl(48, 100%, 67%);
-    }
-    .divide-bot {border-bottom: 1px solid hsl(48, 100%, 67%) !important;}
+    .mobile-nav {margin-left: 70vw !important;}
     .is-spaced {
         display: flex;
         flex-direction: column;

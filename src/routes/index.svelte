@@ -12,7 +12,7 @@
     import About from "$lib/Home/About.svelte";
     import Portfolio from "$lib/Home/Portfolio.svelte";
     import Contact from "$lib/Home/Contact.svelte";
-    
+
     let w
     let h
     let y
@@ -21,7 +21,7 @@
 <Header {h}/>
 <Navbar {w} {h} {y}/>
 <main>
-    <About/>
+    <About {w} {h} {y}/>
     <Portfolio/>
     <Contact/>
 </main>
