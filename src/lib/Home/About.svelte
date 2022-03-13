@@ -39,6 +39,7 @@
             {#each tabs as tab, i}
                 <li id={`tab${i}`} class={active[i]?'is-active':''}
                 on:click={() => {changeActive(i)}}>
+                    <!-- svelte-ignore a11y-missing-attribute -->
                     <a>{tab}</a>
                 </li>
             {/each}
@@ -46,7 +47,13 @@
     </div>
     <div class="container">
         <div class="skills">
-            
+            {#if active[0]===true}
+                <p>content0</p>
+            {:else if active[1]===true}
+                <p>content1</p>
+            {:else}
+                <p>content2</p>
+            {/if}
         </div>
     </div>
 </section>

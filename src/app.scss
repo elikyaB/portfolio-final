@@ -1,8 +1,9 @@
 /* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */ /* Import only what you need from Bulma */
 @forward '../node_modules/bulma/bulma.sass' with (
     $navbar-breakpoint: 576px !default,
+    $tabs-border-bottom-color: hsl(0, 0%, 71%) !default,
     $tabs-link-color: hsl(0, 0%, 71%) !default,
-    $tabs-link-hover-border-bottom-color: hsl(0, 0%, 86%) !default,
+    $tabs-link-hover-border-bottom-color: hsl(0, 0%, 71%) !default,
     $tabs-link-hover-color: white !default,
     $tabs-link-active-border-bottom-color: $gold !default,
     $tabs-link-active-color: $gold !default
