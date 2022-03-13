@@ -7,6 +7,7 @@
     const tabs = ['Web Development', 'Frameworks & Libraries', 'Databases']
 
     let tW
+    let scrollTab
 
     
     let active = [true, false, false]
@@ -14,9 +15,12 @@
         active = [false, false, false]
     }
 
+    function shift(screenWidth) {
+        if (screenWidth < tW) {}
+    }
+
     $: {
         // console.log(w,h,y, tW, active[0])
-        
     }
     
 </script>
@@ -28,11 +32,11 @@
         <p>Give me your plans, let's make them come to life.</p>
         <p>Here's a few technologies I've been working with recently:</p>
     </div>
-    <div class="tabs no-scrollbars">
+    <div class="tabs no-scrollbars" bind:this={scrollTab}>
         <ul bind:clientWidth={tW}>
             {#each tabs as tab, i}
                 <li id={`tab${i}`} class={active[i]?'is-active':''}
-                on:click={() => {deactivate(); active[i]=true}}>
+                on:click={() => {deactivate(); active[i]=true; scrollTab.scrollTo(tW*i/3,0)}}>
                     <a>{tab}</a>
                 </li>
             {/each}
