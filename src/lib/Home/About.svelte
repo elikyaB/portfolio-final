@@ -4,23 +4,25 @@
     export let h
     export let y
 
-    const tabs = ['Web Development', 'Frameworks & Libraries', 'Databases']
+    const tabs = ['Web Development', 'Frameworks & Libraries', 'Databases', 'Thingamajig', 'deploying stuff', 'being a badass']
 
-    let tW
+    let tabWidth
     let scrollTab
-
-    
     let active = [true, false, false]
-    function deactivate() {
-        active = [false, false, false]
-    }
 
-    function shift(screenWidth) {
-        if (screenWidth < tW) {}
+    function changeActive(i) {
+        active = [false, false, false]
+        active[i] = true
+        if (w < tabWidth) {
+            scrollTab.scrollTo({
+                left: tabWidth*i/tabs.length, 
+                behavior: 'smooth'
+            })
+        }
     }
 
     $: {
-        // console.log(w,h,y, tW, active[0])
+        // console.log(w,h,y, tabWidth, active[0])
     }
     
 </script>
@@ -33,10 +35,10 @@
         <p>Here's a few technologies I've been working with recently:</p>
     </div>
     <div class="tabs no-scrollbars" bind:this={scrollTab}>
-        <ul bind:clientWidth={tW}>
+        <ul bind:clientWidth={tabWidth}>
             {#each tabs as tab, i}
                 <li id={`tab${i}`} class={active[i]?'is-active':''}
-                on:click={() => {deactivate(); active[i]=true; scrollTab.scrollTo(tW*i/3,0)}}>
+                on:click={() => {changeActive(i)}}>
                     <a>{tab}</a>
                 </li>
             {/each}
@@ -44,7 +46,7 @@
     </div>
     <div class="container">
         <div class="skills">
-
+            
         </div>
     </div>
 </section>
