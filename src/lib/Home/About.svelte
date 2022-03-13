@@ -1,38 +1,50 @@
 <script>
-    import { fade } from 'svelte/transition'
-    import { onMount } from 'svelte'
+
     export let w
     export let h
     export let y
 
-    // function checkVar(a,b,c) {
-    //     console.log(a,b,c)
-    //     setTimeout(()=>{checkVar()}, 20)
-    // }
+    const tabs = ['Web Development', 'Frameworks & Libraries', 'Databases']
 
-    // onMount(() => checkVar(w,h,y))
+    let tW
 
-    // function sticky(node, {duration = 400, i}) {
-    //     console.log(node.textContent, i)
-    //     const o = +getComputedStyle(node).opacity
+    
+    let active = [true, false, false]
+    function deactivate() {
+        active = [false, false, false]
+    }
 
-    //     return {duration, css: t => `
-    //         opacity: ${t * o}
-    //     `}
-    // }
-
+    $: {
+        // console.log(w,h,y, tW, active[0])
+        
+    }
     
 </script>
 
 <section id="about" class="page--with-nav has-background-dark has-text-light">
-    <div>
-        <p>From ideation to realization</p>
-        <p>I'm a full stack developer trying to make the web a better place. {y}</p>
-        <p>I have grand visions, and wanted to be that guy who could just take any idea and run with it.</p>
-        <p>Here's a few technologies I've been working with recently: JavaScript, React, Svelte, MongoDB, Bulma, SASS</p>
+    <div class="container">
+        <h1 class="heading block has-text-warning">From ideation to realization</h1>
+        <p>Ever curious, ever learning.</p>
+        <p>Give me your plans, let's make them come to life.</p>
+        <p>Here's a few technologies I've been working with recently:</p>
+    </div>
+    <div class="tabs no-scrollbars">
+        <ul bind:clientWidth={tW}>
+            {#each tabs as tab, i}
+                <li id={`tab${i}`} class={active[i]?'is-active':''}
+                on:click={() => {deactivate(); active[i]=true}}>
+                    <a>{tab}</a>
+                </li>
+            {/each}
+        </ul>
+    </div>
+    <div class="container">
+        <div class="skills">
+
+        </div>
     </div>
 </section>
 
 <style>
-   
+    .container {margin: 0 5vw;}
 </style>
