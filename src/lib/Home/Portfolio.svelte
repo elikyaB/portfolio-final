@@ -4,7 +4,8 @@
         image: "",
         live: "",
         github: "",
-        description: ["stuff1", "stuff2", "stuff3"],
+        page: "",
+        description: "stuff stuff stuff",
         tags: ["HTML", "CSS", "JS"]
     }
 
@@ -16,12 +17,26 @@
         <h1 class="heading block has-text-warning">A curated sample of my best work</h1>
         {#each array as test}
             <article>
-                {test.title}
+                <div class="block">
+                    <h2><a class="heading has-text-warning" href={test.page}>{test.title}</a></h2>
+                    <p>{test.description}</p>
+                    <p>
+                        {#each test.tags as tag}
+                            <span class="tag">{tag}</span>
+                        {/each}
+                    </p>
+                </div>
+                <figure>
+                    <a href={test.live}><img src={test.image} alt="Live"/></a>
+                    <figcaption>
+                        <a href={test.github}><img src='' alt="Github"/></a>
+                    </figcaption>
+                </figure>
             </article>
         {/each}
     </div>
 </section>
 
 <style>
-
+    article {display: flex; flex-direction: row;}
 </style>
