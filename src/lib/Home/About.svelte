@@ -1,8 +1,8 @@
 <script>
 
     export let w
-    export let h
-    export let y
+    // export let h
+    // export let y
 
     const tabs = ['Web Development', 'Frameworks & Libraries', 'Databases', 'Thingamajig', 'deploying stuff', 'being a badass']
 
@@ -59,5 +59,5 @@
 </section>
 
 <style>
-    .container {margin: 0 5vw;}
+    
 </style>

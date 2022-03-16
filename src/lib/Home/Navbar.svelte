@@ -58,21 +58,5 @@
 </nav>
     
 <style>
-    #navi {background-color: transparent;}
-    #logo {color: white;}
-    .navbar-menu {justify-content:space-between;}
-    .mobile-nav {margin-left: 70vw !important;}
-    .is-spaced {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: right;
-    }
-    .is-tab {border-bottom: solid hsl(0, 0%, 21%);}
-    .is-tab:hover {border-color: hsl(48, 100%, 67%);}
-    .button {margin: 0.5rem 0.75rem;}
-    .is-outlined:hover {
-        background-color: hsl(48, 100%, 67%) !important;
-        color: hsl(0, 0%, 21%) !important;
-    }
+    
 </style>

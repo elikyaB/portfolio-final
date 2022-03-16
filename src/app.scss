@@ -1,9 +1,9 @@
 /* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */ /* Import only what you need from Bulma */
 @forward '../node_modules/bulma/bulma.sass' with (
     $navbar-breakpoint: 576px !default,
-    $tabs-border-bottom-color: hsl(0, 0%, 71%) !default,
-    $tabs-link-color: hsl(0, 0%, 71%) !default,
-    $tabs-link-hover-border-bottom-color: hsl(0, 0%, 71%) !default,
+    $tabs-border-bottom-color: $faded-white !default,
+    $tabs-link-color: $faded-white !default,
+    $tabs-link-hover-border-bottom-color: $faded-white !default,
     $tabs-link-hover-color: white !default,
     $tabs-link-active-border-bottom-color: $gold !default,
     $tabs-link-active-color: $gold !default
@@ -21,6 +21,8 @@ html {scroll-behavior: smooth;}
     }
 }
 
+.container {margin: 0 5vw;}
+
 .hide {display: none;}
 
 /* Hide scrollbars */
@@ -31,3 +33,25 @@ html {scroll-behavior: smooth;}
         display: none; /* Chrome, Safari and Opera */
     }
 }
+
+// NAVBAR
+#navi {background-color: transparent;}
+#logo {color: white;}
+.navbar-menu {justify-content:space-between;}
+.mobile-nav {margin-left: 70vw !important;}
+.is-spaced {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+}
+.is-tab {
+    border-bottom: solid hsl(0, 0%, 21%) !important;
+    :hover {border-color: hsl(48, 100%, 67%) !important;}
+}
+#nav3 {
+    margin: 0.5rem 0.75rem;
+    &:hover {
+        background-color: hsl(48, 100%, 67%);
+        color: hsl(0, 0%, 21%) !important;
+} }
