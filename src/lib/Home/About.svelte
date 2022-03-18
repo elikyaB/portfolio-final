@@ -59,5 +59,5 @@
 </section>
 
 <style>
-    
+    ul {justify-content: space-between;}
 </style>
