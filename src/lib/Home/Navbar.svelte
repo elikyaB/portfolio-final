@@ -43,7 +43,7 @@
     {active?'is-active':''}
     {mobile?'mobile-nav':''}">
         <div class="navbar-start"/>
-        <div class="navbar-end {mobile&&active?'mb-5':''}">
+        <div class="navbar-end">
             {#each links as link, i}
                 <a href={link[1]} on:click={activate} id={`nav${i}`}
                 class="navbar-item is-spaced 
