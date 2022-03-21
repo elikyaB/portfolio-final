@@ -39,7 +39,17 @@ html {scroll-behavior: smooth;}
 #navi {background-color: transparent;}
 #logo {color: white;}
 .navbar-menu {justify-content:space-between;}
-.mobile-nav {margin-left: 70vw !important;}
+.mobile {
+    height: 100vh;
+    // display: flex !important;
+    // flex-flow: row-reverse;
+    // * {width: 40vw;}
+    #nav3 {margin: 0.5rem 35vw;}
+    
+}
+// .desktop {
+//     #nav2 {border-right: 1px solid $gold;}
+// }
 .is-spaced {
     display: flex;
     flex-direction: column;
@@ -47,12 +57,19 @@ html {scroll-behavior: smooth;}
     text-align: right;
 }
 .is-tab {
-    border-bottom: solid hsl(0, 0%, 21%) !important;
-    :hover {border-color: hsl(48, 100%, 67%) !important;}
+    border-bottom: solid $dark !important;
+    &:hover {border-color: $gold !important;}
 }
 #nav3 {
     margin: 0.5rem 0.75rem;
     &:hover {
-        background-color: hsl(48, 100%, 67%);
-        color: hsl(0, 0%, 21%) !important;
-} }
+        background-color: $gold;
+        color: $dark !important;
+    }
+}
+
+// SOCIALS
+i {
+    color: white;
+    &:hover {color: $gold;}
+}

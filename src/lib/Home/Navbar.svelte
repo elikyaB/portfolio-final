@@ -1,4 +1,6 @@
 <script>
+    import Socials from "../Socials.svelte"
+
     const links = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','#resume']]
 
     export let w
@@ -7,23 +9,23 @@
     let mobile
     let section
     let highlight
-    let active = true
+    let active = false
 
     function activate(){active = !active}
 
     $: {
-        let pos = Math.floor((y+52)/h)
+        let page = Math.floor((y+52)/h)
         mobile = w<576
-        highlight = [false, false, false, false]
-        if (mobile && active == false) {
-            section = pos>0? `<${links[pos-1][0].toLowerCase()}>` : ''
+        
+        if (mobile && !active) {
+            section = page>0? `<${links[page-1][0].toLowerCase()}>` : ' '
         } else {
-            if (section !== null) {section = ''}
-            if (pos>0 && active == false) {highlight[pos-1] = true}
+            if (mobile && section) {section = '<menu>'}
         }
-    }
 
-    $: {y; active = false}
+        highlight = [false, false, false, false]
+        if (page>0) {highlight[page-1] = true}
+    }
 </script>
 
 
@@ -39,10 +41,13 @@
             <span aria-hidden="true"></span>
         </div>
     </div>
-    <div class="navbar-menu m-0 py-0 has-background-dark 
-    {active?'is-active':''}
-    {mobile?'mobile-nav':''}">
-        <div class="navbar-start"/>
+    <div class="navbar-menu m-0 py-0 has-background-dark {active?'is-active':''}
+    {mobile?'mobile':'desktop'}">
+        <div class="navbar-start">
+            {#if mobile && active}
+                <Socials/>
+            {/if}
+        </div>
         <div class="navbar-end">
             {#each links as link, i}
                 <a href={link[1]} on:click={activate} id={`nav${i}`}
