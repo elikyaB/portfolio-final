@@ -1,7 +1,9 @@
 <script>
     import Socials from "../Socials.svelte"
 
-    const links = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','#resume']]
+    const pages = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact']]
+
+    const links = [['Blog - Coming Soon','/blog'],['Resume','']]
 
     export let w
     export let h
@@ -14,17 +16,17 @@
     function activate(){active = !active}
 
     $: {
-        let page = Math.floor((y+52)/h)
+        let pos = Math.floor((y+52)/h)
         mobile = w<576
         
         if (mobile && !active) {
-            section = page>0? `<${links[page-1][0].toLowerCase()}>` : ' '
+            section = pos>0? `<${pages[pos-1][0].toLowerCase()}>` : ' '
         } else {
             if (mobile && section) {section = '<menu>'}
         }
 
         highlight = [false, false, false, false]
-        if (page>0) {highlight[page-1] = true}
+        if (pos>0) {highlight[pos-1] = true}
     }
 </script>
 
@@ -49,12 +51,19 @@
             {/if}
         </div>
         <div class="navbar-end">
+            {#each pages as page, i}
+                <a href={page[1]} on:click={activate} id={`nav${i}`}
+                class="navbar-item is-spaced is-tab
+                {mobile?'is-align-items-center':''}
+                
+                {highlight[i]?'has-background-warning has-text-dark' :'has-text-warning'} ">
+                    {page[0]}
+                </a>
+            {/each}
             {#each links as link, i}
                 <a href={link[1]} on:click={activate} id={`nav${i}`}
-                class="navbar-item is-spaced 
-                {mobile?'is-align-items-center':''}
-                {i===3?'button is-warning is-outlined':'is-tab'}
-                {highlight[i]?'has-background-warning has-text-dark' :'has-text-warning'} ">
+                class="navbar-item is-spaced is-tab has-text-warning
+                {mobile?'is-align-items-center':''}">
                     {link[0]}
                 </a>
             {/each}
@@ -63,5 +72,5 @@
 </nav>
     
 <style>
-    
+
 </style>

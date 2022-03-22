@@ -44,12 +44,15 @@ html {scroll-behavior: smooth;}
     // display: flex !important;
     // flex-flow: row-reverse;
     // * {width: 40vw;}
-    #nav3 {margin: 0.5rem 35vw;}
+    // #nav3 {margin: 0.5rem 35vw;}
+    .is-tab {
+        border-top: 1px solid $dark !important;
+    }
     
 }
-// .desktop {
-//     #nav2 {border-right: 1px solid $gold;}
-// }
+.desktop {
+    // #nav0 {border-left: 1px solid $gold;}
+}
 .is-spaced {
     display: flex;
     flex-direction: column;
@@ -57,16 +60,16 @@ html {scroll-behavior: smooth;}
     text-align: right;
 }
 .is-tab {
-    border-bottom: solid $dark !important;
+    border-bottom: 1px solid $dark !important;
     &:hover {border-color: $gold !important;}
 }
-#nav3 {
-    margin: 0.5rem 0.75rem;
-    &:hover {
-        background-color: $gold;
-        color: $dark !important;
-    }
-}
+// #nav3, #nav4 {
+//     margin: 0.5rem 0.75rem;
+//     &:hover {
+//         background-color: $gold;
+//         color: $dark !important;
+//     }
+// }
 
 // SOCIALS
 i {
