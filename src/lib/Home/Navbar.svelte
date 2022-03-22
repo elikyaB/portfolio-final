@@ -1,9 +1,7 @@
 <script>
     import Socials from "../Socials.svelte"
 
-    const pages = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact']]
-
-    const links = [['Blog - Coming Soon','/blog'],['Resume','']]
+    const pages = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','#resume']]
 
     export let w
     export let h
@@ -53,18 +51,11 @@
         <div class="navbar-end">
             {#each pages as page, i}
                 <a href={page[1]} on:click={activate} id={`nav${i}`}
-                class="navbar-item is-spaced is-tab
+                class="navbar-item is-spaced 
                 {mobile?'is-align-items-center':''}
-                
+                {i===3?'button is-warning is-outlined':'is-tab'}
                 {highlight[i]?'has-background-warning has-text-dark' :'has-text-warning'} ">
                     {page[0]}
-                </a>
-            {/each}
-            {#each links as link, i}
-                <a href={link[1]} on:click={activate} id={`nav${i}`}
-                class="navbar-item is-spaced is-tab has-text-warning
-                {mobile?'is-align-items-center':''}">
-                    {link[0]}
                 </a>
             {/each}
         </div>

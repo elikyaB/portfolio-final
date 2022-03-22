@@ -44,7 +44,7 @@ html {scroll-behavior: smooth;}
     // display: flex !important;
     // flex-flow: row-reverse;
     // * {width: 40vw;}
-    // #nav3 {margin: 0.5rem 35vw;}
+    #nav3 {margin: 0.5rem 40vw;}
     .is-tab {
         border-top: 1px solid $dark !important;
     }
@@ -63,13 +63,13 @@ html {scroll-behavior: smooth;}
     border-bottom: 1px solid $dark !important;
     &:hover {border-color: $gold !important;}
 }
-// #nav3, #nav4 {
-//     margin: 0.5rem 0.75rem;
-//     &:hover {
-//         background-color: $gold;
-//         color: $dark !important;
-//     }
-// }
+#nav3 {
+    margin: 0.5rem 0.75rem;
+    &:hover {
+        background-color: $gold;
+        color: $dark !important;
+    }
+}
 
 // SOCIALS
 i {
