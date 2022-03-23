@@ -12,6 +12,5 @@
 </footer>
 
 <style>
-    /* footer {} */
     div {text-align: center;}
 </style>

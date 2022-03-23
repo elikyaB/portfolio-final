@@ -9,6 +9,9 @@
     "prepare": "svelte-kit sync"
   },
   "devDependencies": {
+    "@iconify/icons-fa": "^1.2.1",
+    "@iconify/icons-simple-icons": "^1.2.6",
+    "@iconify/svelte": "^2.2.0",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "bulma": "^0.9.3",

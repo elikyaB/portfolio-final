@@ -26,6 +26,11 @@
         highlight = [false, false, false, false]
         if (pos>0) {highlight[pos-1] = true}
     }
+
+    const navbarSocial = {
+        id: "navbarLinks",
+        links: ["email", "linkedIn", "twitter", "gitHub", "codePen", "linkTree"]
+    }
 </script>
 
 
@@ -44,9 +49,9 @@
     <div class="navbar-menu m-0 py-0 has-background-dark {active?'is-active':''}
     {mobile?'mobile':'desktop'}">
         <div class="navbar-start">
-            {#if mobile && active}
-                <Socials/>
-            {/if}
+            <!-- {#if mobile && active}
+                <Socials props={navbarSocial}/>
+            {/if} -->
         </div>
         <div class="navbar-end">
             {#each pages as page, i}
