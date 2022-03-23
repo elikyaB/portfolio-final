@@ -4,7 +4,7 @@
 
 <footer class="has-background-dark has-text-light pb-5">
     <div class="container">
-        <div>
+        <div class="center">
             Designed & Built by<br/>
             &copy; 2022 Elikya Bokanga
         </div>
@@ -12,5 +12,5 @@
 </footer>
 
 <style>
-    div {text-align: center;}
+    .center {text-align: center;}
 </style>

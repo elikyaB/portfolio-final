@@ -29,6 +29,7 @@
 
     const navbarSocial = {
         id: "navbarLinks",
+        style: "is-flex is-justify-content-space-around my-5",
         links: ["email", "linkedIn", "twitter", "gitHub", "codePen", "linkTree"]
     }
 </script>
@@ -49,9 +50,9 @@
     <div class="navbar-menu m-0 py-0 has-background-dark {active?'is-active':''}
     {mobile?'mobile':'desktop'}">
         <div class="navbar-start">
-            <!-- {#if mobile && active}
+            {#if mobile && active}
                 <Socials props={navbarSocial}/>
-            {/if} -->
+            {/if}
         </div>
         <div class="navbar-end">
             {#each pages as page, i}

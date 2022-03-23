@@ -29,7 +29,9 @@
                 <figure>
                     <a href={test.live}><img src={test.image} alt="Live"/></a>
                     <figcaption>
-                        <a href={test.github}><i class="fa-brands fa-github"/></a>
+                        <a href={test.github}>
+                            <span class="iconify-inline" data-icon="fa:github"/>
+                        </a>
                     </figcaption>
                 </figure>
             </article>

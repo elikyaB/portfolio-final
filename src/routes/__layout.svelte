@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-  <!-- <script src="https://kit.fontawesome.com/b282d35105.js" crossorigin="anonymous"/> -->
+    <script src="https://code.iconify.design/2/2.2.0/iconify.min.js"/>
 </svelte:head>
 
 <slot />

@@ -3,6 +3,7 @@
 
     const contactSocials = {
         id: "contactLinks",
+        style: "is-flex is-justify-content-space-around",
         links: ["linkedIn", "twitter", "gitHub", "codePen", "linkTree"]
     }
 </script>
