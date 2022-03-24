@@ -4,18 +4,18 @@
     // export let h
     // export let y
 
-    const tabs = ['Web Development', 'Frameworks & Libraries', 'Databases', 'Thingamajig', 'deploying stuff', 'being a badass']
+    const tabs = ['Programming', 'Architecture', 'Engineering', 'Development']
 
     let tabWidth
     let scrollTab
-    let active = [true, false, false]
+    let active = [true, false, false, false]
 
     function changeActive(i) {
-        active = [false, false, false]
+        active = [false, false, false, false]
         active[i] = true
         if (w < tabWidth) {
             scrollTab.scrollTo({
-                left: tabWidth*i/tabs.length, 
+                left: (tabWidth/2)*(i/tabs.length), 
                 behavior: 'smooth'
             })
         }
@@ -34,8 +34,8 @@
         <p>Give me your plans, let's make them come to life.</p>
         <p>Here's a few technologies I've been working with recently:</p>
     </div>
-    <div class="tabs no-scrollbars" bind:this={scrollTab}>
-        <ul bind:clientWidth={tabWidth}>
+    <div class="{w>576?'contain':''} tabs no-scrollbars" bind:this={scrollTab}>
+        <ul bind:clientWidth={tabWidth} class="is-justify-content-space-between">
             {#each tabs as tab, i}
                 <li id={`tab${i}`} class={active[i]?'is-active':''}
                 on:click={() => {changeActive(i)}}>
@@ -47,17 +47,23 @@
     </div>
     <div class="contain">
         <div class="skills">
-            {#if active[0]===true}
-                <p>content0</p>
-            {:else if active[1]===true}
+            {#if active[0]}
+                <!-- <blockquote cite="https://www.etymonline.com/word/program#etymonline_v_2640">"a definite plan or scheme, method of operation or line of procedure prepared or announced beforehand"</blockquote> -->
+                <ol>
+                    <li>Client Requirements</li>
+                    <p>This</p>
+
+                </ol>
+                {:else if active[1]}
                 <p>content1</p>
-            {:else}
+            {:else if active[2]}
                 <p>content2</p>
+            {:else if active[3]}
+                <p>content3</p>
             {/if}
         </div>
     </div>
 </section>
 
 <style>
-    ul {justify-content: space-between;}
 </style>

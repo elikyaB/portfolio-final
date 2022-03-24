@@ -7,7 +7,7 @@
     export let h
     export let y
     let mobile
-    let section
+    let section = ''
     let highlight
     let active = false
 
@@ -39,8 +39,7 @@
     <div id="bar" class="navbar-brand m-0 has-background-dark">
         <a id="logo" href="/" class="navbar-item">EB3</a>
         <div id="section" class="navbar-item is-expanded is-justify-content-center has-text-warning"
-        contenteditable="true"
-        bind:textContent={section}/>
+        >{section}</div>
         <div class="navbar-burger has-text-warning {active?'is-active':''}" on:click={activate}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>

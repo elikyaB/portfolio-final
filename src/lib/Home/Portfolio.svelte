@@ -17,9 +17,11 @@
     <div class="contain">
         <h1 class="heading block has-text-warning">A curated sample of my best work</h1>
         {#each array as test}
-            <article class="is-flex is-flex-direction-row">
+            <div class="is-flex is-flex-direction-row">
                 <div class="block">
-                    <h2><a class="heading has-text-warning" href={test.page}>{test.title}</a></h2>
+                    <h2 class="heading has-text-warning">
+                        <a href={test.page}>{test.title}</a>
+                    </h2>
                     <p>{test.description}</p>
                     <p>
                         {#each test.tags as tag}
@@ -35,7 +37,7 @@
                         </a>
                     </figcaption>
                 </figure>
-            </article>
+            </div>
         {/each}
     </div>
 </section>
