@@ -3,7 +3,8 @@
         title: "title",
         image: "",
         live: "",
-        github: "",
+        code: "",
+        host: "fa:github",
         page: "",
         description: "stuff stuff stuff",
         tags: ["HTML", "CSS", "JS"]
@@ -13,10 +14,10 @@
 </script>
 
 <section id="portfolio" class="page--with-nav has-background-dark has-text-light">
-    <div class="container">
+    <div class="contain">
         <h1 class="heading block has-text-warning">A curated sample of my best work</h1>
         {#each array as test}
-            <article>
+            <article class="is-flex is-flex-direction-row">
                 <div class="block">
                     <h2><a class="heading has-text-warning" href={test.page}>{test.title}</a></h2>
                     <p>{test.description}</p>
@@ -29,8 +30,8 @@
                 <figure>
                     <a href={test.live}><img src={test.image} alt="Live"/></a>
                     <figcaption>
-                        <a href={test.github}>
-                            <span class="iconify-inline" data-icon="fa:github"/>
+                        <a href={test.code}>
+                            <span class="iconify-inline" data-icon={test.host}/>
                         </a>
                     </figcaption>
                 </figure>
@@ -40,5 +41,5 @@
 </section>
 
 <style>
-    article {display: flex; flex-direction: row;}
+
 </style>

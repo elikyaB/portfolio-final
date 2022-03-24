@@ -12,7 +12,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 html {scroll-behavior: smooth;}
-.fa-brands {color: white}
 
 .page {
     height: 100vh;
@@ -22,7 +21,14 @@ html {scroll-behavior: smooth;}
     }
 }
 
-.container {margin: 0 5vw;}
+.contain {
+    margin: 0 auto;
+    max-width: 90vw;
+    @media screen and (min-width: 576px) {max-width: 80vw;}
+    @media screen and (min-width: 960px) {max-width: 70vw;}
+    @media screen and (min-width: 1344px) {max-width: 60vw;}
+    @media screen and (min-width: 2112px) {max-width: 50vw;}
+}
 
 .hide {display: none;}
 

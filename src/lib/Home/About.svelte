@@ -28,7 +28,7 @@
 </script>
 
 <section id="about" class="page--with-nav has-background-dark has-text-light">
-    <div class="container">
+    <div class="contain">
         <h1 class="heading block has-text-warning">From ideation to realization</h1>
         <p>Ever curious, ever learning.</p>
         <p>Give me your plans, let's make them come to life.</p>
@@ -45,7 +45,7 @@
             {/each}
         </ul>
     </div>
-    <div class="container">
+    <div class="contain">
         <div class="skills">
             {#if active[0]===true}
                 <p>content0</p>
