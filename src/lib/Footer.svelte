@@ -2,7 +2,7 @@
     
 </script>
 
-<footer class="has-background-dark has-text-light">
+<footer class="has-background-dark has-text-light pb-3">
     <div class="contain">
         <div class="center">
             Designed & Built by<br/>
