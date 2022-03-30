@@ -3,11 +3,11 @@
     export let h
     // export let y
 
-    const tabs = ['Web Development', 'Frontend', 'Backend', 'Developer Tools']
+    const tabs = ['Web Development', 'Frontend', 'Backend', 'Toolchain']
 
     let tabWidth
     let scrollTab
-    let active = [false, false, false, true]
+    let active = [true, false, false, false]
 
     function changeActive(i) {
         active = [false, false, false, false]
@@ -73,7 +73,7 @@
                 <div>
                     <span class="iconify-inline" data-icon="ion:logo-react"/>
                     <h3 class="heading is-size-6 is-inline">React</h3>
-                    <p>A declarative JS framework with a large ecosystem of libraries to iterate quickly, and a meta-framework Next.js for SSR and SSG.</p>
+                    <p>A declarative JS framework with a large ecosystem of libraries to iterate quickly, and a meta-framework Next.js for SSr and SSG.</p>
                 </div>
                 <div>
                     <span class="iconify-inline" data-icon="simple-icons:svelte"/>
@@ -132,12 +132,12 @@
                 <div>
                     <span class="iconify-inline" data-icon="bi:terminal"/>
                     <h3 class="heading is-size-6 is-inline">Terminal</h3>
-                    <p>Competent with the MacOS bash / zsh environment, as well as npm and pip package managers.</p>
+                    <p>Competent with the Unix-based Bash and Zsh environments, including the NPM and PIP package managers.</p>
                 </div>
                 <div>
                     <span class="iconify-inline" data-icon="ion:git-branch"/>
                     <h3 class="heading is-size-6 is-inline">Version Control System</h3>
-                    <p>Real-world experience with collaborating with other developers in Git and handling merge conflicts on Github.</p>
+                    <p>Real-world experience with collaborating with other developers and handling merge conflicts on GitHub.</p>
                 </div>
                 <div>
                     <span class="iconify-inline" data-icon="fluent:window-dev-tools-24-regular"/>
@@ -147,7 +147,7 @@
                 <div>
                     <span class="iconify-inline" data-icon="gg:trello"/>
                     <h3 class="heading is-size-6 is-inline">Agile Methodology</h3>
-                    <p>Experience with the SDLC as well as best practices for collaboration and delegation in a remote development environment.</p>
+                    <p>Experience with the SDLC as well as best practices for streamlining workflow and delegation in a remote development environment.</p>
                 </div>
             {/if}
         </div>
