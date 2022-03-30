@@ -142,7 +142,7 @@
                 <div>
                     <span class="iconify-inline" data-icon="fluent:window-dev-tools-24-regular"/>
                     <h3 class="heading is-size-6 is-inline">Chrome DevTools</h3>
-                    <p>Familiarity with various tools for debugging, testing, and performance benchmark assessment.</p>
+                    <p>Familiarity with various tools for debugging, testing, and performance benchmark assessments.</p>
                 </div>
                 <div>
                     <span class="iconify-inline" data-icon="gg:trello"/>
