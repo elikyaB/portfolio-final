@@ -3,11 +3,11 @@
     export let h
     // export let y
 
-    const tabs = ['Web Development', 'Frontend', 'Backend', 'Development']
+    const tabs = ['Web Development', 'Frontend', 'Backend', 'Developer Tools']
 
     let tabWidth
     let scrollTab
-    let active = [false, false, true, false]
+    let active = [false, false, false, true]
 
     function changeActive(i) {
         active = [false, false, false, false]
@@ -26,7 +26,7 @@
     let sumTabs
 
     $: {
-        bottom = (h-top-1.5*16*2-52)/h*100 + 'vh';
+        bottom = (h-top-0.75*16*2-52)/h*100 + 'vh';
         sumTabs = tabWidths.reduce((acc,cur) => acc+cur, 0) * 1.1 // adjust for 5vw margins
         // console.log(h,top,bottom, tabWidths, sumTabs)
     }
@@ -37,9 +37,9 @@
         <div class="contain">
             <h1 class="heading has-text-warning">From ideation to realization</h1>
             <p>Ever curious, ever learning.</p>
-            <p>That's all it means to be full stack.</p>
+            <p class="mb-4">That's all it means to be full stack.</p>
         </div>
-        <div class="{w>sumTabs?'contain':''} tabs no-scrollbars" bind:this={scrollTab}>
+        <div class="{w>sumTabs?'contain':''} tabs no-scrollbars mb-3" bind:this={scrollTab}>
             <ul bind:clientWidth={tabWidth} class="is-justify-content-space-between">
                 {#each tabs as tab, i}
                     <li id={`tab${i}`} class={active[i]?'is-active':''}
@@ -97,15 +97,57 @@
                 </div>
             {:else if active[2]}
                 <div>
-                    <span class="iconify-inline" data-icon=""/>
-                    <h3 class="heading is-size-6 is-inline">backend</h3>
-                    <p></p>
+                    <div class="is-inline-block">
+                        <span class="iconify-inline" data-icon="fa-brands:node-js"/>
+                        <h3 class="heading is-size-6 is-inline">Node.js</h3>
+                    </div>
+                    <div class="is-inline-block right">
+                        <span class="iconify-inline" data-icon="ion:logo-python"/>
+                        <h3 class="heading is-size-6 is-inline">Python</h3>
+                    </div>
+                    <p>Server-side languages I use to design and develop RESTful JSON APIs, through the Express.js or Masonite framework respectively.</p>
+                </div>
+                <div>
+                    <div class="is-inline-block">
+                        <span class="iconify-inline" data-icon="simple-icons:mongodb"/>
+                        <h3 class="heading is-size-6 is-inline">MongoDB</h3>
+                    </div>
+                    <div class="is-inline-block right">
+                        <span class="iconify-inline" data-icon="simple-icons:postgresql"/>
+                        <h3 class="heading is-size-6 is-inline">Postgres</h3>
+                    </div>
+                    <p>Proficiency in both NoSQL and SQL databases allows me to choose the best tool for the job, whether defining data models or handling migrations.</p>
+                </div>
+                <div>
+                    <span class="iconify-inline" data-icon="file-icons:api-blueprint"/>
+                    <h3 class="heading is-size-6 is-inline">Middleware</h3>
+                    <p>The glue of a software stack, I'm experienced with setting up user authentication, third-party APIs, and CMS for ease of client use.</p>
+                </div>
+                <div>
+                    <span class="iconify-inline" data-icon="carbon:infrastructure-classic"/>
+                    <h3 class="heading is-size-6 is-inline">Infrastructure</h3>
+                    <p>I'm familiar with IaaS tools such as Heroku, Netlify, and Vercel for CI/CD, currently diving deeper into Docker.</p>
                 </div>
             {:else if active[3]}
                 <div>
-                    <span class="iconify-inline" data-icon=""/>
-                    <h3 class="heading is-size-6">dev</h3>
-                    <p></p>
+                    <span class="iconify-inline" data-icon="bi:terminal"/>
+                    <h3 class="heading is-size-6 is-inline">Terminal</h3>
+                    <p>Competent with the MacOS bash / zsh environment, as well as npm and pip package managers.</p>
+                </div>
+                <div>
+                    <span class="iconify-inline" data-icon="ion:git-branch"/>
+                    <h3 class="heading is-size-6 is-inline">Version Control System</h3>
+                    <p>Real-world experience with collaborating with other developers in Git and handling merge conflicts on Github.</p>
+                </div>
+                <div>
+                    <span class="iconify-inline" data-icon="fluent:window-dev-tools-24-regular"/>
+                    <h3 class="heading is-size-6 is-inline">Chrome DevTools</h3>
+                    <p>Familiarity with various tools for debugging, testing, and performance benchmark testing.</p>
+                </div>
+                <div>
+                    <span class="iconify-inline" data-icon="gg:trello"/>
+                    <h3 class="heading is-size-6 is-inline">Agile Methodology</h3>
+                    <p>Experience with the SDLC as well as best practices for collaboration and delegation in a remote development environment.</p>
                 </div>
             {/if}
         </div>
@@ -114,4 +156,5 @@
 
 <style>
     /* #skills {max-width: 375px; margin: 0 auto;} */
+    .right {float:right;}
 </style>
