@@ -36,7 +36,3 @@
         </a>
     {/each}
 </aside>
-
-<style>
-    
-</style>

@@ -55,5 +55,4 @@
     header {font-family: 'Share Tech Mono', monospace;}
     .title {font-size:13vw;}
     #wordlock {position:absolute;}
-    /* .letter {outline: 1px dashed white} */
 </style>

@@ -67,6 +67,30 @@
     </div>
 </nav>
     
-<style>
-
+<style lang="scss">
+    #navi {background-color: transparent;}
+    #logo {color: white;}
+    .navbar-menu {justify-content:space-between;}
+    .mobile {
+        height: 100vh;
+        #nav3 {margin: 0.5rem 37vw;}
+        .is-tab {border-top: 1px solid $dark !important;}
+    }
+    .is-spaced {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: right;
+    }
+    .is-tab {
+        border-bottom: 1px solid $dark !important;
+        &:hover {border-color: $gold !important;}
+    }
+    #nav3 {
+        margin: 0.5rem 0.75rem;
+        &:hover {
+            background-color: $gold;
+            color: $dark !important;
+        }
+    }
 </style>

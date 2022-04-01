@@ -1,4 +1,5 @@
 /* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */ /* Import only what you need from Bulma */
+
 @forward '../node_modules/bulma/bulma.sass' with (
     $navbar-breakpoint: 576px !default,
     $tabs-border-bottom-color: $faded-white !default,
@@ -39,35 +40,12 @@ html {scroll-behavior: smooth;}
     }
 }
 
-// NAVBAR
-#navi {background-color: transparent;}
-#logo {color: white;}
-.navbar-menu {justify-content:space-between;}
-.mobile {
-    height: 100vh;
-    #nav3 {margin: 0.5rem 37vw;}
-    .is-tab {border-top: 1px solid $dark !important;}
-}
-.is-spaced {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: right;
-}
-.is-tab {
-    border-bottom: 1px solid $dark !important;
-    &:hover {border-color: $gold !important;}
-}
-#nav3 {
-    margin: 0.5rem 0.75rem;
-    &:hover {
-        background-color: $gold;
-        color: $dark !important;
+// SVGs
+#contact, #navi {
+    svg {
+        color: white;
+        &:hover {color: $gold;}
     }
 }
 
-// SOCIALS
-svg {
-    color: white;
-    &:hover {color: $gold;}
-}
+#skills svg {color: $gold}
