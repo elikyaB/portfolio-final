@@ -22,6 +22,6 @@
 <Navbar {w} {h} {y}/>
 <main>
     <About {w} {h} {y}/>
-    <Portfolio/>
+    <Portfolio {w}/>
     <Contact/>
 </main>

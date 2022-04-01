@@ -1,7 +1,9 @@
 <script>
+    export let w
+
     const test = {
         title: "title",
-        image: "",
+        image: "https://picsum.photos/100",
         live: "",
         code: "",
         host: "fa:github",
@@ -15,33 +17,34 @@
 
 <section id="portfolio" class="page--with-nav has-background-dark has-text-light">
     <div class="contain">
-        <h1 class="heading block has-text-warning">A curated sample of my best work</h1>
+        <h1 class="heading block has-text-warning">
+            A curated sample of my best work
+        </h1>
         {#each array as test}
-            <div class="is-flex is-flex-direction-row">
-                <div class="block">
-                    <h2 class="heading has-text-warning">
-                        <a href={test.page}>{test.title}</a>
-                    </h2>
+            <div class="is-flex is-flex-direction-row mb-5">
+                <div>
+                    <a href={test.page}>
+                        <h2 class="heading has-text-warning">{test.title}</h2>
+                    </a>
                     <p>{test.description}</p>
                     <p>
                         {#each test.tags as tag}
-                            <span class="tag">{tag}</span>
+                            <span class="tag mr-1">{tag}</span>
                         {/each}
                     </p>
                 </div>
-                <figure>
-                    <a href={test.live}><img src={test.image} alt="Live"/></a>
-                    <figcaption>
-                        <a href={test.code}>
-                            <span class="iconify-inline" data-icon={test.host}/>
-                        </a>
-                    </figcaption>
-                </figure>
+                {#if w>=576}
+                    <figure>
+                        <a href={test.live}><img src={test.image} alt="screenshot"/></a>
+                        <!-- <figcaption>
+                            <a href={test.code}>
+                                <span class="iconify-inline" data-icon={test.host}/>
+                            </a>
+                        </figcaption> -->
+                    </figure>
+                {/if}
             </div>
         {/each}
+        <div>See more</div>
     </div>
 </section>
-
-<style>
-
-</style>
