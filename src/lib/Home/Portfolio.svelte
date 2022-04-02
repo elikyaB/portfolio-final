@@ -1,18 +1,28 @@
 <script>
+    import { onMount } from "svelte";
+    import { writable } from "svelte/store";
+
+    const baseURL = import.meta.env.VITE_BASE_URL
+    const accessToken = import.meta.env.VITE_ACCESS_TOKEN
+    const projects = writable([])
+
+    onMount(async () => {
+        fetch(`${baseURL}/entries?access_token=${accessToken}&content_type=portfolio`)
+        .then(response => response.json())
+        .then(data => {
+            const apiData = data.items.map(item => {
+                return item.fields
+            })
+            projects.set(apiData)
+            console.log($projects)
+        })
+        .catch(error => {
+            console.log(error)
+            return []
+        })
+    })
+
     export let w
-
-    const test = {
-        title: "title",
-        image: "https://picsum.photos/100",
-        live: "",
-        code: "",
-        host: "fa:github",
-        page: "",
-        description: "stuff stuff stuff",
-        tags: ["HTML", "CSS", "JS"]
-    }
-
-    const array = [test, test, test]
 </script>
 
 <section id="portfolio" class="page--with-nav has-background-dark has-text-light">
@@ -20,25 +30,25 @@
         <h1 class="heading block has-text-warning">
             A curated sample of my best work
         </h1>
-        {#each array as test}
+        {#each $projects as proj}
             <div class="is-flex is-flex-direction-row mb-5">
                 <div>
-                    <a href={test.page}>
-                        <h2 class="heading has-text-warning">{test.title}</h2>
+                    <a href={proj.page}>
+                        <h2 class="heading has-text-warning">{proj.title}</h2>
                     </a>
-                    <p>{test.description}</p>
+                    <p>{proj.description}</p>
                     <p>
-                        {#each test.tags as tag}
+                        {#each proj.tags as tag}
                             <span class="tag mr-1">{tag}</span>
                         {/each}
                     </p>
                 </div>
                 {#if w>=576}
                     <figure>
-                        <a href={test.live}><img src={test.image} alt="screenshot"/></a>
+                        <a href={proj.live}><img src={proj.image} alt="screenshot"/></a>
                         <!-- <figcaption>
-                            <a href={test.code}>
-                                <span class="iconify-inline" data-icon={test.host}/>
+                            <a href={proj.code}>
+                                <span class="iconify-inline" data-icon={proj.host}/>
                             </a>
                         </figcaption> -->
                     </figure>

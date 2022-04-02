@@ -16,5 +16,8 @@
     "svelte": "^3.44.0",
     "svelte-preprocess": "^4.10.1"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "contentful": "^9.1.18"
+  }
 }

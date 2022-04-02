@@ -1,5 +1,5 @@
 <script>
-    import Socials from "../Socials.svelte";
+    import Socials from "$lib/Socials.svelte";
 
     const contactSocials = {
         id: "contactLinks",
