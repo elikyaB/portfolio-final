@@ -1,7 +1,7 @@
 /* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */ /* Import only what you need from Bulma */
 
 @forward '../node_modules/bulma/bulma.sass' with (
-    $navbar-breakpoint: 576px !default,
+    $navbar-breakpoint: 786px !default,
     $tabs-border-bottom-color: $faded-white !default,
     $tabs-link-color: $faded-white !default,
     $tabs-link-hover-border-bottom-color: $faded-white !default,

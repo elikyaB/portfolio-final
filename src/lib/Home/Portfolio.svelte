@@ -43,7 +43,7 @@
                         {/each}
                     </p>
                 </div>
-                {#if w>=576}
+                {#if w>=786}
                     <figure>
                         <a href={proj.live}><img src={proj.image} alt="screenshot"/></a>
                         <!-- <figcaption>
@@ -58,3 +58,7 @@
         <div>See more</div>
     </div>
 </section>
+
+<style>
+
+</style>

@@ -15,7 +15,7 @@
 
     $: {
         let pos = Math.floor((y+52)/h)
-        mobile = w<576
+        mobile = w<786
         
         if (mobile && !active) {
             section = pos>0? `<${pages[pos-1][0].toLowerCase()}>` : ' '
