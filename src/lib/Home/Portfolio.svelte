@@ -27,21 +27,20 @@
 
 <section id="portfolio" class="page--with-nav has-background-dark has-text-light">
     <div class="contain">
-        <h1 class="heading block has-text-warning">
-            A curated sample of my best work
+        <h1 class="heading block has-text-warning is-size-6">
+            A curated sample of my work
         </h1>
         {#each $projects as proj}
             <div class="is-flex is-flex-direction-row mb-5">
                 <div>
-                    <a href={proj.page}>
-                        <h2 class="heading has-text-warning">{proj.title}</h2>
-                    </a>
+                    <h2 class="heading has-text-warning">
+                        {proj.title}
+                    </h2>
                     <p>{proj.description}</p>
-                    <p>
-                        {#each proj.tags as tag}
-                            <span class="tag mr-1">{tag}</span>
-                        {/each}
-                    </p>
+                    <ul class="is-flex is-justify-content-space-between">
+                        <li>View</li>
+                        <li>Code</li>
+                    </ul>
                 </div>
                 {#if w>=786}
                     <figure>

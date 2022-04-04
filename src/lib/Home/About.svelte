@@ -35,7 +35,7 @@
 <section id="about" class="page--with-nav has-background-dark has-text-light">
     <div bind:clientHeight={top}>
         <div class="contain">
-            <h1 class="heading has-text-warning">From ideation to realization</h1>
+            <h1 class="heading has-text-warning is-size-6">From ideation to realization</h1>
             <p>Ever curious, ever learning.</p>
             <p class="mb-4">That's all it means to be full stack.</p>
         </div>
@@ -73,17 +73,17 @@
                 <div>
                     <span class="iconify-inline" data-icon="ion:logo-react"/>
                     <h3 class="heading has-text-warning is-inline is-size-6">React</h3>
-                    <p>A declarative JS framework with a large ecosystem of libraries to iterate quickly, and a meta-framework Next.js for SSr and SSG.</p>
+                    <p>A JS framework with a large ecosystem of libraries, and a meta-framework Next.js for SSR and SSG.</p>
                 </div>
                 <div>
                     <span class="iconify-inline" data-icon="simple-icons:svelte"/>
                     <h3 class="heading has-text-warning is-inline is-size-6">Svelte</h3>
-                    <p>A JS framework that uses a compiler to achieve high performance. I used its meta-framework SvelteKit to make this site.</p>
+                    <p>A JS framework that uses a compiler for high performance. I used its meta-framework SvelteKit to make this site.</p>
                 </div>
                 <div>
                     <span class="iconify-inline" data-icon="simple-icons:sass"/>
                     <h3 class="heading has-text-warning is-inline is-size-6">SASS</h3>
-                    <p>A CSS preprocessor that enables programmatic reuse and extension of CSS.</p>
+                    <p>A CSS preprocessor that enables programmatic extension of CSS.</p>
                 </div>
                 <div>
                     <span class="iconify-inline" data-icon="simple-icons:bulma"/>
@@ -126,7 +126,7 @@
                 <div>
                     <span class="iconify-inline" data-icon="carbon:infrastructure-classic"/>
                     <h3 class="heading has-text-warning is-inline is-size-6">Infrastructure</h3>
-                    <p>I'm familiar with IaaS tools such as Heroku, Netlify, and Vercel for CI/CD, currently diving deeper into Docker.</p>
+                    <p>I'm familiar with IaaS tools such as Heroku, Netlify, and Vercel for CI/CD.</p>
                 </div>
             {:else if active[3]}
                 <div>
@@ -142,7 +142,7 @@
                 <div>
                     <span class="iconify-inline" data-icon="fluent:window-dev-tools-24-regular"/>
                     <h3 class="heading has-text-warning is-inline is-size-6">DevTools</h3>
-                    <p>Familiarity with various tools for debugging, testing, and performance benchmark assessments.</p>
+                    <p>Expertise with various tools for debugging, testing, and performance benchmark assessments.</p>
                 </div>
                 <div>
                     <span class="iconify-inline" data-icon="gg:trello"/>
