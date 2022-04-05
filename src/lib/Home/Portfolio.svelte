@@ -2,25 +2,25 @@
     import { onMount } from "svelte";
     import { writable } from "svelte/store";
 
-    const baseURL = import.meta.env.VITE_BASE_URL
-    const accessToken = import.meta.env.VITE_ACCESS_TOKEN
+    // const baseURL = import.meta.env.VITE_BASE_URL
+    // const accessToken = import.meta.env.VITE_ACCESS_TOKEN
     const projects = writable([])
 
-    onMount(async () => {
-        fetch(`${baseURL}/entries?access_token=${accessToken}&content_type=portfolio`)
-        .then(response => response.json())
-        .then(data => {
-            const apiData = data.items.map(item => {
-                return item.fields
-            })
-            projects.set(apiData)
-            console.log($projects)
-        })
-        .catch(error => {
-            console.log(error)
-            return []
-        })
-    })
+    // onMount(async () => {
+    //     fetch(`${baseURL}/entries?access_token=${accessToken}&content_type=portfolio`)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         const apiData = data.items.map(item => {
+    //             return item.fields
+    //         })
+    //         projects.set(apiData)
+    //         console.log($projects)
+    //     })
+    //     .catch(error => {
+    //         console.log(error)
+    //         return []
+    //     })
+    // })
 
     export let w
 </script>
