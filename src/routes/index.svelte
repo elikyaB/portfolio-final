@@ -13,16 +13,16 @@
     import Portfolio from "$lib/Home/Portfolio.svelte";
     import Contact from "$lib/Home/Contact.svelte";
 
+    export let content
     let w
     let h
     let y
-
 </script>
 
 <Header {h}/>
 <Navbar {w} {h} {y}/>
 <main>
     <About {w} {h} {y}/>
-    <Portfolio {w}/>
+    <Portfolio {w} {content} />
     <Contact/>
 </main>
