@@ -31,27 +31,18 @@
             A curated sample of my work
         </h1>
         {#each $projects as proj}
-            <div class="is-flex is-flex-direction-row mb-5">
+            <div class="mb-5 px-1">
                 <div>
                     <h2 class="heading has-text-warning">
                         {proj.title}
                     </h2>
-                    <p>{proj.description}</p>
+                    <p>blah blah blah blah blah blah blah blah blah blah</p>
                     <ul class="is-flex is-justify-content-space-between">
-                        <li>View</li>
-                        <li>Code</li>
+                        <li>View Site</li>
+                        <li>Source Code</li>
+                        <li>Case Study</li>
                     </ul>
                 </div>
-                {#if w>=786}
-                    <figure>
-                        <a href={proj.live}><img src={proj.image} alt="screenshot"/></a>
-                        <!-- <figcaption>
-                            <a href={proj.code}>
-                                <span class="iconify-inline" data-icon={proj.host}/>
-                            </a>
-                        </figcaption> -->
-                    </figure>
-                {/if}
             </div>
         {/each}
         <div>See more</div>
