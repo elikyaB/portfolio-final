@@ -11,6 +11,9 @@
     </div>
 </footer>
 
-<style>
-    .center {text-align: center;}
+<style lang="scss">
+    .center {
+        text-align: center; 
+        color: $white;
+    }
 </style>

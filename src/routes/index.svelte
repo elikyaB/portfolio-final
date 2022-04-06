@@ -23,6 +23,6 @@
 <Navbar {w} {h} {y}/>
 <main>
     <About {w} {h} {y}/>
-    <Portfolio {w} {content} />
+    <Portfolio {content} {w} {h}/>
     <Contact/>
 </main>

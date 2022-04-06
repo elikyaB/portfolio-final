@@ -5,7 +5,7 @@
     export let content
     const projects = writable([])
     onMount(async () => {projects.set(content)})
-    $: {console.log($projects)}
+    // $: {console.log($projects)}
 
     export let w
 </script>
@@ -16,7 +16,7 @@
             A curated sample of my work
         </h1>
         {#each $projects as proj}
-            <div class="project mb-5 px-3 py-3">
+            <div class="project mb-4 px-3 py-2">
                 <h2 class="heading has-text-warning">
                     {proj.title}
                 </h2>
@@ -24,14 +24,16 @@
                 <ul class="is-flex is-justify-content-space-between">
                     {#each proj.links.array as link}
                         <li>
-                            <span class="iconify-inline" data-icon={link.icon}/>
-                            <a href={link.url}>{link.text}</a>
+                            <a href={link.url}>
+                                <span class="iconify-inline" data-icon={link.icon}/>
+                                {link.text}
+                            </a>
                         </li>
                     {/each}
                 </ul>
             </div>
         {/each}
-        <div class="button mx-auto is-warning is-outlined">
+        <div class="button mx-auto is-outlined">
             See more
         </div>
     </div>
@@ -40,6 +42,11 @@
 <style lang="scss">
     .project {
         border: 1px solid $gold;
-        border-radius: 5px 5px;
+        border-radius: 5px;
+    }
+    .button {
+        background-color: transparent;
+        color: $link;
+        border-color: $link;
     }
 </style>
