@@ -52,7 +52,7 @@
         </div>
     </div>
     <div class="contain">
-        <div id="skills" style:height={bottom} class="is-flex is-flex-direction-column is-justify-content-space-between">
+        <div id="skills" style:height={bottom} class="is-flex is-flex-direction-column is-justify-content-space-around">
             {#if active[0]}
                 <div>
                     <span class="iconify-inline" data-icon='ion:logo-html5'/>
@@ -154,13 +154,6 @@
     </div>
 </section>
 
-<style lang="scss">
-    .no-scrollbars {
-        -ms-overflow-style: none;  // IE and Edge
-        scrollbar-width: none;  // Firefox
-        &::-webkit-scrollbar {
-            display: none; // Chrome, Safari and Opera
-        }
-    }
+<style>
     .right {float:right;}
 </style>

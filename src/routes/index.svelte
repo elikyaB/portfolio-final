@@ -12,6 +12,7 @@
     import About from "$lib/Home/About.svelte";
     import Portfolio from "$lib/Home/Portfolio.svelte";
     import Contact from "$lib/Home/Contact.svelte";
+    import Logo from "$lib/Logo.svelte";
 
     export let content
     let w
@@ -19,9 +20,10 @@
     let y
 </script>
 
-<Header {h}/>
+<!-- <Logo/> -->
 <Navbar {w} {h} {y}/>
 <main>
+    <Header {h}/>
     <About {w} {h} {y}/>
     <Portfolio {content} {w} {h}/>
     <Contact/>

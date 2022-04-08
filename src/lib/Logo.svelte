@@ -22,8 +22,9 @@
     }
     #B {
         transform:
-            rotate(20deg)
-            /* rotateY(60deg) */
+            rotate(180deg)
+            rotateX(180deg)
+            rotateY(260deg)
     }
     /* #tri {} */
 </style>
