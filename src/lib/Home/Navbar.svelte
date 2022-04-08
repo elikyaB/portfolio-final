@@ -1,5 +1,6 @@
 <script>
     import Socials from "$lib/Socials.svelte"
+import { add_styles, query_selector_all } from "svelte/internal";
 
     const pages = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','#resume']]
 
@@ -47,10 +48,19 @@
         </div>
     </div>
     <div class="navbar-menu m-0 py-0 has-background-dark {active?'is-active':''}
-    {mobile?'mobile':'desktop'}">
+    {mobile?'mobile':''}">
         <div class="navbar-start">
-            {#if mobile && active}
+            {#if mobile}
                 <Socials props={navbarSocial}/>
+            {/if}
+            {#if active && mobile}
+                <script>
+                    document.querySelector('html').style.overflowY = 'hidden'
+                </script>
+            {:else}
+                <script>
+                    document.querySelector('html').style.overflowY = ''
+                </script>
             {/if}
         </div>
         <div class="navbar-end">

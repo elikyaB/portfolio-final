@@ -4,7 +4,7 @@
 
     export let content
     const projects = writable([])
-    onMount(async () => {projects.set(content)})
+    // onMount(async () => {projects.set(content)})
     // $: {console.log($projects)}
 
     export let w
