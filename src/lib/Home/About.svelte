@@ -37,7 +37,7 @@
         <div class="contain">
             <h1 class="heading has-text-warning is-size-6">From ideation to realization</h1>
             <p>Ever curious, ever learning.</p>
-            <p class="mb-4">That's all it means to be full stack.</p>
+            <p class="mb-4">That's what it means to be full stack.</p>
         </div>
         <div class="{w>sumTabs?'contain':''} tabs no-scrollbars mb-3" bind:this={scrollTab}>
             <ul bind:clientWidth={tabWidth} class="is-justify-content-space-between">
@@ -154,6 +154,13 @@
     </div>
 </section>
 
-<style>
+<style lang="scss">
+    .no-scrollbars {
+        -ms-overflow-style: none;  // IE and Edge
+        scrollbar-width: none;  // Firefox
+        &::-webkit-scrollbar {
+            display: none; // Chrome, Safari and Opera
+        }
+    }
     .right {float:right;}
 </style>

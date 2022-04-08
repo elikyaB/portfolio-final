@@ -24,16 +24,13 @@
                 <ul class="is-flex is-justify-content-space-between">
                     {#each proj.links.array as link}
                         <li>
-                            <a href={link.url}>
-                                <span class="iconify-inline" data-icon={link.icon}/>
-                                {link.text}
-                            </a>
+                            <a href={link.url}>{link.text}</a>
                         </li>
                     {/each}
                 </ul>
             </div>
         {/each}
-        <div class="button mx-auto is-outlined">
+        <div class="button mx-auto is-warning is-outlined">
             See more
         </div>
     </div>
@@ -44,9 +41,6 @@
         border: 1px solid $gold;
         border-radius: 5px;
     }
-    .button {
-        background-color: transparent;
-        color: $link;
-        border-color: $link;
-    }
+    h2, a {font-size: 12px;}
+    a {text-transform: uppercase;}
 </style>
