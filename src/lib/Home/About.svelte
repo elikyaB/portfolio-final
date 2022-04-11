@@ -1,10 +1,7 @@
 <script>
-    export let w
-    export let h
-    // export let y
-
     const tabs = ['Web Development', 'Frontend', 'Backend', 'Workflow']
 
+    export let w
     let tabWidth
     let scrollTab
     let active = [true, false, false, false]
@@ -20,6 +17,7 @@
         }
     }
 
+    export let h
     let top
     let bottom
     let tabWidths = []
@@ -27,9 +25,11 @@
 
     $: {
         bottom = (h-top-0.75*16*2-52)/h*100 + 'vh';
-        sumTabs = tabWidths.reduce((acc,cur) => acc+cur, 0) * 1.1 // adj 5vw margins
-        // console.log(h,top,bottom, tabWidths, sumTabs)
+        sumTabs = tabWidths.reduce((acc,cur) => acc+cur, 0) * 1.1 
+        // * 1.1 adjusts for 5vw margins
     }
+
+    // export let y
 </script>
 
 <section id="about" class="page--with-nav has-background-dark has-text-light">

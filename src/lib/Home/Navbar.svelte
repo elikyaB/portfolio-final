@@ -1,18 +1,23 @@
 <script>
     import Socials from "$lib/Socials.svelte"
 
-    export let w
-    export let h
-    export let y
+    const navbarSocial = {
+        id: "navbarLinks",
+        style: "is-flex is-justify-content-space-around my-5",
+        links: ["email", "linkedIn", "twitter", "gitHub", "codePen", "linkTree"]
+    }
 
     const pages = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','#resume']]
 
-    let active = false
-    function activate() {active = !active}
-
+    export let w
+    export let h
+    export let y
     let highlight
     let mobile
     let section = ''
+    let active = false
+
+    function activate() {active = !active}
 
     $: {
         let pos = Math.floor((y+52)/h)
@@ -30,12 +35,6 @@
                 section = pos>0 ? `<${pages[pos-1][0].toLowerCase()}>` : ''
             }
         }
-    }
-
-    const navbarSocial = {
-        id: "navbarLinks",
-        style: "is-flex is-justify-content-space-around my-5",
-        links: ["email", "linkedIn", "twitter", "gitHub", "codePen", "linkTree"]
     }
 </script>
 

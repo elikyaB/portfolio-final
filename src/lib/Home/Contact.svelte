@@ -19,7 +19,3 @@
         <Socials props={contactSocials}/>
     </div>
 </section>
-
-<style lang="scss">
-
-</style>

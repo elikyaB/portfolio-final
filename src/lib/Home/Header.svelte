@@ -32,7 +32,6 @@
     let hello
     let word
     export let h
-    
 </script>
 
 <header class="hero is-dark page">
