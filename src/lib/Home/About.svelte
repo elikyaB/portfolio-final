@@ -39,10 +39,10 @@
             <p>Ever curious, ever learning.</p>
             <p class="mb-4">That's what it means to be full stack.</p>
         </div>
-        <div class="{w>sumTabs?'contain':''} tabs no-scrollbars mb-3" bind:this={scrollTab}>
+        <div class="tabs no-scrollbars mb-3" class:contain={w>sumTabs} bind:this={scrollTab}>
             <ul bind:clientWidth={tabWidth} class="is-justify-content-space-between">
                 {#each tabs as tab, i}
-                    <li id={`tab${i}`} class={active[i]?'is-active':''}
+                    <li id={`tab${i}`} class:is-active={active[i]}
                     bind:clientWidth={tabWidths[i]} on:click={() => {changeActive(i)}}>
                         <!-- svelte-ignore a11y-missing-attribute -->
                         <a><h2>{tab}</h2></a>

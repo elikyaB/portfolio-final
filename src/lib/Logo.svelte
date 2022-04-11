@@ -18,16 +18,20 @@
     .title {font-size: 14vw; position:absolute}
     #E {
         transform: 
-            rotate(55deg) 
-            rotateX(-30deg) 
-            rotateY(30deg)
+            rotateX(0deg) 
+            rotateY(0deg)
+            rotateZ(0deg);
     }
     #B {
         transform:
-            rotate(180deg)
-            rotateX(180deg)
-            rotateY(260deg);
+            rotateX(320deg) 
+            rotateY(0deg)
+            rotateZ(0deg);
         
     }
-    /* #tri {} */
+    #tri {transform: 
+            rotateX(10deg)
+            rotateY(45deg)
+            rotateZ(0deg);
+        }
 </style>

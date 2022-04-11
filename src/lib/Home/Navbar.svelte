@@ -43,14 +43,13 @@
         <a id="logo" href="/" class="navbar-item">EB3</a>
         <div id="section" class="navbar-item is-expanded is-justify-content-center has-text-warning"
         >{section}</div>
-        <div class="navbar-burger has-text-warning {active?'is-active':''}" on:click={activate}>
+        <div class="navbar-burger has-text-warning" class:is-active={active} on:click={activate}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
         </div>
     </div>
-    <div class="navbar-menu m-0 py-0 has-background-dark {active?'is-active':''}
-    {mobile?'mobile':''}">
+    <div class="navbar-menu m-0 py-0 has-background-dark" class:is-active={active} class:mobile>
         <div class="navbar-start">
             {#if mobile}
                 <Socials props={navbarSocial}/>
@@ -58,11 +57,9 @@
         </div>
         <div class="navbar-end">
             {#each pages as page, i}
-                <a href={page[1]} on:click={activate} id={`nav${i}`}
-                class="navbar-item is-spaced 
-                {mobile?'is-align-items-center':''}
+                <a href={page[1]} on:click={activate} id={`nav${i}`} class="navbar-item is-spaced 
                 {i===3?'button is-warning is-outlined':'is-tab'}
-                {highlight[i]?'has-background-warning has-text-dark' :'has-text-warning'} ">
+                {highlight[i]?'has-background-warning has-text-dark':'has-text-warning'}" class:is-align-items-center={mobile}>
                     {page[0]}
                 </a>
             {/each}

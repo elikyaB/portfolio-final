@@ -4,15 +4,15 @@
 
     export let content
     const projects = writable([])
-    // onMount(async () => {projects.set(content)})
-    // $: {console.log($projects)}
+    onMount(async () => {projects.set(content)})
+    $: {console.log($projects)}
 
     export let w
 </script>
 
 <section id="portfolio" class="page--with-nav has-background-dark has-text-light">
     <div class="contain is-flex is-flex-direction-column">
-        <h1 class="heading block has-text-warning is-size-6">
+        <h1 class="heading has-text-warning is-size-6">
             A curated sample of my work
         </h1>
         {#each $projects as proj}

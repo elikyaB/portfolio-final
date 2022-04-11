@@ -29,6 +29,10 @@
         } 
     }
 
+    function typewriter(node, {delay=0, duration=1000, i}) {
+        
+    }
+
     let hello
     let word
     export let h
