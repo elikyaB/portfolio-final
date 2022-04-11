@@ -7,7 +7,7 @@
 <svelte:window bind:innerWidth={w} bind:innerHeight={h} bind:scrollY={y}/>
 
 <script>
-    import Header from "$lib/Home/Header.svelte";
+    import Landing from "$lib/Home/Landing.svelte";
     import Navbar from "$lib/Home/Navbar.svelte";
     import About from "$lib/Home/About.svelte";
     import Portfolio from "$lib/Home/Portfolio.svelte";
@@ -23,7 +23,7 @@
 <!-- <Logo/> -->
 <Navbar {w} {h} {y}/>
 <main>
-    <Header {h}/>
+    <Landing {h}/>
     <About {w} {h} {y}/>
     <Portfolio {content} {w} {h}/>
     <Contact/>
