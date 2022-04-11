@@ -27,7 +27,7 @@
 
     $: {
         bottom = (h-top-0.75*16*2-52)/h*100 + 'vh';
-        sumTabs = tabWidths.reduce((acc,cur) => acc+cur, 0) * 1.1 // adjust for 5vw margins
+        sumTabs = tabWidths.reduce((acc,cur) => acc+cur, 0) * 1.1 // adj 5vw margins
         // console.log(h,top,bottom, tabWidths, sumTabs)
     }
 </script>

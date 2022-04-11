@@ -2,15 +2,17 @@
 
 </script>
 
-<figure id="cube" class="hero is-dark page">
-    <div class="hero-body title m-0">
-        <div id="E" class="is-flex">E</div>
-        <div class="is-flex">
-            <div id="B">B</div>
-            <div id="tri">3</div>
+<header>
+    <figure id="cube" class="hero is-dark page">
+        <div class="hero-body title m-0">
+            <div id="E" class="is-flex">E</div>
+            <div class="is-flex">
+                <div id="B">B</div>
+                <div id="tri">3</div>
+            </div>
         </div>
-    </div>
-</figure>
+    </figure>
+</header>
 
 <style>
     .title {font-size: 14vw; position:absolute}
@@ -24,7 +26,8 @@
         transform:
             rotate(180deg)
             rotateX(180deg)
-            rotateY(260deg)
+            rotateY(260deg);
+        
     }
     /* #tri {} */
 </style>

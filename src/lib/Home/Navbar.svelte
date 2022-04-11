@@ -1,31 +1,35 @@
 <script>
     import Socials from "$lib/Socials.svelte"
-import { add_styles, query_selector_all } from "svelte/internal";
-
-    const pages = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','#resume']]
 
     export let w
     export let h
     export let y
+
+    const pages = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','#resume']]
+
+    let active = false
+    function activate() {active = !active}
+
+    let highlight
     let mobile
     let section = ''
-    let highlight
-    let active = false
-
-    function activate(){active = !active}
 
     $: {
         let pos = Math.floor((y+52)/h)
-        mobile = w<786
-        
-        if (mobile && !active) {
-            section = pos>0? `<${pages[pos-1][0].toLowerCase()}>` : ' '
-        } else {
-            if (mobile && section) {section = '<menu>'}
-        }
-
         highlight = [false, false, false, false]
         if (pos>0) {highlight[pos-1] = true}
+
+        mobile = w<786
+        if (mobile) {
+            if (active) {
+                document.querySelector('html').style.overflowY = 'hidden'
+                section = '<menu>'
+            }
+            else {
+                document.querySelector('html').style.overflowY = ''
+                section = pos>0 ? `<${pages[pos-1][0].toLowerCase()}>` : ''
+            }
+        }
     }
 
     const navbarSocial = {
@@ -34,7 +38,6 @@ import { add_styles, query_selector_all } from "svelte/internal";
         links: ["email", "linkedIn", "twitter", "gitHub", "codePen", "linkTree"]
     }
 </script>
-
 
 <nav id="navi" class="navbar is-fixed-top">
     <div id="bar" class="navbar-brand m-0 has-background-dark">
@@ -52,15 +55,6 @@ import { add_styles, query_selector_all } from "svelte/internal";
         <div class="navbar-start">
             {#if mobile}
                 <Socials props={navbarSocial}/>
-            {/if}
-            {#if active && mobile}
-                <script>
-                    document.querySelector('html').style.overflowY = 'hidden'
-                </script>
-            {:else}
-                <script>
-                    document.querySelector('html').style.overflowY = ''
-                </script>
             {/if}
         </div>
         <div class="navbar-end">
