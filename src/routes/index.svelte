@@ -20,7 +20,7 @@
     let y
 </script>
 
-<!-- <Logo/> -->
+<Logo/>
 <Navbar {w} {h} {y}/>
 <main>
     <Landing {h}/>
