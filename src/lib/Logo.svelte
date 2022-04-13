@@ -1,8 +1,23 @@
 <script>
+    const dieFaces = [1,2,3,4,5,6]
     let showFace = 'logo'
+    let index = 0
+    let intervalID
+    let timeoutID
+    
     function changeFace() {
-        showFace = String(Math.ceil(Math.random()*6))
-        console.log(showFace)
+        index = dieFaces.indexOf(showFace)
+        while (index == dieFaces.indexOf(showFace)) {
+            showFace = Math.ceil(Math.random()*6)
+        }
+        // console.log(showFace, index)
+    }
+
+    function rollDie() {
+        clearTimeout(timeoutID)
+        intervalID = setInterval(changeFace,100)
+        setTimeout(()=>{clearInterval(intervalID)}, 1500)
+        timeoutID = setTimeout(()=>{showFace='logo'},5000)
     }
 </script>
 
@@ -10,13 +25,13 @@
     <figure id="cube" class="hero is-dark page">
         <div class="hero-body title m-0"> 
             <div class="scene mt-5">
-                <div class={`cube ${'show--'+showFace}`} on:click={changeFace}>
-                  <div class="cube__face--1">B</div>
-                  <div class="cube__face--2">B</div>
+                <div class={`cube ${'show--'+showFace}`} on:click={rollDie}>
+                  <div class="cube__face--1">{showFace=='logo'?'B':1}</div>
+                  <div class="cube__face--2">2</div>
                   <div class="cube__face--3">3</div>
-                  <div class="cube__face--4">3</div>
-                  <div class="cube__face--5">E</div>
-                  <div class="cube__face--6">E</div>
+                  <div class="cube__face--4">4</div>
+                  <div class="cube__face--5">{showFace=='logo'?'E':5}</div>
+                  <div class="cube__face--6">6</div>
                 </div>
             </div>
         </div>
@@ -39,7 +54,7 @@
         position: relative;
         transform-style: preserve-3d;
         transform: translateZ(-7.5vw);
-        transition: transform 1s;
+        transition: transform 0.2s;
         
         &__face {
             position: absolute;
