@@ -10,76 +10,86 @@
         while (index == dieFaces.indexOf(showFace)) {
             showFace = Math.ceil(Math.random()*6)
         }
-        // console.log(showFace, index)
+        // console.log(showFace)
     }
 
     function rollDie() {
         clearTimeout(timeoutID)
+        clearInterval(intervalID)
         intervalID = setInterval(changeFace,100)
         setTimeout(()=>{clearInterval(intervalID)}, 1500)
         timeoutID = setTimeout(()=>{showFace='logo'},5000)
     }
 </script>
 
-<header>
-    <figure id="cube" class="hero is-dark page">
-        <div class="hero-body title m-0"> 
-            <div class="scene mt-5">
-                <div class={`cube ${'show--'+showFace}`} on:click={rollDie}>
-                  <div class="cube__face--1">{showFace=='logo'?'B':1}</div>
-                  <div class="cube__face--2">2</div>
-                  <div class="cube__face--3">3</div>
-                  <div class="cube__face--4">4</div>
-                  <div class="cube__face--5">{showFace=='logo'?'E':5}</div>
-                  <div class="cube__face--6">6</div>
-                </div>
+<figure>
+    <div class="scene">
+        <div class={`cube ${'show--'+showFace}`} on:click={rollDie}>
+            <div class="cube__face--1 is-flex">
+                {#if showFace !== 'logo'}
+                    <img src="assets/one.png" alt="one" class="pl-2">
+                {:else}
+                    <img src="assets/b.png" alt="B">
+                {/if}
+            </div>
+            <div class="cube__face--2">
+                <img src="assets/two.png" alt="two">
+            </div>
+            <div class="cube__face--3">
+                <img src="assets/three.png" alt="three">
+            </div>
+            <div class="cube__face--4">
+                <img src="assets/four.png" alt="four">
+            </div>
+            <div class="cube__face--5">
+                {#if showFace !== 'logo'}
+                    <img src="assets/five.png" alt="five">
+                {:else}
+                    <img src="assets/e.png" alt="E">
+                {/if}
+            </div>
+            <div class="cube__face--6">
+                <img src="assets/six.png" alt="six">
             </div>
         </div>
-    </figure>
-</header>
+    </div>
+</figure>
 
 <style lang="scss">
-    .title {font-size: 14vw; position: absolute;}
+    $volume: 30px;
 
     .scene {
-        width: 15vw;
-        height: 15vw;
-        margin: 1vw;
-        perspective: 900px; // use transition to/from 0px for loading screen
+        width: $volume;
+        height: $volume;
+        perspective: 800px; // use transition to/from 0px for loading screen
     }
-
     .cube {
-        width: 15vw;
-        height: 15vw;
+        width: inherit;
+        height: inherit;
         position: relative;
         transform-style: preserve-3d;
-        transform: translateZ(-7.5vw);
+        transform: translateZ(-0.5*$volume);
         transition: transform 0.2s;
         
         &__face {
             position: absolute;
-            width: 15vw;
-            height: 15vw;
-            border: 1px solid white;
-            line-height: 15vw;
-            font-size: 4vw;
-            font-weight: bold;
-            color: white;
-            text-align: center;
-            background: black; 
-            opacity: 0.75;
+            width: $volume;
+            height: $volume;
+            border: 1px solid $gold;
+            img {color: $gold; background-color: $gold;}
+
             &--1, &--2, &--3, &--4, &--5, &--6 { @extend .cube__face; }
-            &--1 { transform: rotateY(  0deg) translateZ(7.5vw); }
-            &--2 { transform: rotateY(180deg) translateZ(7.5vw); }
-            &--3 { transform: rotateY( 90deg) translateZ(7.5vw); }
-            &--4 { transform: rotateY(-90deg) translateZ(7.5vw); }
-            &--5 { transform: rotateX( 90deg) translateZ(7.5vw); }
-            &--6 { transform: rotateX(-90deg) translateZ(7.5vw); }
+            &--1 { transform: rotateY(  0deg) translateZ(0.5*$volume); }
+            &--2 { transform: rotateY(180deg) translateZ(0.5*$volume); }
+            &--3 { transform: rotateY( 90deg) translateZ(0.5*$volume); }
+            &--4 { transform: rotateY(-90deg) translateZ(0.5*$volume); }
+            &--5 { transform: rotateX( 90deg) translateZ(0.5*$volume); }
+            &--6 { transform: rotateX(-90deg) translateZ(0.5*$volume); }
         }
     }
 
     .show {
-        transform: translateZ(-7.5vw);
+        transform: translateZ(-0.5*$volume);
         &--logo, &--1, &--2, &--3, &--4, &--5, &--6 { @extend .show; }
         &--logo { transform: rotateY(-51.5deg) rotateX(-24deg) rotateZ(28deg); }
         &--1 { transform: rotateY(   0deg); }

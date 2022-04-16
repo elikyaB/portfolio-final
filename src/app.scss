@@ -54,5 +54,5 @@ a {
         scroll-snap-type: y mandatory; 
         overscroll-behavior-y: none;
     }
-    header, section, footer {scroll-snap-align: start;}
+    .page, footer {scroll-snap-align: start;}
 }

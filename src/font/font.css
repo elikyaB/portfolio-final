@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'ToyBlockMaestro-rPZ8';
+  src: url('ToyBlockMaestro-rPZ8.eot');
+  src: url('ToyBlockMaestro-rPZ8.eot?#iefix') format('embedded-opentype'),
+       url('ToyBlockMaestro-rPZ8.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'toy-block-maestro';
+  src: url('toy-block-maestro.svg#toy-block-maestro') format('svg'),
+       url('toy-block-maestro.ttf') format('truetype'),
+       url('toy-block-maestro.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+

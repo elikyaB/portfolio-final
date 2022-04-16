@@ -1,4 +1,5 @@
 <script>
+    import Logo from "$lib/Logo.svelte";
     import Socials from "$lib/Socials.svelte"
 
     const navbarSocial = {
@@ -40,7 +41,9 @@
 
 <nav id="navi" class="navbar is-fixed-top">
     <div id="bar" class="navbar-brand m-0 has-background-dark">
-        <a id="logo" href="/" class="navbar-item">EB3</a>
+        <a id="logo" href="/" class="navbar-item ml-2">
+            <Logo/>
+        </a>
         <div id="section" class="navbar-item is-expanded is-justify-content-center has-text-warning"
         >{section}</div>
         <div class="navbar-burger has-text-warning" class:is-active={active} on:click={activate}>
@@ -69,7 +72,6 @@
     
 <style lang="scss">
     #navi {background-color: transparent;}
-    #logo {color: white;}
     .navbar-menu {justify-content:space-between;}
     .mobile {
         height: 100vh;

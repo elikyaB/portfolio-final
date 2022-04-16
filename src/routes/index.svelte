@@ -12,7 +12,7 @@
     import About from "$lib/Home/About.svelte";
     import Portfolio from "$lib/Home/Portfolio.svelte";
     import Contact from "$lib/Home/Contact.svelte";
-    import Logo from "$lib/Logo.svelte";
+    import Loading from "$lib/Loading.svelte";
 
     export let content
     let w
@@ -20,7 +20,7 @@
     let y
 </script>
 
-<Logo/>
+<!-- <Loading/> -->
 <Navbar {w} {h} {y}/>
 <main>
     <Landing {h}/>
