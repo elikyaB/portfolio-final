@@ -66,20 +66,11 @@
 </figure>
 
 <style lang="scss">
-    // $volume: 20px;
-    // :global({var(--size):10px;})
-    // :root {--full:20px; --half:10px}
-    // .scene {
-    //     // width: $volume;
-    //     // height: $volume;
-    //     perspective: 800px; // use transition to/from 0px for loading screen
-    // }
     .cube {
         width: inherit;
         height: inherit;
         position: relative;
         transform-style: preserve-3d;
-        // transform: translateZ(-0.5*$volume);
         transition: transform 0.2s;
         
         &__face {
@@ -89,20 +80,10 @@
             height: inherit;
             border: 1px solid $gold;
             img {color: $gold; background-color: $gold;}
-
-            // &--1, &--2, &--3, &--4, &--5, &--6 { @extend .cube__face; }
-            // &--1 { transform: rotateY(  0deg) translateZ(0.5*$volume); }
-            // &--2 { transform: rotateY(180deg) translateZ(0.5*$volume); }
-            // &--3 { transform: rotateY( 90deg) translateZ(0.5*$volume); }
-            // &--4 { transform: rotateY(-90deg) translateZ(0.5*$volume); }
-            // &--5 { transform: rotateX( 90deg) translateZ(0.5*$volume); }
-            // &--6 { transform: rotateX(-90deg) translateZ(0.5*$volume); }
         }
     }
 
     .show {
-        // transform: translateZ(-0.5*$volume);
-        // &--logo, &--1, &--2, &--3, &--4, &--5, &--6 { @extend .show; }
         &--logo { transform: rotateY(-51.5deg) rotateX(-24deg) rotateZ(28deg); }
         &--1 { transform: rotateY(   0deg); }
         &--2 { transform: rotateY(-180deg); }
