@@ -1,6 +1,11 @@
 <script>
+    export let props
+    $: showFace = props.face
+    $: full = props.size+props.units
+    $: half = (props.size/2)+props.units
+    $: perspective = props.scene+props.units
+
     const dieFaces = [1,2,3,4,5,6]
-    let showFace = 'logo'
     let index = 0
     let intervalID
     let timeoutID
@@ -13,84 +18,91 @@
         // console.log(showFace)
     }
 
-    function rollDie() {
-        clearTimeout(timeoutID)
-        clearInterval(intervalID)
-        intervalID = setInterval(changeFace,100)
-        setTimeout(()=>{clearInterval(intervalID)}, 1500)
-        timeoutID = setTimeout(()=>{showFace='logo'},5000)
+    export function rollDie() {
+        if (props.d6) {
+            clearTimeout(timeoutID)
+            clearInterval(intervalID)
+            intervalID = setInterval(changeFace,100)
+            setTimeout(()=>{clearInterval(intervalID)}, 1500)
+            timeoutID = setTimeout(()=>{showFace='logo'},5000)
+        }
     }
 </script>
 
 <figure>
-    <div class="scene">
+    <div style:width={full} style:height={full} style:perspective>
         <div class={`cube ${'show--'+showFace}`} on:click={rollDie}>
-            <div class="cube__face--1 is-flex">
+            <div style:transform={`rotateY(0deg) translateZ(${half})`} class="cube__face">
                 {#if showFace !== 'logo'}
-                    <img src="assets/one.png" alt="one" class="pl-2">
+                    <img src="assets/one.png" alt="one" style:padding-left={`${props.size/4+props.units}`}>
                 {:else}
                     <img src="assets/b.png" alt="B">
                 {/if}
             </div>
-            <div class="cube__face--2">
+            <div style:transform={`rotateY(180deg) translateZ(${half})`} class="cube__face">
                 <img src="assets/two.png" alt="two">
             </div>
-            <div class="cube__face--3">
+            <div style:transform={`rotateY(90deg) translateZ(${half})`} class="cube__face">
                 <img src="assets/three.png" alt="three">
             </div>
-            <div class="cube__face--4">
+            <div style:transform={`rotateY(-90deg) translateZ(${half})`} class="cube__face">
                 <img src="assets/four.png" alt="four">
             </div>
-            <div class="cube__face--5">
+            <div style:transform={`rotateX(90deg) translateZ(${half})`} class="cube__face">
                 {#if showFace !== 'logo'}
                     <img src="assets/five.png" alt="five">
                 {:else}
                     <img src="assets/e.png" alt="E">
                 {/if}
             </div>
-            <div class="cube__face--6">
+            <div style:transform={`rotateX(-90deg) translateZ(${half})`} class="cube__face">
                 <img src="assets/six.png" alt="six">
             </div>
         </div>
     </div>
+    <figcaption class="is-hidden">
+        <a href="https://www.fontspace.com/qube-font-f31578">QUBE Font</a> by <a href="https://www.fontspace.com/walter-designer">Walter Designer</a>
+    </figcaption>
 </figure>
 
 <style lang="scss">
-    $volume: 30px;
-
-    .scene {
-        width: $volume;
-        height: $volume;
-        perspective: 800px; // use transition to/from 0px for loading screen
-    }
+    // $volume: 20px;
+    // :global({var(--size):10px;})
+    // :root {--full:20px; --half:10px}
+    // .scene {
+    //     // width: $volume;
+    //     // height: $volume;
+    //     perspective: 800px; // use transition to/from 0px for loading screen
+    // }
     .cube {
         width: inherit;
         height: inherit;
         position: relative;
         transform-style: preserve-3d;
-        transform: translateZ(-0.5*$volume);
+        // transform: translateZ(-0.5*$volume);
         transition: transform 0.2s;
         
         &__face {
+            display: flex;
             position: absolute;
-            width: $volume;
-            height: $volume;
+            width: inherit;
+            height: inherit;
             border: 1px solid $gold;
             img {color: $gold; background-color: $gold;}
 
-            &--1, &--2, &--3, &--4, &--5, &--6 { @extend .cube__face; }
-            &--1 { transform: rotateY(  0deg) translateZ(0.5*$volume); }
-            &--2 { transform: rotateY(180deg) translateZ(0.5*$volume); }
-            &--3 { transform: rotateY( 90deg) translateZ(0.5*$volume); }
-            &--4 { transform: rotateY(-90deg) translateZ(0.5*$volume); }
-            &--5 { transform: rotateX( 90deg) translateZ(0.5*$volume); }
-            &--6 { transform: rotateX(-90deg) translateZ(0.5*$volume); }
+            // &--1, &--2, &--3, &--4, &--5, &--6 { @extend .cube__face; }
+            // &--1 { transform: rotateY(  0deg) translateZ(0.5*$volume); }
+            // &--2 { transform: rotateY(180deg) translateZ(0.5*$volume); }
+            // &--3 { transform: rotateY( 90deg) translateZ(0.5*$volume); }
+            // &--4 { transform: rotateY(-90deg) translateZ(0.5*$volume); }
+            // &--5 { transform: rotateX( 90deg) translateZ(0.5*$volume); }
+            // &--6 { transform: rotateX(-90deg) translateZ(0.5*$volume); }
         }
     }
 
     .show {
-        transform: translateZ(-0.5*$volume);
-        &--logo, &--1, &--2, &--3, &--4, &--5, &--6 { @extend .show; }
+        // transform: translateZ(-0.5*$volume);
+        // &--logo, &--1, &--2, &--3, &--4, &--5, &--6 { @extend .show; }
         &--logo { transform: rotateY(-51.5deg) rotateX(-24deg) rotateZ(28deg); }
         &--1 { transform: rotateY(   0deg); }
         &--2 { transform: rotateY(-180deg); }
