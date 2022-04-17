@@ -24,7 +24,9 @@
                 <ul class="is-flex is-justify-content-space-between">
                     {#each proj.links.array as link}
                         <li>
-                            <a href={link.url}>{link.text}</a>
+                            <a href={link.url}>
+                                {link.text}
+                            </a>
                         </li>
                     {/each}
                 </ul>

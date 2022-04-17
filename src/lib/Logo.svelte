@@ -1,9 +1,10 @@
 <script>
     export let props
-    $: showFace = props.face
+    $: showFace = props.startingFace
     $: full = props.size+props.units
     $: half = (props.size/2)+props.units
     $: perspective = props.scene+props.units
+    $: transition = `transform ${props.transition}s`
 
     const dieFaces = [1,2,3,4,5,6]
     let index = 0
@@ -22,16 +23,16 @@
         if (props.d6) {
             clearTimeout(timeoutID)
             clearInterval(intervalID)
-            intervalID = setInterval(changeFace,100)
-            setTimeout(()=>{clearInterval(intervalID)}, 1500)
-            timeoutID = setTimeout(()=>{showFace='logo'},5000)
+            intervalID = setInterval(changeFace, props.interval)
+            setTimeout(()=>{clearInterval(intervalID)}, props.timeout)
+            timeoutID = setTimeout(()=>{showFace=props.revertFace}, props.revertDelay)
         }
     }
 </script>
 
 <figure>
     <div style:width={full} style:height={full} style:perspective>
-        <div class={`cube ${'show--'+showFace}`} on:click={rollDie}>
+        <div class={`cube ${'show--'+showFace}`} style:transition on:click={rollDie}>
             <div style:transform={`rotateY(0deg) translateZ(${half})`} class="cube__face">
                 {#if showFace !== 'logo'}
                     <img src="assets/one.png" alt="one" style:padding-left={`${props.size/4+props.units}`}>

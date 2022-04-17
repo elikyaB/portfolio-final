@@ -2,6 +2,14 @@
     import Logo from "$lib/Logo.svelte";
     import Socials from "$lib/Socials.svelte"
 
+    const navbarLogo = {
+        d6:false, 
+        startingFace:'logo', 
+        size:20, 
+        units:'px', 
+        scene:800
+    }
+
     const navbarSocial = {
         id: "navbarLinks",
         style: "is-flex is-justify-content-space-around my-5",
@@ -42,13 +50,7 @@
 <nav id="navi" class="navbar is-fixed-top">
     <div id="bar" class="navbar-brand m-0 has-background-dark">
         <a id="logo" href="/" class="navbar-item ml-2">
-            <Logo props={{
-                d6:false, 
-                face:'logo', 
-                size:20, 
-                units:'px', 
-                scene:800
-            }}/>
+            <Logo props={navbarLogo}/>
         </a>
         <div id="section" class="navbar-item is-expanded is-justify-content-center has-text-warning"
         >{section}</div>

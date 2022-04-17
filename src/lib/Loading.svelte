@@ -1,12 +1,18 @@
 <script>
     import Logo from "./Logo.svelte";
-    
+
     const props = {
         d6: true, 
-        face:'logo', 
-        size:50, 
-        units:'vw', 
-        scene:2000
+        startingFace: 'logo', 
+        size: 30, 
+        units: 'vh', 
+        scene: 500,
+        // if d6 true //
+        transition: 1.00,   // seconds
+        interval: 2000,     // ms
+        timeout: 4900,      // ms
+        revertDelay: 5000,  // ms
+        revertFace: 'logo'
     }
 </script>
 
