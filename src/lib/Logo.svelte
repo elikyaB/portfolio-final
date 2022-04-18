@@ -72,7 +72,6 @@
         height: inherit;
         position: relative;
         transform-style: preserve-3d;
-        transition: transform 0.2s;
         
         &__face {
             display: flex;

@@ -29,10 +29,6 @@
         } 
     }
 
-    // function typewriter(node, {delay=0, duration=1000, i}) {
-        
-    // }
-
     let hello
     let word
     export let h
@@ -40,7 +36,9 @@
 
 <header class="hero is-dark page">
     <div class="hero-body pb-0" style:padding-top={`${(h-hello-word)/2}px`}>
-        <h1 class="title m-0" bind:clientHeight={hello}>Hi!<br/>I'm Eli</h1>
+        <h1 class="title m-0" bind:clientHeight={hello}>
+            Hi!<br/>I'm Eli
+        </h1>
         {#key title}
             <figure id="wordlock" class='title m-0 is-flex' bind:clientHeight={word}>
                 {#each title as letter, i}

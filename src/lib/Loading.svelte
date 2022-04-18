@@ -8,9 +8,9 @@
         units: 'vh', 
         scene: 500,
         // if d6 true //
-        transition: 1.00,   // seconds
-        interval: 2000,     // ms
-        timeout: 4900,      // ms
+        transition: 0.2,   // seconds
+        interval: 200,     // ms
+        timeout: 3000,      // ms
         revertDelay: 5000,  // ms
         revertFace: 'logo'
     }
