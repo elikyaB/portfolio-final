@@ -24,26 +24,30 @@
     let mobile
     let section = ''
     let active = false
+    let mounted
+
+    onMount( async () => {
+        if (Document !== null) {mounted = true}
+    })
 
     function activate() {active = !active}
 
-    $: { onMount( () => {
-            let pos = Math.floor(($y+52)/$h)
-            highlight = [false, false, false, false]
-            if (pos>0) {highlight[pos-1] = true}
+    $: {
+        let pos = Math.floor(($y+52)/$h)
+        highlight = [false, false, false, false]
+        if (pos>0) {highlight[pos-1] = true}
 
-            mobile = $w<786
-            if (mobile) {
-                if (active) {
-                    document.querySelector('html').style.overflowY = 'hidden'
-                    section = '<menu>'
-                }
-                else {
-                    document.querySelector('html').style.overflowY = ''
-                    section = pos>0 ? `<${pages[pos-1][0].toLowerCase()}>` : ''
-                }
+        mobile = $w<786
+        if (mobile && mounted) {
+            if (active) {
+                document.querySelector('html').style.overflowY = 'hidden'
+                section = '<menu>'
             }
-        })
+            else {
+                document.querySelector('html').style.overflowY = ''
+                section = pos>0 ? `<${pages[pos-1][0].toLowerCase()}>` : ''
+            }
+        }
     }
 </script>
 
