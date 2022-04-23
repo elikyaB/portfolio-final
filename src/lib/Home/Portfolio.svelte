@@ -1,12 +1,10 @@
 <script>
     import { onMount } from "svelte";
-    import { writable } from "svelte/store";
-    import { w, h, y } from "$lib/stores";
+    import { w, h, y, projects } from "$lib/stores";
 
     export let content
-    const projects = writable([])
     onMount(async () => {projects.set(content)})
-    $: {console.log($projects)}
+    // $: {console.log($projects)}
 
     let title
     let button

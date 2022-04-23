@@ -86,6 +86,7 @@
 <style lang="scss">
     #navi {background-color: transparent;}
     .navbar-menu {justify-content:space-between;}
+    .navbar-burger:hover {background-color: $dark;}
     .mobile {
         height: 100vh;
         #nav3 {margin: 0.5rem 37vw;}
