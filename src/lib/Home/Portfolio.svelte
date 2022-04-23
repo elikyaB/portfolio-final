@@ -1,17 +1,16 @@
 <script>
     import { onMount } from "svelte";
     import { writable } from "svelte/store";
+    import { w, h, y } from "$lib/stores";
 
     export let content
     const projects = writable([])
     onMount(async () => {projects.set(content)})
     $: {console.log($projects)}
 
-    export let w
-    export let h
     let title
     let button
-    $: height = `${h-52-title-button-0.75*16*2}px`
+    $: height = `${$h-52-title-button-0.75*16*2}px`
 </script>
 
 <section id="portfolio" class="page--with-nav has-background-dark has-text-light">

@@ -1,4 +1,6 @@
 <script>
+    import { onMount } from 'svelte';
+    import { w, h, y } from '$lib/stores'
     import Logo from "$lib/Logo.svelte";
     import Socials from "$lib/Socials.svelte"
 
@@ -18,32 +20,30 @@
 
     const pages = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','#resume']]
 
-    export let w
-    export let h
-    export let y
-    let highlight
+    let highlight = [false, false, false, false]
     let mobile
     let section = ''
     let active = false
 
     function activate() {active = !active}
 
-    $: {
-        let pos = Math.floor((y+52)/h)
-        highlight = [false, false, false, false]
-        if (pos>0) {highlight[pos-1] = true}
+    $: { onMount( () => {
+            let pos = Math.floor(($y+52)/$h)
+            highlight = [false, false, false, false]
+            if (pos>0) {highlight[pos-1] = true}
 
-        mobile = w<786
-        if (mobile) {
-            if (active) {
-                document.querySelector('html').style.overflowY = 'hidden'
-                section = '<menu>'
+            mobile = $w<786
+            if (mobile) {
+                if (active) {
+                    document.querySelector('html').style.overflowY = 'hidden'
+                    section = '<menu>'
+                }
+                else {
+                    document.querySelector('html').style.overflowY = ''
+                    section = pos>0 ? `<${pages[pos-1][0].toLowerCase()}>` : ''
+                }
             }
-            else {
-                document.querySelector('html').style.overflowY = ''
-                section = pos>0 ? `<${pages[pos-1][0].toLowerCase()}>` : ''
-            }
-        }
+        })
     }
 </script>
 
@@ -52,8 +52,9 @@
         <a id="logo" href="/" class="navbar-item ml-2">
             <Logo props={navbarLogo}/>
         </a>
-        <div id="section" class="navbar-item is-expanded is-justify-content-center has-text-warning"
-        >{section}</div>
+        <div id="section" class="navbar-item is-expanded is-justify-content-center has-text-warning">
+            {section}
+        </div>
         <div class="navbar-burger has-text-warning" class:is-active={active} on:click={activate}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>

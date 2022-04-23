@@ -1,4 +1,5 @@
 <script>
+    import { h } from '$lib/stores'
     import { onMount } from 'svelte'
 
     const titles = ["coder", "programmer", "developer", "engineer"]
@@ -31,11 +32,10 @@
 
     let hello
     let word
-    export let h
 </script>
 
 <header class="hero is-dark page">
-    <div class="hero-body pb-0" style:padding-top={`${(h-hello-word)/2}px`}>
+    <div class="hero-body pb-0" style:padding-top={`${($h-hello-word)/2}px`}>
         <h1 class="title m-0" bind:clientHeight={hello}>
             Hi!<br/>I'm Eli
         </h1>

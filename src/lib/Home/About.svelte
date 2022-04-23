@@ -1,7 +1,7 @@
 <script>
+    import { w, h, y } from "$lib/stores";
     const tabs = ['Web Development', 'Frontend', 'Backend', 'Workflow']
 
-    export let w
     let tabWidth
     let scrollTab
     let active = [true, false, false, false]
@@ -9,7 +9,7 @@
     function changeActive(i) {
         active = [false, false, false, false]
         active[i] = true
-        if (w < tabWidth) {
+        if ($w < tabWidth) {
             scrollTab.scrollTo({
                 left: (tabWidth/2)*(i/tabs.length), 
                 behavior: 'smooth'
@@ -17,19 +17,16 @@
         }
     }
 
-    export let h
     let top
     let bottom
     let tabWidths = []
     let sumTabs
 
     $: {
-        bottom = (h-top-0.75*16*2-52)/h*100 + 'vh';
+        bottom = ($h-top-0.75*16*2-52)/$h*100 + 'vh';
         sumTabs = tabWidths.reduce((acc,cur) => acc+cur, 0) * 1.1 
         // * 1.1 adjusts for 5vw margins
     }
-
-    // export let y
 </script>
 
 <section id="about" class="page--with-nav has-background-dark has-text-light">
@@ -39,7 +36,7 @@
             <p>Ever curious, ever learning.</p>
             <p class="mb-4">That's what it means to be full stack.</p>
         </div>
-        <div class="tabs no-scrollbars mb-3" class:contain={w>sumTabs} bind:this={scrollTab}>
+        <div class="tabs no-scrollbars mb-3" class:contain={$w>sumTabs} bind:this={scrollTab}>
             <ul bind:clientWidth={tabWidth} class="is-justify-content-space-between">
                 {#each tabs as tab, i}
                     <li id={`tab${i}`} class:is-active={active[i]}
