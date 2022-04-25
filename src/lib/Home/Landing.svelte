@@ -54,8 +54,8 @@
                 const i = Math.trunc(text.length * t);
                 node.textContent = text.slice(0, i);
                 if (func && node.textContent === text) {
-                    wordlock = true
-                    setTimeout(()=>{titleSwitch(title)},3000)
+                    setTimeout(()=>{wordlock = true},1000)
+                    setTimeout(()=>{titleSwitch(title)},3000+1000)
                 }
             }
         }
@@ -70,16 +70,16 @@
                 <div in:typewriter="{{delay:1000,func:true}}">I'm Eli</div>
             </h1>
             {#key title}
-                <figure class='title m-0 is-flex' bind:clientHeight={word}>
-                    {#if wordlock}
+                {#if wordlock}
+                    <figure class='title m-0 is-flex' bind:clientHeight={word}>
                         {#each title as letter, i}
                             <div class="letter has-text-warning"
                                 in:roll="{{i:i}}"
                                 out:roll="{{i:i}}"
                             >{letter}</div>
                         {/each}
-                    {/if}
-                </figure>
+                    </figure>
+                {/if}
             {/key}
         {/if}
     </div>
