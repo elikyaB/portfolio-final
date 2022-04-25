@@ -5,6 +5,12 @@
     const titles = ["coder", "programmer", "developer", "engineer"]
     let title = "coder"
     // letters that overlap transition wrong
+    let hello
+    let word
+    let start
+    let wordlock = false
+
+    onMount(() => {start = true})
 
     function titleSwitch (t) {
         const current = titles.findIndex((w) => {return w === t})
@@ -12,8 +18,6 @@
         title = titles[next]
         setTimeout(() => {titleSwitch(title)}, 3000)
     }
-
-    onMount(() => {titleSwitch(title)})
 
     function roll(node, {delay=0, duration=1000, i}) {
         // console.log(node.textContent, title, i)
@@ -30,30 +34,59 @@
         } 
     }
 
-    let hello
-    let word
+    function typewriter(node, { delay=0, speed=0.5, func=null }) {
+		const valid = (
+			node.childNodes.length === 1 &&
+			node.childNodes[0].nodeType === Node.TEXT_NODE
+		);
+
+		if (!valid) {
+			throw new Error(`This transition only works on elements with a single text node child`);
+		}
+
+		const text = node.textContent;
+		const duration = text.length / (speed * 0.01);
+
+        return {
+            delay,
+            duration,
+            tick: t => {
+                const i = Math.trunc(text.length * t);
+                node.textContent = text.slice(0, i);
+                if (func && node.textContent === text) {
+                    wordlock = true
+                    setTimeout(()=>{titleSwitch(title)},3000)
+                }
+            }
+        }
+	}
 </script>
 
 <header class="hero is-dark page">
     <div class="hero-body pb-0" style:padding-top={`${($h-hello-word)/2}px`}>
-        <h1 class="title m-0" bind:clientHeight={hello}>
-            Hi!<br/>I'm Eli
-        </h1>
-        {#key title}
-            <figure id="wordlock" class='title m-0 is-flex' bind:clientHeight={word}>
-                {#each title as letter, i}
-                    <div class="letter has-text-warning"
-                        in:roll="{{i:i}}"
-                        out:roll="{{i:i}}"
-                    >{letter}</div>
-                {/each}
-            </figure>
-        {/key}
+        {#if start}
+            <h1 class="title m-0" bind:clientHeight={hello}>
+                <div in:typewriter>Hi!</div>
+                <div in:typewriter="{{delay:1000,func:true}}">I'm Eli</div>
+            </h1>
+            {#key title}
+                <figure class='title m-0 is-flex' bind:clientHeight={word}>
+                    {#if wordlock}
+                        {#each title as letter, i}
+                            <div class="letter has-text-warning"
+                                in:roll="{{i:i}}"
+                                out:roll="{{i:i}}"
+                            >{letter}</div>
+                        {/each}
+                    {/if}
+                </figure>
+            {/key}
+        {/if}
     </div>
 </header>
 
 <style>
     header {font-family: 'Share Tech Mono', monospace;}
     .title {font-size:13vw;}
-    #wordlock {position:absolute;}
+    figure {position:absolute;}
 </style>
