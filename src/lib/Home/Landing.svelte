@@ -20,7 +20,7 @@
     }
 
     function roll(node, {delay=0, duration=1000, i}) {
-        // console.log(node.textContent, title, i)
+        console.log(node.textContent, title, i)
         if (title[i] === node.textContent) {
             return {delay, duration, css: t => `
                 transform: rotateX(${i%2===0? -90+t*90: 90-t*90}deg)
@@ -35,6 +35,7 @@
     }
 
     function typewriter(node, { delay=0, speed=0.5, func=null }) {
+        // preprocess child nodes 
 		const valid = (
 			node.childNodes.length === 1 &&
 			node.childNodes[0].nodeType === Node.TEXT_NODE
@@ -54,8 +55,8 @@
                 const i = Math.trunc(text.length * t);
                 node.textContent = text.slice(0, i);
                 if (func && node.textContent === text) {
-                    setTimeout(()=>{wordlock = true},1000)
-                    setTimeout(()=>{titleSwitch(title)},3000+1000)
+                    setTimeout(()=>{wordlock = true},3000)
+                    setTimeout(()=>{titleSwitch(title)},3000+3000)
                 }
             }
         }
@@ -70,16 +71,19 @@
                 <div in:typewriter="{{delay:1000,func:true}}">I'm Eli</div>
             </h1>
             {#key title}
-                {#if wordlock}
-                    <figure class='title m-0 is-flex' bind:clientHeight={word}>
+                <figure class='title m-0 is-flex' bind:clientHeight={word}>
+                    {#if wordlock}
                         {#each title as letter, i}
                             <div class="letter has-text-warning"
-                                in:roll="{{i:i}}"
-                                out:roll="{{i:i}}"
-                            >{letter}</div>
+                            in:roll="{{i:i}}" out:roll="{{i:i}}">{letter}</div>
                         {/each}
-                    </figure>
-                {/if}
+                    {:else}
+                        <div class="has-text-warning" 
+                        in:typewriter="{{delay:3000}}">
+                            webdev
+                        </div>
+                    {/if}
+                </figure>
             {/key}
         {/if}
     </div>
