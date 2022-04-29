@@ -1,15 +1,14 @@
 <script>
     import { h } from '$lib/stores'
     import { onMount } from 'svelte'
-    import { fade } from 'svelte/transition';
 
-    const titles = ["coder", "programmer", "developer", "engineer"]
+    const titles = ["programmer", "architect", "engineer", "developer"]
     let title = "webdev"
-    // letters that overlap transition wrong
     let hello
     let word
     let start
     let wordlock = false
+    let startTitles
 
     onMount(() => {start = true})
 
@@ -20,9 +19,17 @@
         setTimeout(() => {titleSwitch(title)}, 3000)
     }
 
-    function roll(node, {delay=0, duration=1000, i}) {
-        // console.log(node.textContent, title, i)
-        if (title[i] === node.textContent) {
+    function roll(node, {delay=0, duration=1000, previous=false, i}) {
+        if (!wordlock) {
+            duration = 0
+            delay = (1000 / title.length) * i
+            if (i+1 === title.length) {
+                wordlock = true
+                setTimeout(()=>{titleSwitch(title)},2000)
+            }
+            return {delay, duration, css: t => `opacity: ${t}`}
+        }
+        if (!previous) {
             return {delay, duration, css: t => `
                 transform: rotateX(${i%2===0? -90+t*90: 90-t*90}deg)
                 translateZ(7vw)
@@ -35,39 +42,24 @@
         } 
     }
 
-    function typewriter(node, { delay=0, speed=0.5, func=null }) {
-        console.log(node.childNodes[0].data)
-        // preprocess child nodes 
+    function typewriter(node, { delay=0, speed=0.5, next=null }) {
 		const valid = (
 			node.childNodes.length === 1 &&
 			node.childNodes[0].nodeType === Node.TEXT_NODE
-		);
-
-        let text
-        if (valid) {text = node.textContent}
+		)
 
 		if (!valid) {
-			// throw new Error(`This transition only works on elements with a single text node child`);
-            console.log(node.childNodes.keys(), node.childNodes, node.childNodes[0].textContent)
-            text = []
-            for (let i=0; i<=node.childNodes.length; i+=2) {
-                text.push(node.childNodes[i].textContent)
-            }
-            text = text.join('')
+			throw new Error(`This transition only works on elements with a single text node child`)
 		}
 
-		// const text = node.textContent;
-		const duration = text.length / (speed * 0.01);
+		const text = node.textContent;
+		const duration = text.length / (speed * 0.01)
 
-        return {
-            delay,
-            duration,
-            tick: t => {
-                const i = Math.trunc(text.length * t);
-                node.textContent = text.slice(0, i);
-                if (func && node.textContent === text) {
-                    setTimeout(()=>{wordlock = true},3000)
-                    setTimeout(()=>{titleSwitch(title)},3000*2)
+        return {delay, duration, tick: t => {
+                const i = Math.trunc(text.length * t)
+                node.textContent = text.slice(0, i)
+                if (next && node.textContent === text) {
+                    setTimeout(() => {startTitles = true}, 1000)
                 }
             }
         }
@@ -79,13 +71,18 @@
         {#if start}
             <h1 class="title m-0" bind:clientHeight={hello}>
                 <div in:typewriter>Hi!</div>
-                <div in:typewriter="{{delay:1000}}">I'm Eli</div>
+                <div in:typewriter="{{delay:1000, next:true}}">I'm Eli</div>
             </h1>
-            {#key title}
-                <figure class='title m-0 is-flex' bind:clientHeight={word}>
-                    {#each title as letter, i}
-                            <div class="has-text-warning" in:roll="{{i:i}}" out:roll="{{i:i}}">{letter}</div>
-                    {/each}
+            {#key title}    
+                <figure class='title m-0 is-flex has-text-warning' bind:clientHeight={word}>
+                    {#if startTitles}
+                        {#each title as letter, i}
+                                <div in:roll="{{i:i}}"
+                                out:roll="{{i:i, previous:true}}">
+                                    {letter}
+                                </div>
+                        {/each}
+                    {/if}
                 </figure>
             {/key}
         {/if}
