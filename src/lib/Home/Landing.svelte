@@ -6,20 +6,39 @@
     let title = "webdev"
     let hello
     let word
-    let start
+    let mount
     let wordlock = false
     let startTitles
+    let previous = 'webdev'
+    const alphabet = Array(' abcdefghijklmnopqrstuvwxyz ')
 
-    onMount(() => {start = true})
+    onMount(() => {mount = true})
 
     function titleSwitch (t) {
         const current = titles.findIndex((w) => {return w === t})
         const next = current < titles.length-1 ? current+1 : 0
+        previous = title
         title = titles[next]
         setTimeout(() => {titleSwitch(title)}, 3000)
     }
 
-    function roll(node, {delay=0, duration=1000, previous=false, i}) {
+    function letterSwitch (i) {
+        const start = previous[i]
+        console.log(start)
+        const end = title[i]
+        let val1
+        let val2
+        if (start !== null) {
+            val1 = alphabet.findIndex((l)=>{return l==start})
+            console.log(val1)
+        }
+    }
+
+    // function multiRoll(node, {previous=false, i}) {
+    //     if ()
+    // }
+
+    function roll(node, {delay=0, duration=1000, exit=false, i}) {
         if (!wordlock) {
             duration = 0
             delay = (1000 / title.length) * i
@@ -29,11 +48,17 @@
             }
             return {delay, duration, css: t => `opacity: ${t}`}
         }
-        if (!previous) {
-            return {delay, duration, css: t => `
-                transform: rotateX(${i%2===0? -90+t*90: 90-t*90}deg)
-                translateZ(7vw)
-            `}
+
+        if (!exit) {
+            return {delay, duration, 
+                css: t => `
+                    transform: rotateX(${i%2===0? -90+t*90: 90-t*90}deg)
+                    translateZ(7vw)
+                `,
+                tick: t => {
+                    letterSwitch(i)
+                }
+            }
         } else {
             return {delay, duration, css: t => `
                 transform: rotateX(${i%2===1? -90+t*90: 90-t*90}deg)
@@ -42,7 +67,7 @@
         } 
     }
 
-    function typewriter(node, { delay=0, speed=0.5, next=null }) {
+    function typewriter(node, { delay=0, speed=0.5, titleStart=null }) {
 		const valid = (
 			node.childNodes.length === 1 &&
 			node.childNodes[0].nodeType === Node.TEXT_NODE
@@ -58,7 +83,7 @@
         return {delay, duration, tick: t => {
                 const i = Math.trunc(text.length * t)
                 node.textContent = text.slice(0, i)
-                if (next && node.textContent === text) {
+                if (titleStart && node.textContent === text) {
                     setTimeout(() => {startTitles = true}, 1000)
                 }
             }
@@ -68,18 +93,18 @@
 
 <header class="hero is-dark page">
     <div class="hero-body pb-0" style:padding-top={`${($h-hello-word)/2}px`}>
-        {#if start}
+        {#if mount}
             <h1 class="title m-0" bind:clientHeight={hello}>
                 <div in:typewriter>Hi!</div>
-                <div in:typewriter="{{delay:1000, next:true}}">I'm Eli</div>
+                <div in:typewriter="{{delay:1000, titleStart:true}}">I'm Eli</div>
             </h1>
             {#key title}    
                 <figure class='title m-0 is-flex has-text-warning' bind:clientHeight={word}>
                     {#if startTitles}
                         {#each title as letter, i}
                                 <div in:roll="{{i:i}}"
-                                out:roll="{{i:i, previous:true}}">
-                                    {letter}
+                                out:roll="{{i:i, exit:true}}">
+                                    <div>{letter}</div>
                                 </div>
                         {/each}
                     {/if}
