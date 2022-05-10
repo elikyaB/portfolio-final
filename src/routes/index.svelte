@@ -1,7 +1,7 @@
 <!-- <Loading/> -->
-<Navbar/>
+<Navbar {start}/>
 <main>
-    <Landing/>
+    <Landing {start}/>
     <About/>
     <Portfolio {content}/>
     <Contact/>
@@ -22,6 +22,10 @@
 <script>
     import { w, h, y } from "$lib/stores";
     export let content
+    
+    import { onMount } from 'svelte'
+    let start
+    onMount(() => {start = true})
 
     import Loading from "$lib/Loading.svelte";
     import Landing from "$lib/Home/Landing.svelte";

@@ -1,16 +1,13 @@
 <script>
+    export let start
     import { h } from '$lib/stores'
-    import { onMount } from 'svelte'
-
+    
     const titles = ["programmer", "architect", "engineer", "developer"]
     let title = "webdev"
     let hello
     let word
-    let start
     let wordlock = false
     let startTitles
-
-    onMount(() => {start = true})
 
     function titleSwitch (t) {
         const current = titles.findIndex((w) => {return w === t})

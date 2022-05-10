@@ -1,9 +1,11 @@
 <script>
-    import { onMount } from 'svelte';
+    export let start
     import { w, h, y } from '$lib/stores'
+    import { onMount } from 'svelte';
+    import { fade } from 'svelte/transition';
     import Logo from "$lib/Logo.svelte";
     import Socials from "$lib/Socials.svelte"
-
+    
     const navbarLogo = {
         d6:false, 
         startingFace:'logo', 
@@ -51,14 +53,17 @@
     }
 </script>
 
-<nav id="navi" class="navbar is-fixed-top">
+{#key start}
+<nav id="navi" class="navbar is-fixed-top" in:fade="{{delay:5000, duration:1000}}">
     <div id="bar" class="navbar-brand m-0 has-background-dark">
         <a id="logo" href="/" class="navbar-item ml-2">
             <Logo props={navbarLogo}/>
         </a>
-        <div id="section" class="navbar-item is-expanded is-justify-content-center has-text-warning">
-            {section}
-        </div>
+        {#key section}
+            <div id="section" class="navbar-item is-expanded is-justify-content-center has-text-warning">
+                {section}
+            </div>
+        {/key}
         <div class="navbar-burger has-text-warning" class:is-active={active} on:click={activate}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -82,6 +87,7 @@
         </div>
     </div>
 </nav>
+{/key}
     
 <style lang="scss">
     #navi {background-color: transparent;}
