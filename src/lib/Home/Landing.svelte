@@ -1,6 +1,5 @@
 <script>
-    export let start
-    import { h } from '$lib/stores'
+    import { h, start } from '$lib/stores'
     
     const titles = ["programmer", "architect", "engineer", "developer"]
     let title = "webdev"
@@ -65,7 +64,7 @@
 
 <header class="hero is-dark page">
     <div class="hero-body pb-0" style:padding-top={`${($h-hello-word)/2}px`}>
-        {#if start}
+        {#if $start}
             <h1 class="title m-0" bind:clientHeight={hello}>
                 <div in:typewriter>Hi!</div>
                 <div in:typewriter="{{delay:1000, next:true}}">I'm Eli</div>

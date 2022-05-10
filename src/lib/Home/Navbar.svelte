@@ -1,6 +1,5 @@
 <script>
-    export let start
-    import { w, h, y } from '$lib/stores'
+    import { w, h, y, start } from '$lib/stores'
     import { onMount } from 'svelte';
     import { fade } from 'svelte/transition';
     import Logo from "$lib/Logo.svelte";
@@ -53,7 +52,7 @@
     }
 </script>
 
-{#key start}
+{#key $start}
 <nav id="navi" class="navbar is-fixed-top" in:fade="{{delay:5000, duration:1000}}">
     <div id="bar" class="navbar-brand m-0 has-background-dark">
         <a id="logo" href="/" class="navbar-item ml-2">
