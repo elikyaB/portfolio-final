@@ -26,6 +26,7 @@
     let section = ''
     let active = false
     let mounted
+    let head
 
     onMount( async () => {
         if (Document !== null) {mounted = true}
@@ -50,19 +51,42 @@
             }
         }
     }
+
+    function firstLoadFade(node, {delay = 5000,duration = 1000}) {
+        const o = +getComputedStyle(node).opacity;
+        return {delay, duration, css: t => `opacity: ${$y === 0 ? t * o: 1}`}
+    }
+
+    function glitch(node, {delay = 0,duration = 500}) {
+        return {delay, duration, css: t => `
+            opacity: ${t*Math.random()};
+            transform: skew(${
+                parseInt(Math.random()*10) % 10 === 0 ? 70
+                : parseInt(Math.random()*10) % 9 === 0 ? 70
+                : parseInt(Math.random()*10) % 8 === 0 ? 70
+                : parseInt(Math.random()*10) % 7 === 0 ? 70
+                : parseInt(Math.random()*10) % 6 === 0 ? 70
+                : 0
+            }deg, 0deg);
+            text-shadow: red -7px -5px;
+        `}
+    }
 </script>
 
 {#key $start}
-<nav id="navi" class="navbar is-fixed-top" in:fade="{{delay:5000, duration:1000}}">
+<nav id="navi" class="navbar is-fixed-top" in:firstLoadFade>
     <div id="bar" class="navbar-brand m-0 has-background-dark">
         <a id="logo" href="/" class="navbar-item ml-2">
             <Logo props={navbarLogo}/>
         </a>
-        {#key section}
-            <div id="section" class="navbar-item is-expanded is-justify-content-center has-text-warning">
-                {section}
-            </div>
-        {/key}
+        {#if mobile}
+            {#key section}
+                <div id="section" class="navbar-item is-expanded is-flex is-flex-direction-column is-justify-content-center has-text-warning"
+                transition:glitch>
+                    {section}
+                </div>
+            {/key}
+        {/if}
         <div class="navbar-burger has-text-warning" class:is-active={active} on:click={activate}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
