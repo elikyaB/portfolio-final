@@ -1,7 +1,6 @@
 <script>
     import { w, h, y, start } from '$lib/stores'
     import { onMount } from 'svelte';
-    import { fade } from 'svelte/transition';
     import Logo from "$lib/Logo.svelte";
     import Socials from "$lib/Socials.svelte"
     
@@ -26,7 +25,6 @@
     let section = ''
     let active = false
     let mounted
-    let head
 
     onMount( async () => {
         if (Document !== null) {mounted = true}
@@ -52,9 +50,10 @@
         }
     }
 
-    function firstLoadFade(node, {delay = 5000,duration = 1000}) {
-        const o = +getComputedStyle(node).opacity;
-        return {delay, duration, css: t => `opacity: ${$y === 0 ? t * o: 1}`}
+    function firstLoadFade(node, {delay=5000, duration=1000}) {
+        return {delay, duration, css: t => 
+            `opacity: ${$y === 0 ? t : 1}`
+        }
     }
 
     function glitch(node, {delay = 0,duration = 500}) {
@@ -79,7 +78,7 @@
         <a id="logo" href="/" class="navbar-item ml-2">
             <Logo props={navbarLogo}/>
         </a>
-        {#if mobile}
+        {#if mobile && mounted}
             {#key section}
                 <div id="section" class="navbar-item is-expanded is-flex is-flex-direction-column is-justify-content-center has-text-warning"
                 transition:glitch>
