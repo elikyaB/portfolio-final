@@ -50,23 +50,22 @@
         }
     }
 
-    function firstLoadFade(node, {delay=5000, duration=1000}) {
-        return {delay, duration, css: t => 
-            `opacity: ${$y === 0 ? t : 1}`
-        }
+    function firstLoadFade(node, {delay=0, duration=6000}) {
+        let completed = false
+        return {delay, duration, tick: t => {
+            if ($y !== 0) {completed = true}
+            if (completed) {document.querySelector('#navi').style.opacity = 1}
+            else {document.querySelector('#navi').style.opacity = 
+                t < 5/6 ? 0 : 6*t-5 // have t scale 0-1 in 1s after 5s
+            }
+        }}
     }
 
     function glitch(node, {delay = 0,duration = 500}) {
+        function rng10() {return Math.round(Math.random()*10)}
         return {delay, duration, css: t => `
             opacity: ${t*Math.random()};
-            transform: skew(${
-                parseInt(Math.random()*10) % 10 === 0 ? 70
-                : parseInt(Math.random()*10) % 9 === 0 ? 70
-                : parseInt(Math.random()*10) % 8 === 0 ? 70
-                : parseInt(Math.random()*10) % 7 === 0 ? 70
-                : parseInt(Math.random()*10) % 6 === 0 ? 70
-                : 0
-            }deg, 0deg);
+            transform: skew(${rng10() > 5 ? 70 : 0}deg, 0deg);
             text-shadow: red -7px -5px;
         `}
     }

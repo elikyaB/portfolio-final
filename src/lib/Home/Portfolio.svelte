@@ -48,4 +48,5 @@
     }
     h2, a {font-size: 12px;}
     a {text-transform: uppercase;}
+    a:hover {text-decoration: underline;}
 </style>

@@ -17,7 +17,7 @@ svg {color: $gold;} // don't work in <style> tags due to load?
 p {color: $white;}
 a {
     color: $link;
-    &:hover {color: $gold;}
+    &:hover {color: $link;} // prevent from disappearing
 }
 
 // UTILITY
