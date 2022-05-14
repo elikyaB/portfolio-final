@@ -31,8 +31,8 @@
 
 <section id="about" class="page--with-nav has-background-dark has-text-light">
     <div bind:clientHeight={top}>
-        <div class="contain">
-            <h1 class="heading has-text-warning is-size-6">From ideation to realization</h1>
+        <div id="motto" class="contain">
+            <h1 class="heading has-text-warning">From ideation to realization</h1>
             <p>Ever curious, ever learning.</p>
             <p class="mb-4">That's what it means to be full stack.</p>
         </div>

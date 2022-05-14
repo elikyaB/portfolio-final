@@ -13,7 +13,7 @@
 
 <section id="portfolio" class="page--with-nav has-background-dark has-text-light">
     <div class="contain is-flex is-flex-direction-column">
-        <h1 class="heading has-text-warning is-size-6" bind:clientHeight={title}>
+        <h1 class="heading has-text-warning" bind:clientHeight={title}>
             A curated sample of my work
         </h1>
         <div class="is-flex is-flex-direction-column is-justify-content-space-evenly" style:height>

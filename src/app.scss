@@ -29,15 +29,6 @@ a {
     }
 }
 
-.contain {
-    margin: 0 auto;
-    max-width: 90vw;
-    @media screen and (min-width: 576px) {max-width: 80vw;}
-    @media screen and (min-width: 960px) {max-width: 70vw;}
-    @media screen and (min-width: 1344px) {max-width: 60vw;}
-    @media screen and (min-width: 2112px) {max-width: 50vw;}
-}
-
 // HOMEPAGE
 .page {
     height: 100vh;
@@ -55,4 +46,25 @@ a {
         overscroll-behavior-y: none;
     }
     .page, footer {scroll-snap-align: start;}
+}
+
+// SIZING
+.contain {margin: 0 auto; max-width: 90vw;}
+h1.heading {font-size: 1rem;}
+
+
+@media screen and (min-width: 576px) { 
+    .contain {max-width: 80vw;}
+    h1.heading {font-size: 3vw;}
+    #motto>p {font-size: 2.75vw}
+}
+@media screen and (min-width: 960px) {
+    .contain {max-width: 70vw;}
+    :root {font-size: 2vh;}
+}
+@media screen and (min-width: 1344px) {
+    .contain {max-width: 60vw;}
+}
+@media screen and (min-width: 2112px) {
+    .contain {max-width: 50vw;}
 }

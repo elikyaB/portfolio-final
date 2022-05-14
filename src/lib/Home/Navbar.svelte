@@ -3,13 +3,14 @@
     import { onMount } from 'svelte';
     import Logo from "$lib/Logo.svelte";
     import Socials from "$lib/Socials.svelte"
+
+    let navH
     
     const navbarLogo = {
         d6:false, 
         startingFace:'logo', 
-        size:20, 
         units:'px', 
-        scene:800
+        scene:1800
     }
 
     const navbarSocial = {
@@ -72,10 +73,10 @@
 </script>
 
 {#key $start}
-<nav id="navi" class="navbar is-fixed-top" in:firstLoadFade>
+<nav id="navi" class="navbar is-fixed-top" in:firstLoadFade bind:clientHeight={navH}>
     <div id="bar" class="navbar-brand m-0 has-background-dark">
         <a id="logo" href="/" class="navbar-item ml-2">
-            <Logo props={navbarLogo}/>
+            <Logo props={navbarLogo} {navH}/>
         </a>
         {#if mobile && mounted}
             {#key section}

@@ -10,7 +10,7 @@
 
 <section id="contact" class="page--with-nav has-background-dark has-text-light">
     <div class="contain">
-        <h1 class="heading block has-text-warning is-size-6">Let's get in touch</h1>
+        <h1 class="heading block has-text-warning">Let's get in touch</h1>
         <p class="block">I'm open to opportunities of all kinds in the Boston area or remote. Whether it's a small passion project of yours or a corporate product, I'm always available to consult or collaborate.</p>
         <div class="is-flex mb-5">
             <button class="button mx-auto is-warning is-outlined">Say hello</button>

@@ -1,8 +1,9 @@
 <script>
     export let props
+    export let navH
     $: showFace = props.startingFace
-    $: full = props.size+props.units
-    $: half = (props.size/2)+props.units
+    $: full = (navH ? navH/2.5 : props.size) + props.units
+    $: half = (navH ? navH/2.5 : props.size)/2 + props.units
     $: perspective = props.scene+props.units
     $: transition = `transform ${props.transition}s`
 
@@ -16,7 +17,6 @@
         while (index == dieFaces.indexOf(showFace)) {
             showFace = Math.ceil(Math.random()*6)
         }
-        // console.log(showFace)
     }
 
     export function rollDie() {
