@@ -9,6 +9,7 @@
     const navbarLogo = {
         d6:false, 
         startingFace:'logo', 
+        size: 20,
         units:'px', 
         scene:1800
     }
@@ -76,7 +77,7 @@
 <nav id="navi" class="navbar is-fixed-top" in:firstLoadFade bind:clientHeight={navH}>
     <div id="bar" class="navbar-brand m-0 has-background-dark">
         <a id="logo" href="/" class="navbar-item ml-2">
-            <Logo props={navbarLogo} {navH}/>
+            <Logo props={navbarLogo} {navH} responsive={$w>960}/>
         </a>
         {#if mobile && mounted}
             {#key section}
