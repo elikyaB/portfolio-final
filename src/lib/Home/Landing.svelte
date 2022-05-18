@@ -15,6 +15,10 @@
         setTimeout(() => {titleSwitch(title)}, 3000)
     }
 
+    function titleStarter () {
+        setTimeout(() => {startTitles = true}, 1000)
+    }
+
     function roll(node, {delay=0, duration=1000, previous=false, i}) {
         if (!wordlock) {
             duration = 0
@@ -36,33 +40,6 @@
                 translateZ(7vw)
             `}
         } 
-    }
-
-    // function typewriter(node, { delay=0, speed=0.5, next=null }) {
-	// 	const valid = (
-	// 		node.childNodes.length === 1 &&
-	// 		node.childNodes[0].nodeType === Node.TEXT_NODE
-	// 	)
-
-	// 	if (!valid) {
-	// 		throw new Error(`This transition only works on elements with a single text node child`)
-	// 	}
-
-	// 	const text = node.textContent;
-	// 	const duration = text.length / (speed * 0.01)
-
-    //     return {delay, duration, tick: t => {
-    //             const i = Math.trunc(text.length * t)
-    //             node.textContent = text.slice(0, i)
-    //             if (next && node.textContent === text) {
-    //                 setTimeout(() => {startTitles = true}, 1000)
-    //             }
-    //         }
-    //     }
-	// }
-
-    function titleStarter () {
-        setTimeout(() => {startTitles = true}, 1000)
     }
 </script>
 

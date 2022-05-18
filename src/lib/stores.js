@@ -5,7 +5,7 @@ export const h = writable(0)
 export const y = writable(0)
 export const projects = writable([])
 export const start = writable(false)
-export const typewriter = (node, { delay=0, speed=0.5, next=null, func }) => {
+export const typewriter = (node, { delay=0, speed=0.5, next=null, func=null }) => {
     const valid = (
         node.childNodes.length === 1 &&
         node.childNodes[0].nodeType === Node.TEXT_NODE
