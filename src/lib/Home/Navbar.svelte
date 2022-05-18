@@ -9,7 +9,7 @@
     const navbarLogo = {
         d6:false, 
         startingFace:'logo', 
-        size: 20,
+        size:20,
         units:'px', 
         scene:1800
     }
@@ -58,16 +58,17 @@
             if ($y !== 0) {completed = true}
             if (completed) {document.querySelector('#navi').style.opacity = 1}
             else {document.querySelector('#navi').style.opacity = 
-                t < 5/6 ? 0 : 6*t-5 // have t scale 0-1 in 1s after 5s
+                t>5/6 ? 6*t-5 : 0 // have t scale 0-1 in 1s after 5s
             }
         }}
     }
 
+    function rng10() {return Math.round(Math.random()*10)}
+
     function glitch(node, {delay = 0,duration = 500}) {
-        function rng10() {return Math.round(Math.random()*10)}
         return {delay, duration, css: t => `
             opacity: ${t*Math.random()};
-            transform: skew(${rng10() > 5 ? 70 : 0}deg, 0deg);
+            transform: skew(${rng10()>5 ? 70 : 0}deg, 0deg);
             text-shadow: red -7px -5px;
         `}
     }
@@ -76,7 +77,7 @@
 {#key $start}
 <nav id="navi" class="navbar is-fixed-top" in:firstLoadFade bind:clientHeight={navH}>
     <div id="bar" class="navbar-brand m-0 has-background-dark">
-        <a id="logo" href="/" class="navbar-item ml-2">
+        <a id="logo" href="/#top" class="navbar-item ml-2">
             <Logo props={navbarLogo} {navH} responsive={$w>960}/>
         </a>
         {#if mobile && mounted}

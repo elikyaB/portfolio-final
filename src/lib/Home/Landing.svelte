@@ -1,5 +1,5 @@
 <script>
-    import { h, start } from '$lib/stores'
+    import { h, start, typewriter } from '$lib/stores'
     
     const titles = ["programmer", "architect", "engineer", "developer"]
     let title = "webdev"
@@ -10,7 +10,7 @@
 
     function titleSwitch (t) {
         const current = titles.findIndex((w) => {return w === t})
-        const next = current < titles.length-1 ? current+1 : 0
+        const next = current<titles.length-1 ? current+1 : 0
         title = titles[next]
         setTimeout(() => {titleSwitch(title)}, 3000)
     }
@@ -27,39 +27,43 @@
         }
         if (!previous) {
             return {delay, duration, css: t => `
-                transform: rotateX(${i%2===0? -90+t*90: 90-t*90}deg)
+                transform: rotateX(${i%2===0 ? -90+t*90 : 90-t*90}deg)
                 translateZ(7vw)
             `}
         } else {
             return {delay, duration, css: t => `
-                transform: rotateX(${i%2===1? -90+t*90: 90-t*90}deg)
+                transform: rotateX(${i%2===1 ? -90+t*90 : 90-t*90}deg)
                 translateZ(7vw)
             `}
         } 
     }
 
-    function typewriter(node, { delay=0, speed=0.5, next=null }) {
-		const valid = (
-			node.childNodes.length === 1 &&
-			node.childNodes[0].nodeType === Node.TEXT_NODE
-		)
+    // function typewriter(node, { delay=0, speed=0.5, next=null }) {
+	// 	const valid = (
+	// 		node.childNodes.length === 1 &&
+	// 		node.childNodes[0].nodeType === Node.TEXT_NODE
+	// 	)
 
-		if (!valid) {
-			throw new Error(`This transition only works on elements with a single text node child`)
-		}
+	// 	if (!valid) {
+	// 		throw new Error(`This transition only works on elements with a single text node child`)
+	// 	}
 
-		const text = node.textContent;
-		const duration = text.length / (speed * 0.01)
+	// 	const text = node.textContent;
+	// 	const duration = text.length / (speed * 0.01)
 
-        return {delay, duration, tick: t => {
-                const i = Math.trunc(text.length * t)
-                node.textContent = text.slice(0, i)
-                if (next && node.textContent === text) {
-                    setTimeout(() => {startTitles = true}, 1000)
-                }
-            }
-        }
-	}
+    //     return {delay, duration, tick: t => {
+    //             const i = Math.trunc(text.length * t)
+    //             node.textContent = text.slice(0, i)
+    //             if (next && node.textContent === text) {
+    //                 setTimeout(() => {startTitles = true}, 1000)
+    //             }
+    //         }
+    //     }
+	// }
+
+    function titleStarter () {
+        setTimeout(() => {startTitles = true}, 1000)
+    }
 </script>
 
 <header class="hero is-dark page">
@@ -67,7 +71,7 @@
         {#if $start}
             <h1 class="title m-0" bind:clientHeight={hello}>
                 <div in:typewriter>Hi!</div>
-                <div in:typewriter="{{delay:1000, next:true}}">I'm Eli</div>
+                <div in:typewriter="{{delay:1000, next:true, func:titleStarter}}">I'm Eli</div>
             </h1>
             {#key title}    
                 <figure class='title m-0 is-flex has-text-warning' bind:clientHeight={word}>

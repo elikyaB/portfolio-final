@@ -1,5 +1,9 @@
 <script>
-    import { w, h, y } from "$lib/stores";
+import Logo from "$lib/Logo.svelte";
+
+    import { w, h, y, start } from "$lib/stores";
+    import { fly } from "svelte/transition";
+
     const tabs = ['Web Development', 'Frontend', 'Backend', 'Workflow']
 
     let tabWidth
@@ -27,12 +31,34 @@
         sumTabs = tabWidths.reduce((acc,cur) => acc+cur, 0) * 1.1 
         // * 1.1 adjusts for 5vw margins
     }
+
+    // function typewriter(node, { delay=0, speed=1 }) {
+	// 	const valid = (
+	// 		node.childNodes.length === 1 &&
+	// 		node.childNodes[0].nodeType === Node.TEXT_NODE
+	// 	)
+
+	// 	if (!valid) {
+	// 		throw new Error(`This transition only works on elements with a single text node child`)
+	// 	}
+
+	// 	const text = node.textContent;
+	// 	const duration = text.length / (speed * 0.01)
+
+    //     return {delay, duration, tick: t => {
+    //             const i = Math.trunc(text.length * t)
+    //             node.textContent = text.slice(0, i)
+    //         }
+    //     }
+	// }
 </script>
 
 <section id="about" class="page--with-nav has-background-dark has-text-light">
     <div bind:clientHeight={top}>
         <div id="motto" class="contain">
-            <h1 class="heading has-text-warning">From ideation to realization</h1>
+            {#if $start && $y>=$h*0.5}
+            <h1 in:typewriter class="heading has-text-warning">From ideation to realization</h1>
+            {/if}
             <p>Ever curious, ever learning.</p>
             <p class="mb-4">That's what it means to be full stack.</p>
         </div>
@@ -49,6 +75,7 @@
         </div>
     </div>
     <div class="contain">
+        {#key active}
         <div id="skills" style:height={bottom} class="is-flex is-flex-direction-column is-justify-content-space-around">
             {#if active[0]}
                 <div>
@@ -148,6 +175,7 @@
                 </div>
             {/if}
         </div>
+        {/key}
     </div>
 </section>
 
