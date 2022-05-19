@@ -5,6 +5,7 @@ export const h = writable(0)
 export const y = writable(0)
 export const projects = writable([])
 export const start = writable(false)
+
 export const typewriter = (node, { delay=0, speed=0.5, next=null, func=null }) => {
     const valid = (
         node.childNodes.length === 1 &&
@@ -19,11 +20,16 @@ export const typewriter = (node, { delay=0, speed=0.5, next=null, func=null }) =
     const duration = text.length / (speed * 0.01)
 
     return {delay, duration, tick: t => {
-            const i = Math.trunc(text.length * t)
-            node.textContent = text.slice(0, i)
-            if (next && node.textContent === text) {
-                func()
-            }
+        const i = Math.trunc(text.length * t)
+        node.textContent = text.slice(0, i)
+        if (next && node.textContent === text) {
+            func()
         }
-    }
+    }}
+}
+
+export const gradient = (node, {delay=0, duration=400, color, direction}) => {
+    return {delay, duration, css: t => {`
+        
+    `}}
 }

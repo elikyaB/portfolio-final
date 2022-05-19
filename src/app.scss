@@ -10,7 +10,9 @@
     $tabs-link-active-color: $gold !default
 );
 
+// FONTS
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+* {font-family: 'Share Tech Mono', monospace;}
 
 // COLORS
 svg {color: $gold;} // don't work in <style> tags due to load?
@@ -56,7 +58,7 @@ h1.heading {font-size: 1rem;}
 @media screen and (min-width: 576px) { 
     .contain {max-width: 80vw;}
     h1.heading {font-size: 3vw;}
-    #motto>p {font-size: 2.75vw}
+    #motto>p {font-size: 2.25vw}
 }
 @media screen and (min-width: 960px) {
     .contain {max-width: 70vw;}

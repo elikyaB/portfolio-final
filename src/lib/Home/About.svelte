@@ -1,5 +1,5 @@
 <script>
-    import { w, h, y, start, typewriter } from "$lib/stores";
+    import { w, h, y, typewriter } from "$lib/stores";
     import { fade } from "svelte/transition";
     import { cubicOut } from "svelte/easing";
 
@@ -24,23 +24,22 @@
     let bottom
     let tabWidths = []
     let sumTabs
-    let animate
+    $: animate = $y > $h * 0.5
 
     $: {
-        animate = $y>=$h*0.5
         bottom = ($h-top-0.75*16*2-52)/$h*100 + 'vh';
-        sumTabs = tabWidths.reduce((acc,cur) => acc+cur, 0) * 1.1 
+        sumTabs = tabWidths.reduce((a,c) => a+c, 0) * 1.1 
         // * 1.1 adjusts for 5vw margins
     }
 
-    function myFly(node, {delay=0, easing=cubicOut, i=0}) {
+    function myFly(node, {delay=0, i=0, easing=cubicOut}) {
         const o = +getComputedStyle(node).opacity
         let duration = 400
-        delay += duration * i
+        delay += duration * i + 400
         duration -= duration * i
 
         return {delay, duration, easing, css: (t, u) => `
-            transform: translateX(${-tabWidth*u}px);
+            transform: translateX(${-tabWidth * u}px);
             opacity: ${t * o};
         `}
     }
@@ -59,10 +58,11 @@
             </p>
         </div>
         <div class="tabs no-scrollbars mb-3" class:contain={$w>sumTabs} bind:this={scrollTab}>
-            <ul bind:clientWidth={tabWidth} class="is-justify-content-space-between">
+            <ul class="is-justify-content-space-between" 
+            bind:clientWidth={tabWidth}>
                 {#each tabs as tab, i}
-                    <li id={`tab${i}`} class:is-active={active[i]}
-                    bind:clientWidth={tabWidths[i]} in:fade="{{delay:250*i}}" on:click={() => {changeActive(i)}}>
+                    <li id={`tab${i}`} class:is-active={active[i]} 
+                    bind:clientWidth={tabWidths[i]} in:fade="{{delay:800+250*i}}" on:click={() => {changeActive(i)}}>
                         <!-- svelte-ignore a11y-missing-attribute -->
                         <a><h2>{tab}</h2></a>
                     </li>

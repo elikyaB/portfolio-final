@@ -67,7 +67,6 @@
 </header>
 
 <style>
-    header {font-family: 'Share Tech Mono', monospace;}
     .title {font-size:13vw;}
     figure {position:absolute;}
 </style>
