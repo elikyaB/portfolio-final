@@ -11,6 +11,11 @@
     let title
     let button
     let sampleHeight = 0
+    const gold = '#FFE08A'
+    const white = 'hsl(0,0%,97%)'
+    const green = 'hsl(121,71%,71%)'
+    const dark = 'hsl(0,0%,21%)'
+    $: dropNum = $projects.length+1
     $: height = `${$h-52-title-button-0.75*16*2}px`
     $: animate = $y > $h * 1.5
     
@@ -21,12 +26,10 @@
         const h = +style.height.slice(0,-2)
         const drop = -sampleHeight
         sampleHeight = h
-        console.log(drop)
 
         let duration = 2000
-        let stagger = duration * i/$projects.length
+        let stagger = duration * i/dropNum
         delay += stagger
-        duration -= stagger
 
         return {delay, duration, easing, css: (t,u) => `
             opacity: ${t<1/3 ? 3*t*o : 1};
@@ -37,11 +40,39 @@
             width: ${t<1/3 ? 0 : t<2/3 ? 1.5*(t-1/3)*w : w}px;
             height: ${t<2/3 ? 0 : 3*(t-2/3)*h}px;
             background: linear-gradient(
-                to left, 
-                hsl(0,0%,21%) ${t<2/3 ? 0 : 100*(t-2/3)*3}%, 
-                #FFE08A ${t<2/3 ? 0 : 50+50*(t-2/3)*3}%
+                to right, 
+                ${dark} ${t<2/3 ? 0 : 100*(t-2/3)*3}%, 
+                ${gold} ${t<2/3 ? 0 : 50+50*(t-2/3)*3}%
             );
         `}
+    }
+
+    const uncensor = (node, {delay=2000, duration=500, exact=false, color, i}) => {
+        let stagger = duration * i**2/(dropNum-1)
+        delay += stagger
+
+        if (!exact) {
+            const len = node.childNodes[0].length
+            const letterW = +getComputedStyle(node).fontSize.slice(0,-2)*1.125/2.083
+            const wordW = letterW * (len+1)
+            const lineW = +getComputedStyle(node).width.slice(0,-2)
+            const percent = wordW/lineW
+            return {delay, duration, css: t => `
+                background: linear-gradient(
+                    to left, 
+                    ${dark} ${100*((1-percent)+(percent*t))}%, 
+                    ${color} ${5+95*t}%
+                )
+            `}
+        } else {
+            return {delay, duration, css: t => `
+                background: linear-gradient(
+                    to left, 
+                    ${dark} ${100*t}%, 
+                    ${color} ${100*t}%
+                )
+            `}
+        }
     }
 </script>
 
@@ -56,15 +87,17 @@
         <div class="is-flex is-flex-direction-column is-justify-content-space-evenly" style:height>
             {#each $projects as proj, i}
                 <div class="project px-3 py-2" in:grow="{{i:i}}">
-                    <div in:fade="{{delay:4000}}">
-                        <h2 class="heading has-text-warning">
+                    <div in:fade="{{delay:2000+400*i/dropNum, duration:400*(1-i/dropNum)}}">
+                        <h2 class="heading has-text-warning" in:uncensor="{{color:gold, i:i}}">
                             {proj.title}
                         </h2>
-                        <p class="mb-1">{proj.description}</p>
+                        <p class="mb-1" in:uncensor="{{color:white, i:i+1/3}}">
+                            {proj.description}
+                        </p>
                         <ul class="is-flex is-justify-content-space-between">
                             {#each proj.links.array as link}
                                 <li>
-                                    <a href={link.url}>
+                                    <a href={link.url} in:uncensor="{{color:green, i:i+2/3, exact:true}}">
                                         {link.text}
                                     </a>
                                 </li>
@@ -74,8 +107,8 @@
                 </div>
             {/each}
         </div>
-        <div class="button mx-auto is-warning is-outlined" bind:clientHeight={button}>
-            See more
+        <div class="button mx-auto is-warning is-outlined" bind:clientHeight={button} in:grow="{{i:dropNum-1}}">
+            <div in:fade="{{delay:4000}}">See more</div>
         </div>
     </div>
     {/if}

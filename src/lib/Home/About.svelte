@@ -35,7 +35,7 @@
     function myFly(node, {delay=0, i=0, easing=cubicOut}) {
         const o = +getComputedStyle(node).opacity
         let duration = 400
-        delay += duration * i + 400
+        delay += duration * i
         duration -= duration * i
 
         return {delay, duration, easing, css: (t, u) => `
@@ -62,7 +62,7 @@
             bind:clientWidth={tabWidth}>
                 {#each tabs as tab, i}
                     <li id={`tab${i}`} class:is-active={active[i]} 
-                    bind:clientWidth={tabWidths[i]} in:fade="{{delay:800+250*i}}" on:click={() => {changeActive(i)}}>
+                    bind:clientWidth={tabWidths[i]} in:fade="{{delay:1000+250*i}}" on:click={() => {changeActive(i)}}>
                         <!-- svelte-ignore a11y-missing-attribute -->
                         <a><h2>{tab}</h2></a>
                     </li>

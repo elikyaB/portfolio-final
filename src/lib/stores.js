@@ -27,9 +27,3 @@ export const typewriter = (node, { delay=0, speed=0.5, next=null, func=null }) =
         }
     }}
 }
-
-export const gradient = (node, {delay=0, duration=400, color, direction}) => {
-    return {delay, duration, css: t => {`
-        
-    `}}
-}
