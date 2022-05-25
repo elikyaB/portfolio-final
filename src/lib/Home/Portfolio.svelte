@@ -1,8 +1,8 @@
 <script>
     import { onMount } from "svelte";
-    import { w, h, y, projects, typewriter } from "$lib/stores";
+    import { h, y, projects, typewriter } from "$lib/stores";
     import { fade } from "svelte/transition";
-    import { cubicOut, cubicIn, cubicInOut } from "svelte/easing";
+    import { cubicOut } from "svelte/easing";
 
     export let content
     onMount(async () => {projects.set(content)})
@@ -27,7 +27,7 @@
         const drop = -sampleHeight
         sampleHeight = h
 
-        let duration = 2000
+        let duration = 1000
         let stagger = duration * i/dropNum
         delay += stagger
 
@@ -37,7 +37,7 @@
                 ${t<1/3 ? w/2 : t<2/3 ? w/2*u : 0}px, 
                 ${t<1/3 ? drop*(1-3*t) : 0}px
             );
-            width: ${t<1/3 ? 0 : t<2/3 ? 1.5*(t-1/3)*w : w}px;
+            width: ${t<1/3 ? 0 : 1.5*(t-1/3)*w}px;
             height: ${t<2/3 ? 0 : 3*(t-2/3)*h}px;
             background: linear-gradient(
                 to right, 
@@ -47,14 +47,14 @@
         `}
     }
 
-    const uncensor = (node, {delay=2000, duration=500, exact=false, color, i}) => {
-        let stagger = duration * i**2/(dropNum-1)
+    const uncensor = (node, {delay=1000, duration=500, exact=false, color, i}) => {
+        let stagger = delay * i/dropNum
         delay += stagger
 
         if (!exact) {
             const len = node.childNodes[0].length
-            const letterW = +getComputedStyle(node).fontSize.slice(0,-2)*1.125/2.083
-            const wordW = letterW * (len+1)
+            const letterW = +getComputedStyle(node).fontSize.slice(0,-2)*0.54
+            const wordW = letterW * (len+2)
             const lineW = +getComputedStyle(node).width.slice(0,-2)
             const percent = wordW/lineW
             return {delay, duration, css: t => `
@@ -87,7 +87,7 @@
         <div class="is-flex is-flex-direction-column is-justify-content-space-evenly" style:height>
             {#each $projects as proj, i}
                 <div class="project px-3 py-2" in:grow="{{i:i}}">
-                    <div in:fade="{{delay:2000+400*i/dropNum, duration:400*(1-i/dropNum)}}">
+                    <div in:fade="{{delay:1000+1000*i/dropNum, duration:500}}">
                         <h2 class="heading has-text-warning" in:uncensor="{{color:gold, i:i}}">
                             {proj.title}
                         </h2>
@@ -108,7 +108,7 @@
             {/each}
         </div>
         <div class="button mx-auto is-warning is-outlined" bind:clientHeight={button} in:grow="{{i:dropNum-1}}">
-            <div in:fade="{{delay:4000}}">See more</div>
+            <div in:fade="{{delay:2000}}">See more</div>
         </div>
     </div>
     {/if}
@@ -119,7 +119,14 @@
         border: 1px solid $gold;
         border-radius: 5px;
     }
-    h2, a {font-size: 12px;}
-    a {text-transform: uppercase;}
-    a:hover {text-decoration: underline;}
+    h2, li {
+        font-size: 12px;
+        @media screen and (min-width: 960px) {
+            font-size: 1.5vh;
+        }
+    }
+    a {
+        text-transform: uppercase;
+        &:hover {text-decoration: underline;}
+    }
 </style>
