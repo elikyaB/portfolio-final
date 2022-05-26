@@ -53,8 +53,8 @@
             <p class="has-text-centered" in:fade="{{delay:200}}">
                 Ever curious, ever learning.
             </p>
-            <p class="has-text-centered mb-4" in:fade="{{delay:400}}">
-                That's what it means to be full stack.
+            <p class="has-text-centered" in:fade="{{delay:400}}" style:margin-bottom={$w>400?'2vw':'0px'}>
+                That's the meaning of full stack.
             </p>
         </div>
         <div class="tabs no-scrollbars mb-3" class:contain={$w>sumTabs} bind:this={scrollTab}>

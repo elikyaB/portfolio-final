@@ -24,7 +24,9 @@
     import { w, h, y, start } from "$lib/stores";
 
     import { onMount } from 'svelte'
-    onMount(() => {$start = true})
+    onMount(() => {
+        if (Document !== null) {$start = true}
+    })
 
     import Loading from "$lib/Loading.svelte";
     import Landing from "$lib/Home/Landing.svelte";

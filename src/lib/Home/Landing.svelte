@@ -48,9 +48,9 @@
         {#if $start}
             <h1 class="title m-0" bind:clientHeight={hello}>
                 <div in:typewriter>Hi!</div>
-                <div in:typewriter="{{delay:1000, next:true, func:titleStarter}}">I'm Eli</div>
+                <div in:typewriter="{{delay:1000, next:true, fn:titleStarter}}">I'm Eli</div>
             </h1>
-            {#key title}    
+            {#key title}
                 <figure class='title m-0 is-flex has-text-warning' bind:clientHeight={word}>
                     {#if startTitles}
                         {#each title as letter, i}

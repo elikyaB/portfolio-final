@@ -6,7 +6,7 @@ export const y = writable(0)
 export const projects = writable([])
 export const start = writable(false)
 
-export const typewriter = (node, { delay=0, speed=0.5, next=null, func=null }) => {
+export const typewriter = (node, { delay=0, speed=0.5, next=null, fn=null }) => {
     const valid = (
         node.childNodes.length === 1 &&
         node.childNodes[0].nodeType === Node.TEXT_NODE
@@ -23,7 +23,7 @@ export const typewriter = (node, { delay=0, speed=0.5, next=null, func=null }) =
         const i = Math.trunc(text.length * t)
         node.textContent = text.slice(0, i)
         if (next && node.textContent === text) {
-            func()
+            fn()
         }
     }}
 }

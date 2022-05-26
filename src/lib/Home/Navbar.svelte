@@ -1,8 +1,6 @@
 <script>
     import { w, h, y, start } from '$lib/stores'
-    import { onMount } from 'svelte';
     import Logo from "$lib/Logo.svelte";
-    import Socials from "$lib/Socials.svelte"
 
     let navH
     
@@ -14,23 +12,12 @@
         scene:1800
     }
 
-    const navbarSocial = {
-        id: "navbarLinks",
-        style: "is-flex is-justify-content-space-around my-5",
-        links: ["email", "linkedIn", "twitter", "gitHub", "codePen", "linkTree"]
-    }
-
     const pages = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','#resume']]
 
     let highlight = [false, false, false, false]
     let mobile
     let section = ''
     let active = false
-    let mounted
-
-    onMount( async () => {
-        if (Document !== null) {mounted = true}
-    })
 
     function activate() {active = !active}
 
@@ -40,7 +27,7 @@
         if (pos>0) {highlight[pos-1] = true}
 
         mobile = $w<786
-        if (mobile && mounted) {
+        if (mobile && $start) {
             if (active) {
                 document.querySelector('html').style.overflowY = 'hidden'
                 section = '<menu>'
@@ -52,13 +39,13 @@
         }
     }
 
-    function firstLoadFade(node, {delay=0, duration=6000}) {
+    function firstLoadFade(node, {delay=0, duration=7000}) {
         let completed = false
         return {delay, duration, tick: t => {
             if ($y !== 0) {completed = true}
-            if (completed) {document.querySelector('#navi').style.opacity = 1}
-            else {document.querySelector('#navi').style.opacity = 
-                t>5/6 ? 6*t-5 : 0 // have t scale 0-1 in 1s after 5s
+            if (completed) {document.querySelector('nav').style.opacity = '1'}
+            else {document.querySelector('nav').style.opacity = 
+                `${t>6/7 ? 7*t-6 : 0}` // delay must be 0 to make skippable
             }
         }}
     }
@@ -75,12 +62,12 @@
 </script>
 
 {#key $start}
-<nav id="navi" class="navbar is-fixed-top" in:firstLoadFade bind:clientHeight={navH}>
+<nav class="navbar is-fixed-top" in:firstLoadFade bind:clientHeight={navH}>
     <div id="bar" class="navbar-brand m-0 has-background-dark">
         <a id="logo" href="/#top" class="navbar-item ml-2">
             <Logo props={navbarLogo} {navH} responsive={$w>960}/>
         </a>
-        {#if mobile && mounted}
+        {#if mobile && $start}
             {#key section}
                 <div id="section" class="navbar-item is-expanded is-flex is-flex-direction-column is-justify-content-center has-text-warning"
                 transition:glitch>
@@ -97,14 +84,14 @@
     <div class="navbar-menu m-0 py-0 has-background-dark" class:is-active={active} class:mobile>
         <div class="navbar-start">
             {#if mobile}
-                <Socials props={navbarSocial}/>
+                <!-- TODO: Settings menu for light mode and language select -->
             {/if}
         </div>
         <div class="navbar-end">
             {#each pages as page, i}
                 <a href={page[1]} on:click={activate} id={`nav${i}`} class="navbar-item is-spaced 
                 {i===3?'button is-warning is-outlined':'is-tab'}
-                {highlight[i]?'has-background-warning has-text-dark':'has-text-warning'}" class:is-align-items-center={mobile}>
+                {highlight[i]?'has-background-warning has-text-dark':'has-text-warning'}">
                     {page[0]}
                 </a>
             {/each}
@@ -114,13 +101,19 @@
 {/key}
     
 <style lang="scss">
-    #navi {background-color: transparent;}
+    nav {background-color: transparent;}
     .navbar-menu {justify-content:space-between;}
     .navbar-burger:hover {background-color: $dark;}
     .mobile {
         height: 100vh;
-        #nav3 {margin: 0.5rem 37vw;}
+        #nav3 {margin: 5vh 19vw;}
         .is-tab {border-top: 1px solid $dark !important;}
+        .navbar-end > a {
+            font-size: 6vh;
+            font-weight: bolder;
+            padding: 5vh;
+            align-items: center;
+        }
     }
     .is-spaced {
         display: flex;
