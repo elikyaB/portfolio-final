@@ -1,8 +1,8 @@
 <script>
-    import { onMount } from "svelte";
-    import { h, y, projects, typewriter } from "$lib/stores";
-    import { fade } from "svelte/transition";
-    import { cubicOut } from "svelte/easing";
+    import { onMount } from "svelte"
+    import { h, y, projects, typewriter } from "$lib/stores"
+    import { fade } from "svelte/transition"
+    import { cubicOut } from "svelte/easing"
 
     export let content
     onMount(async () => {projects.set(content)})

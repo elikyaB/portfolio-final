@@ -1,8 +1,15 @@
 <script>
     import { w, h, y, start } from '$lib/stores'
-    import Logo from "$lib/Logo.svelte";
+    import Logo from "$lib/Logo.svelte"
+    import { fly, fade } from 'svelte/transition'
+    import { cubicOut } from 'svelte/easing'
 
     let navH
+    let menuH
+    let settingsH
+    $: height = `${menuH-settingsH}px`
+    let completed = false
+    const dark = 'hsl(0,0%,21%)'
     
     const navbarLogo = {
         d6:false, 
@@ -40,7 +47,6 @@
     }
 
     function firstLoadFade(node, {delay=0, duration=7000}) {
-        let completed = false
         return {delay, duration, tick: t => {
             if ($y !== 0) {completed = true}
             if (completed) {document.querySelector('nav').style.opacity = '1'}
@@ -58,6 +64,34 @@
             transform: skew(${rng10()>5 ? 70 : 0}deg, 0deg);
             text-shadow: red -7px -5px;
         `}
+    }
+
+    function veil(node, {delay=0, duration=250}) {
+        if (completed && mobile) {
+            return {delay, duration, css: t => `
+                background: linear-gradient(
+                    to bottom,
+                    ${dark} ${100*t}%,
+                    transparent ${100*t}%
+                );
+            `}
+        }
+    }
+
+    function drop(node, {delay=0, duration=500, easing=cubicOut, i}) {
+        if (completed && mobile) {
+        const style = getComputedStyle(node)
+        const y = -style.height.slice(0,-2)
+        const n = pages.length
+
+        return {delay, duration, easing, css: t => `
+            transform: translateY(${
+                t>=i/n && t<(i+1)/n ? (1-n*t+i) * y : 
+                t>=(i+1)/n ? 0 : y
+            }px);
+            opacity: ${t<=i/n ? 0 : 1};
+            z-index: ${n-i};
+        `}}
     }
 </script>
 
@@ -81,38 +115,43 @@
             <span aria-hidden="true"></span>
         </div>
     </div>
-    <div class="navbar-menu m-0 py-0 has-background-dark" class:is-active={active} class:mobile>
-        <div class="navbar-start">
-            {#if mobile}
-                <!-- TODO: Settings menu for light mode and language select -->
-            {/if}
+    {#key active}
+    <div class="navbar-menu m-0 py-0" class:is-active={active} class:mobile bind:clientHeight={menuH} transition:veil>
+        <div class="navbar-start" bind:clientHeight={settingsH}>
+            <!-- TODO: menu settings for light mode and language select -->
         </div>
-        <div class="navbar-end">
+        <div class="navbar-end" style:height>
             {#each pages as page, i}
-                <a href={page[1]} on:click={activate} id={`nav${i}`} class="navbar-item is-spaced 
-                {i===3?'button is-warning is-outlined':'is-tab'}
-                {highlight[i]?'has-background-warning has-text-dark':'has-text-warning'}">
+                <a href={page[1]} on:click={activate} id={`nav${i}`} transition:drop="{{i:i}}" class="navbar-item is-spaced 
+                {i===3 ? 'button is-warning is-outlined' : 'is-tab'}
+                {highlight[i] ? 'has-background-warning has-text-dark' : 'has-text-warning'}">
                     {page[0]}
                 </a>
             {/each}
         </div>
     </div>
+    {/key}
 </nav>
 {/key}
     
 <style lang="scss">
-    nav {background-color: transparent;}
-    .navbar-menu {justify-content:space-between;}
+    nav {background: transparent;}
+    .navbar-menu {justify-content:space-between; background: $dark;}
     .navbar-burger:hover {background-color: $dark;}
     .mobile {
         height: 100vh;
-        #nav3 {margin: 5vh 19vw;}
         .is-tab {border-top: 1px solid $dark !important;}
-        .navbar-end > a {
-            font-size: 6vh;
-            font-weight: bolder;
-            padding: 5vh;
-            align-items: center;
+        .navbar-end {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            a {
+                font-size: 6vh;
+                font-weight: bolder;
+                padding: 6vh;
+                align-items: center;
+            }
+            #nav3 {margin: 3vh 19vw; padding: 3vh;}
         }
     }
     .is-spaced {
