@@ -1,7 +1,6 @@
 <script>
     import { w, h, y, start } from '$lib/stores'
     import Logo from "$lib/Logo.svelte"
-    import { fly, fade } from 'svelte/transition'
     import { cubicOut } from 'svelte/easing'
 
     let navH
@@ -51,7 +50,8 @@
             if ($y !== 0) {completed = true}
             if (completed) {document.querySelector('nav').style.opacity = '1'}
             else {document.querySelector('nav').style.opacity = 
-                `${t>6/7 ? 7*t-6 : 0}` // delay must be 0 to make skippable
+                `${t==1 ? completed=true : t>6/7 ? 7*t-6 : 0}` 
+                // delay must be 0 to make skippable
             }
         }}
     }
@@ -109,7 +109,7 @@
                 </div>
             {/key}
         {/if}
-        <div class="navbar-burger has-text-warning" class:is-active={active} on:click={activate}>
+        <div class="navbar-burger has-text-warning" class:is-active={active} on:click={completed? activate : null}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
