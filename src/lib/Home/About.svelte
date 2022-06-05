@@ -59,10 +59,9 @@
         </div>
         <div class="tabs no-scrollbars mb-3" class:contain={$w>sumTabs} bind:this={scrollTab}>
             <ul class="is-justify-content-space-between" 
-            bind:clientWidth={tabWidth}>
+            bind:clientWidth={tabWidth} in:fade="{{delay:500}}">
                 {#each tabs as tab, i}
-                    <li id={`tab${i}`} class:is-active={active[i]} 
-                    bind:clientWidth={tabWidths[i]} in:fade="{{delay:1000+250*i}}" on:click={() => {changeActive(i)}}>
+                    <li id={`tab${i}`} class:is-active={active[i]} bind:clientWidth={tabWidths[i]} in:fade="{{delay:500+250*i}}" on:click={() => {changeActive(i)}}>
                         <!-- svelte-ignore a11y-missing-attribute -->
                         <a><h2>{tab}</h2></a>
                     </li>
@@ -77,7 +76,7 @@
                 <div in:myFly="{{delay:400}}" out:myFly>
                     <span class="iconify-inline" data-icon='ion:logo-html5'/>
                     <h3 class="heading has-text-warning is-inline is-size-6">HTML</h3>
-                    <p>The skeleton of the web, necessary for not only proper layout, accessibility, and search engine optimization via semantic and head tags.</p>
+                    <p>The skeleton of the web, necessary for proper layout, accessibility, and search engine optimization via semantic and head tags.</p>
                 </div>
                 <div in:myFly="{{delay:400, i:1/3}}" out:myFly="{{i:1/3}}">
                     <span class="iconify-inline" data-icon='ion:logo-css3' />

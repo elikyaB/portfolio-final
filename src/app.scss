@@ -12,7 +12,7 @@
 
 // FONTS
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-* {font-family: 'Share Tech Mono', monospace;}
+*, button {font-family: 'Share Tech Mono', monospace;}
 
 // COLORS
 svg {color: $gold;} // don't work in <style> tags due to load?
@@ -47,7 +47,7 @@ a {
         scroll-snap-type: y mandatory; 
         overscroll-behavior-y: none;
     }
-    .page, footer {scroll-snap-align: start;}
+    header, section, footer {scroll-snap-align: start;}
 }
 
 // SIZING

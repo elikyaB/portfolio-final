@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte"
-    import { h, y, projects, typewriter } from "$lib/stores"
+    import { h, y, projects, typewriter, mode, colors } from "$lib/stores"
     import { fade } from "svelte/transition"
     import { cubicOut } from "svelte/easing"
 
@@ -11,13 +11,10 @@
     let title
     let button
     let sampleHeight = 0
-    const gold = '#FFE08A'
-    const white = 'hsl(0,0%,97%)'
-    const green = 'hsl(121,71%,71%)'
-    const dark = 'hsl(0,0%,21%)'
     $: dropNum = $projects.length+1
     $: height = `${$h-52-title-button-0.75*16*2}px`
     $: animate = $y > $h * 1.5
+    $: clr = colors[$mode]
     
     function grow(node, {delay=0, i=0, easing=cubicOut}) {
         const style = getComputedStyle(node)
@@ -41,8 +38,8 @@
             height: ${t<2/3 ? 0 : 3*(t-2/3)*h}px;
             background: linear-gradient(
                 to right, 
-                ${dark} ${t<2/3 ? 0 : 100*(t-2/3)*3}%, 
-                ${gold} ${t<2/3 ? 0 : 50+50*(t-2/3)*3}%
+                ${clr.bG} ${t<2/3 ? 0 : 100*(t-2/3)*3}%, 
+                ${clr.hL} ${t<2/3 ? 0 : 50+50*(t-2/3)*3}%
             );
         `}
     }
@@ -60,7 +57,7 @@
             return {delay, duration, css: t => `
                 background: linear-gradient(
                     to left, 
-                    ${dark} ${100*((1-percent)+(percent*t))}%, 
+                    ${clr.bG} ${100*((1-percent)+(percent*t))}%, 
                     ${color} ${5+95*t}%
                 )
             `}
@@ -68,7 +65,7 @@
             return {delay, duration, css: t => `
                 background: linear-gradient(
                     to left, 
-                    ${dark} ${100*t}%, 
+                    ${clr.bG} ${100*t}%, 
                     ${color} ${100*t}%
                 )
             `}
@@ -88,16 +85,16 @@
             {#each $projects as proj, i}
                 <div class="project px-3 py-2" in:grow="{{i:i}}">
                     <div in:fade="{{delay:1000+1000*i/dropNum, duration:500}}">
-                        <h2 class="heading has-text-warning" in:uncensor="{{color:gold, i:i}}">
+                        <h2 class="heading has-text-warning" in:uncensor="{{color:clr.hL, i:i}}">
                             {proj.title}
                         </h2>
-                        <p class="mb-1" in:uncensor="{{color:white, i:i+1/3}}">
+                        <p class="mb-1" in:uncensor="{{color:clr.text, i:i+1/3}}">
                             {proj.description}
                         </p>
                         <ul class="is-flex is-justify-content-space-between">
                             {#each proj.links.array as link}
                                 <li>
-                                    <a href={link.url} in:uncensor="{{color:green, i:i+2/3, exact:true}}">
+                                    <a href={link.url} in:uncensor="{{color:clr.link, i:i+2/3, exact:true}}">
                                         {link.text}
                                     </a>
                                 </li>

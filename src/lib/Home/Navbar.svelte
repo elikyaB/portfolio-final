@@ -1,9 +1,8 @@
 <script>
-    import { w, h, y, start } from '$lib/stores'
+    import { w, h, y, start, navH } from '$lib/stores'
     import Logo from "$lib/Logo.svelte"
     import { cubicOut } from 'svelte/easing'
 
-    let navH
     let menuH
     let settingsH
     $: height = `${menuH-settingsH}px`
@@ -96,10 +95,10 @@
 </script>
 
 {#key $start}
-<nav class="navbar is-fixed-top" in:firstLoadFade bind:clientHeight={navH}>
+<nav class="navbar is-fixed-top" in:firstLoadFade bind:clientHeight={$navH}>
     <div id="bar" class="navbar-brand m-0 has-background-dark">
         <a id="logo" href="/#top" class="navbar-item ml-2">
-            <Logo props={navbarLogo} {navH} responsive={$w>960}/>
+            <Logo props={navbarLogo} navH={$navH} responsive={$w>960}/>
         </a>
         {#if mobile && $start}
             {#key section}
@@ -135,7 +134,10 @@
 {/key}
     
 <style lang="scss">
-    nav {background: transparent;}
+    nav {
+        background: transparent; 
+        position: fixed !important;
+    }
     .navbar-menu {justify-content:space-between; background: $dark;}
     .navbar-burger:hover {background-color: $dark;}
     .mobile {

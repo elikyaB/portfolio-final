@@ -5,6 +5,23 @@ export const h = writable(0)
 export const y = writable(0)
 export const projects = writable([])
 export const start = writable(false)
+export const navH = writable(0)
+export const mode = writable('dark')
+
+export const colors = {
+    dark: {
+        bG: 'hsl(0,0%,21%)',
+        hL: '#FFE08A',
+        text: 'hsl(0,0%,97%)',
+        link: 'hsl(121,71%,71%)'
+    },
+    light: {
+        bG: null,
+        hL: null,
+        text: 'black',
+        link: null
+    }
+}
 
 export const typewriter = (node, { delay=0, speed=0.5, next=null, fn=null }) => {
     const valid = (
