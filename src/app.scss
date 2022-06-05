@@ -53,12 +53,13 @@ a {
 // SIZING
 .contain {margin: 0 auto; max-width: 90vw;}
 h1.heading {font-size: 1rem;}
-
+#contact button {font-size: 6vw; font-weight: bolder;}
 
 @media screen and (min-width: 576px) { 
     .contain {max-width: 80vw;}
     h1.heading {font-size: 3vw;}
     #motto>p {font-size: 2.25vw}
+    #contact button {font-size: 2rem;}
 }
 @media screen and (min-width: 960px) {
     .contain {max-width: 70vw;}

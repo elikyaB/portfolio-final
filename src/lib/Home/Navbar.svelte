@@ -17,14 +17,14 @@
         scene:1800
     }
 
-    const pages = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','#resume']]
+    const pages = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','']]
 
     let highlight = [false, false, false, false]
     let mobile
     let section = ''
     let active = false
 
-    function activate() {active = !active}
+    function activate() {if (mobile) {active = !active}}
 
     $: {
         let pos = Math.floor(($y+52)/$h)
@@ -108,7 +108,7 @@
                 </div>
             {/key}
         {/if}
-        <div class="navbar-burger has-text-warning" class:is-active={active} on:click={completed? activate : null}>
+        <div class="navbar-burger has-text-warning" class:is-active={active} on:click={completed? activate : ()=>{completed=true}}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>

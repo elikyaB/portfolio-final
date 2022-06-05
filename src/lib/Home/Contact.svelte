@@ -1,12 +1,12 @@
 <script>
-    import Socials from "$lib/Socials.svelte";
+    // import Socials from "$lib/Socials.svelte";
     import { y, h, navH, typewriter } from "$lib/stores";
 
-    const contactSocials = {
-        id: "contactLinks",
-        style: "is-flex is-justify-content-space-around",
-        links: ["linkedIn", "twitter", "gitHub", "codePen", "linkTree"]
-    }
+    // const contactSocials = {
+    //     id: "contactLinks",
+    //     style: "is-flex is-justify-content-space-around",
+    //     links: ["linkedIn", "twitter", "gitHub", "codePen", "linkTree"]
+    // }
 
     let titleH
     let introH
@@ -22,9 +22,11 @@
 <section id="contact" class="page--with-nav has-background-dark has-text-light">
     {#if animate}
     <div class="contain">
-        <h1 class="heading block has-text-warning" transition:typewriter="{{speed:3}}" bind:clientHeight={titleH}>
-            Let's get in touch
-        </h1>
+        <div bind:clientHeight={titleH}>
+            <h1 class="heading block has-text-warning" transition:typewriter="{{speed:3}}">
+                Let's get in touch
+            </h1>
+        </div>
         <div class="is-flex is-flex-direction-column is-justify-content-space-evenly" style:height>
             <div bind:clientHeight={introH}>
                 <div class="frame left">
@@ -73,7 +75,6 @@
         }
     }
     button {
-        // font-size: 7vw;
         z-index: 1;
         width: 40vw;
         height: 40vw;
