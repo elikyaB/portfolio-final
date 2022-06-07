@@ -1,6 +1,6 @@
 <script>
     // import Socials from "$lib/Socials.svelte";
-    import { y, h, navH, typewriter, colors, mode } from "$lib/stores";
+    import { y, h, w, navH, typewriter, colors, mode } from "$lib/stores";
     import { fade } from 'svelte/transition'
 
     // const contactSocials = {
@@ -16,13 +16,27 @@
     let para2
     $: pad1 = `${(introH-para1) / 2}px`
     $: pad2 = `${(outroH-para2) / 2}px`
-    $: height = `${$h-$navH*2-titleH}px`
+    $: height = `${$h-$navH*2-titleH-24*2}px`
     $: animate = $y>$h*2.5
 
-    function spotlight (node, {delay=0, duration=5000}) {
+    function spotlight (node, {delay=0, duration=2000}) {
         return {delay, duration, css: t => `
             background-color: ${colors[$mode].hL};
             filter: blur(0.5rem);
+            transform: 
+                translate(
+                    ${t<1/5 ? $w/2 * (5*t) 
+                    : t<3/5 ? $w/2 
+                    : t<4/5 ? $w/2 * (4-5*t) 
+                    : Math.sqrt($w) * (5-5*t) * Math.cos(45*(t-4/5))
+                }px, 
+                    ${t<1/5 ? $h/3 * (1-5*t) 
+                    : t<1.5/5 ? 0 
+                    : t<2.5/5 ? $h/3 * (5*t-1.5) 
+                    : t<3/5 ? $h/3 
+                    : t<4/5 ? $h/3 * (4-5*t) 
+                    : Math.sqrt($h) * (5-5*t) * Math.sin(45*(t-4/5))
+                }px);
         `}
     }
 </script>
