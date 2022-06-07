@@ -1,6 +1,7 @@
 <script>
     // import Socials from "$lib/Socials.svelte";
-    import { y, h, navH, typewriter } from "$lib/stores";
+    import { y, h, navH, typewriter, colors, mode } from "$lib/stores";
+    import { fade } from 'svelte/transition'
 
     // const contactSocials = {
     //     id: "contactLinks",
@@ -17,9 +18,16 @@
     $: pad2 = `${(outroH-para2) / 2}px`
     $: height = `${$h-$navH*2-titleH}px`
     $: animate = $y>$h*2.5
+
+    function spotlight (node, {delay=0, duration=5000}) {
+        return {delay, duration, css: t => `
+            background-color: ${colors[$mode].hL};
+            filter: blur(0.5rem);
+        `}
+    }
 </script>
 
-<section id="contact" class="page--with-nav has-background-dark has-text-light">
+<section id="contact" class="page--with-nav--and-foot has-background-dark has-text-light">
     {#if animate}
     <div class="contain">
         <div bind:clientHeight={titleH}>
@@ -29,13 +37,13 @@
         </div>
         <div class="is-flex is-flex-direction-column is-justify-content-space-evenly" style:height>
             <div bind:clientHeight={introH}>
-                <div class="frame left">
-                    <img id="me" src="assets/suitedup_square.jpg" alt="me"/>
+                <div class="frame left" in:spotlight>
+                    <img src="assets/suitedup_square.jpg" alt="me" in:fade="{{delay:5000}}"/>
                 </div>
-                <p bind:clientHeight={para1} style:margin-top={pad1} style:text-align=left>I'm open to opportunities of all kinds in the Boston area or remote. Whether it's a small passion project of yours or a corporate product, I'm always available to consult or collaborate.</p>
+                <p bind:clientHeight={para1} style:margin-top={pad1} style:text-align=left in:fade="{{delay:5000}}">I'm open to opportunities of all kinds in the Boston area or remote. Whether it's a small passion project of yours or a corporate product, I'm always available to consult or collaborate.</p>
             </div>
             <br/>
-            <div bind:clientHeight={outroH}>
+            <div bind:clientHeight={outroH} in:fade="{{delay:5000}}">
                 <div class="frame right">
                     <button class="button m-auto is-warning is-outlined">Say hello</button>
                 </div>
@@ -47,7 +55,7 @@
 </section>
 
 <style lang="scss">
-    #me {
+    img {
         height: inherit;
         width: inherit;
         max-width: inherit;
@@ -64,14 +72,14 @@
         max-height: 250px;
         border-radius: 50%;
         shape-outside: circle();
-        background-color: transparent;
+        // background-color: transparent;
         &.right {
             float: right;
-            margin-left: 20px;
+            margin-left: 5vw;
         }
         &.left {
             float: left;
-            margin-right: 20px;
+            margin-right: 5vw;
         }
     }
     button {

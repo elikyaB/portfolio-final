@@ -37,6 +37,10 @@ a {
     &--with-nav {
         @extend .page;
         padding-top: 3.25rem;
+        &--and-foot {
+            @extend .page--with-nav;
+            height: calc(100vh - 3.25rem);
+        }
     }
 }
 
