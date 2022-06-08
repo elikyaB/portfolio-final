@@ -21,8 +21,7 @@
     $: pad2 = `${(outroH-p2h) / 2}px`
     $: height = `${$h-$navH*2-titleH-24*2}px`
     $: animate = $y>$h*2.5
-
-    $: timing = firstTime ? 3000 : 1500
+    $: timing = firstTime ? 200 : 1500
 
     function spotlight (node, {delay=0, duration=timing}) {
         return {delay, duration, css: t => `
@@ -53,6 +52,20 @@
             );
         `}
     }
+
+    function bubble (node, {delay=0, duration=3000}) {
+        return {delay, duration, css: t => `
+            width: ${30*t+10}vw;
+            height: ${30*t+10}vw;
+            background: radial-gradient(
+                closest-side, 
+                ${colors[$mode].bG}, 
+                ${colors[$mode].bG} ${t<1/2 ? 90*t*2 : 90*(t-1/2)*4}%, 
+                ${colors[$mode].hL} ${t<1/2 ? 95*t*2 : 95*(t-1/2)*4}%, 
+                ${colors[$mode].bG} ${t<1/2 ? 100*t*2 : 100*(t-1/2)*4}%
+            );
+        `}
+    }
 </script>
 
 <section id="contact" class="page--with-nav--and-foot has-background-dark has-text-light">
@@ -74,7 +87,9 @@
             <br/>
             <div bind:clientHeight={outroH}>
                 <div class="frame right" in:fade="{{delay:timing+900}}">
-                    <button class="button m-auto is-warning is-outlined">Say hello</button>
+                    <button class="button m-auto is-warning is-outlined" in:bubble="{{delay:timing+900}}">
+                        <div in:fade="{{delay:timing+5000}}">Say hello</div>
+                    </button>
                 </div>
                 <div class="veil" in:textFall="{{delay:timing+500}}" style:height={p2h+'px'} style:width={p2w+'px'} style:margin-top={pad2}/>
                 <p bind:clientHeight={p2h} bind:clientWidth={p2w} style:margin-top={pad2} style:text-align=right in:fade="{{delay:timing+500}}">I'm open to opportunities of all kinds in the Boston area or remote. Whether it's a small passion project of yours or a corporate product, I'm always available to consult or collaborate.</p>
