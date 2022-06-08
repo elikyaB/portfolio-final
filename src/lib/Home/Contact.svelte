@@ -1,13 +1,7 @@
 <script>
-    // import Socials from "$lib/Socials.svelte";
     import { y, h, w, navH, typewriter, colors, mode } from "$lib/stores";
-    import { fade, fly } from 'svelte/transition'
-
-    // const contactSocials = {
-    //     id: "contactLinks",
-    //     style: "is-flex is-justify-content-space-around",
-    //     links: ["linkedIn", "twitter", "gitHub", "codePen", "linkTree"]
-    // }
+    import { fade } from 'svelte/transition'
+    import Form from '$lib/Form.svelte'
 
     let titleH
     let introH
@@ -17,11 +11,14 @@
     let p2h
     let p2w
     let firstTime = true
+    let form = false
     $: pad1 = `${(introH-p1h) / 2}px`
     $: pad2 = `${(outroH-p2h) / 2}px`
     $: height = `${$h-$navH*2-titleH-24*2}px`
     $: animate = $y>$h*2.5
-    $: timing = firstTime ? 200 : 1500
+    $: timing = firstTime ? 2000 : 1500
+
+    function toggleForm () {form = !form}
 
     function spotlight (node, {delay=0, duration=timing}) {
         return {delay, duration, css: t => `
@@ -53,16 +50,25 @@
         `}
     }
 
-    function bubble (node, {delay=0, duration=3000}) {
+    function bubble (node, {delay=0, duration=1000}) {
         return {delay, duration, css: t => `
             width: ${30*t+10}vw;
             height: ${30*t+10}vw;
             background: radial-gradient(
                 closest-side, 
                 ${colors[$mode].bG}, 
-                ${colors[$mode].bG} ${t<1/2 ? 90*t*2 : 90*(t-1/2)*4}%, 
-                ${colors[$mode].hL} ${t<1/2 ? 95*t*2 : 95*(t-1/2)*4}%, 
-                ${colors[$mode].bG} ${t<1/2 ? 100*t*2 : 100*(t-1/2)*4}%
+                ${colors[$mode].bG} ${(100-4)*t}%, 
+                ${colors[$mode].hL} ${(100-2)*t}%, 
+                ${colors[$mode].bG} ${100*t}%,
+                ${colors[$mode].bG} ${(100-4*2)*t*2}%, 
+                ${colors[$mode].hL} ${(100-2*2)*t*2}%, 
+                ${colors[$mode].bG} ${100*t*2}%,
+                ${colors[$mode].bG} ${(100-4*3)*t*3}%, 
+                ${colors[$mode].hL} ${(100-2*3)*t*3}%, 
+                ${colors[$mode].bG} ${100*t*3}%,
+                ${colors[$mode].bG} ${(100-4*4)*t*4}%, 
+                ${colors[$mode].hL} ${(100-2*4)*t*4}%, 
+                ${colors[$mode].bG} ${100*t*4}%
             );
         `}
     }
@@ -88,13 +94,22 @@
             <div bind:clientHeight={outroH}>
                 <div class="frame right" in:fade="{{delay:timing+900}}">
                     <button class="button m-auto is-warning is-outlined" in:bubble="{{delay:timing+900}}">
-                        <div in:fade="{{delay:timing+5000}}">Say hello</div>
+                        <div in:fade="{{delay:timing+1900}}" on:click={toggleForm}>Say hello</div>
                     </button>
                 </div>
                 <div class="veil" in:textFall="{{delay:timing+500}}" style:height={p2h+'px'} style:width={p2w+'px'} style:margin-top={pad2}/>
                 <p bind:clientHeight={p2h} bind:clientWidth={p2w} style:margin-top={pad2} style:text-align=right in:fade="{{delay:timing+500}}">I'm open to opportunities of all kinds in the Boston area or remote. Whether it's a small passion project of yours or a corporate product, I'm always available to consult or collaborate.</p>
             </div>
         </div>
+        {#key form}
+            <div class="modal" class:is-active={form}>
+                <div class="modal-background"/>
+                <div class="modal-content">
+                  <Form/>
+                </div>
+                <button class="modal-close is-large" aria-label="close" on:click={toggleForm}/>
+            </div>
+        {/key}
     </div>
     {/if}
 </section>
