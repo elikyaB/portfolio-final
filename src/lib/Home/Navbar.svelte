@@ -1,13 +1,7 @@
 <script>
-    import { w, h, y, start, navH } from '$lib/stores'
+    import { w, h, y, start, navH, colors, mode } from '$lib/stores'
     import Logo from "$lib/Logo.svelte"
     import { cubicOut } from 'svelte/easing'
-
-    let menuH
-    let settingsH
-    $: height = `${menuH-settingsH}px`
-    let completed = false
-    const dark = 'hsl(0,0%,21%)'
     
     const navbarLogo = {
         d6:false, 
@@ -19,12 +13,15 @@
 
     const pages = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','']]
 
-    let highlight = [false, false, false, false]
+    let menuH
+    let settingsH
     let mobile
-    let section = ''
     let active = false
-
-    function activate() {if (mobile) {active = !active}}
+    let section = ''
+    let highlight = [false, false, false, false]
+    let completed = false
+    
+    $: height = `${menuH-settingsH}px`
 
     $: {
         let pos = Math.floor(($y+52)/$h)
@@ -43,6 +40,8 @@
             }
         }
     }
+
+    function activate() {if (mobile) {active = !active}}
 
     function firstLoadFade(node, {delay=0, duration=7000}) {
         return {delay, duration, tick: t => {
@@ -70,7 +69,7 @@
             return {delay, duration, css: t => `
                 background: linear-gradient(
                     to bottom,
-                    ${dark} ${100*t}%,
+                    ${colors[$mode].bG} ${100*t}%,
                     transparent ${100*t}%
                 );
             `}
