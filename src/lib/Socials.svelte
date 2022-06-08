@@ -27,6 +27,13 @@
             i_class: "simple-icons:linktree",
         },
     }
+
+    // HOW TO USE
+    // const exampleProp = {
+    //     id: "exampleText",
+    //     style: "is-flex is-justify-content-space-around",
+    //     links: ["linkedIn", "twitter", "gitHub", "codePen", "linkTree"]
+    // }
 </script>
 
 <aside id={props.id} class={props.style}>

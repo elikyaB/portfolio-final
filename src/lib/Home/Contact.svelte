@@ -1,5 +1,5 @@
 <script>
-    import { y, h, w, navH, typewriter, colors, mode } from "$lib/stores";
+    import { y, h, w, navH, typewriter, colors, mode, socialDelay } from "$lib/stores";
     import { fade } from 'svelte/transition'
     import Form from '$lib/Form.svelte'
 
@@ -17,6 +17,7 @@
     $: height = `${$h-$navH*2-titleH-24*2}px`
     $: animate = $y>$h*2.5
     $: timing = firstTime ? 2000 : 1500
+    $: $socialDelay = timing + 2000
 
     function toggleForm () {form = !form}
 
