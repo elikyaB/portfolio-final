@@ -22,6 +22,7 @@
     let completed = false
     
     $: height = `${menuH-settingsH}px`
+    // $: root = `:root {--navH: ${$navH}px;}`
 
     $: {
         let pos = Math.floor(($y+52)/$h)

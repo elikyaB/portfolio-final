@@ -1,5 +1,5 @@
 <script>
-    import { y, h, w, navH, typewriter, colors, mode, socialDelay } from "$lib/stores";
+    import { y, h, w, navH, typewriter, colors, mode, socialDelay, start } from "$lib/stores";
     import { fade } from 'svelte/transition'
     import Form from '$lib/Form.svelte'
 
@@ -14,14 +14,19 @@
     let form = false
     $: pad1 = `${(introH-p1h) / 2}px`
     $: pad2 = `${(outroH-p2h) / 2}px`
-    $: height = `${$h-$navH*2-titleH-24*2}px`
+    $: height = `${$h-$navH-titleH-52-24*2}px`
     $: animate = $y>$h*2.5
-    $: timing = firstTime ? 2000 : 1500
-    $: $socialDelay = timing + 2000
+    $: timing = firstTime ? 2000 : 1000
+    $: $socialDelay = timing + 900 + timing/2
+    $: if ($start) {
+        form? document.querySelector('html').style.overflowY = 'hidden'
+            : document.querySelector('html').style.overflowY = ''
+    }
 
     function toggleForm () {form = !form}
 
     function spotlight (node, {delay=0, duration=timing}) {
+        setTimeout(()=>{firstTime=false},5000)
         return {delay, duration, css: t => `
             background-color: ${colors[$mode].hL};
             filter: blur(0.5rem);
@@ -29,14 +34,14 @@
                 ${t<1/5 ? $w/2 * (5*t) 
                 : t<3/5 ? $w/2 
                 : t<4/5 ? $w/2 * (4-5*t) 
-                : Math.sqrt($w)*(5-5*t) * Math.cos(45*(t-4/5))
+                : 2*Math.sqrt($w)*(5-5*t)*Math.cos(45*(t-4/5))
             }px, 
                 ${t<1/5 ? $h/3 * (1-5*t) 
                 : t<1.5/5 ? 0 
                 : t<2.5/5 ? $h/3 * (5*t-1.5) 
                 : t<3/5 ? $h/3 
                 : t<4/5 ? $h/3 * (4-5*t) 
-                : Math.sqrt($h)*(5-5*t) * Math.sin(45*(t-4/5))
+                : 2*Math.sqrt($h)*(5-5*t)*Math.sin(45*(t-4/5))
             }px);
         `}
     }
@@ -51,7 +56,7 @@
         `}
     }
 
-    function bubble (node, {delay=0, duration=1000}) {
+    function bubble (node, {delay=0, duration=timing/2}) {
         return {delay, duration, css: t => `
             width: ${30*t+10}vw;
             height: ${30*t+10}vw;
@@ -95,7 +100,9 @@
             <div bind:clientHeight={outroH}>
                 <div class="frame right" in:fade="{{delay:timing+900}}">
                     <button class="button m-auto is-warning is-outlined" in:bubble="{{delay:timing+900}}">
-                        <div in:fade="{{delay:timing+1900}}" on:click={toggleForm}>Say hello</div>
+                        <div in:fade="{{delay:timing+900+timing/2}}" on:click={toggleForm}>
+                            Say hello
+                        </div>
                     </button>
                 </div>
                 <div class="veil" in:textFall="{{delay:timing+500}}" style:height={p2h+'px'} style:width={p2w+'px'} style:margin-top={pad2}/>
@@ -106,7 +113,7 @@
             <div class="modal" class:is-active={form}>
                 <div class="modal-background"/>
                 <div class="modal-content">
-                  <Form/>
+                  <Form {toggleForm}/>
                 </div>
                 <button class="modal-close is-large" aria-label="close" on:click={toggleForm}/>
             </div>
@@ -138,7 +145,7 @@
         &.right {float: right; margin-left: 5vw;}
         &.left {float: left; margin-right: 5vw;}
     }
-    button {
+    .button {
         z-index: 2;
         width: 40vw;
         height: 40vw;
@@ -148,4 +155,6 @@
         shape-outside: circle();
     }
     .veil {position: absolute; z-index: 1;}
+    .modal-close::before {background-color:$gold;}
+    .modal-close::after {background-color:$gold;}
 </style>

@@ -16,6 +16,12 @@
 
 // COLORS
 svg {color: $gold;} // don't work in <style> tags due to load?
+form svg {
+    color: $faded-white;
+    .invalid {}
+    .valid {color: $link}
+}
+
 p {color: $white;}
 a {
     color: $link;
@@ -23,6 +29,7 @@ a {
 }
 
 // UTILITY
+.hide {display: none;}
 .no-scrollbars {
     -ms-overflow-style: none;  // IE and Edge
     scrollbar-width: none;  // Firefox
@@ -32,6 +39,7 @@ a {
 }
 
 // HOMEPAGE
+$navH: --navH;
 .page {
     height: 100vh;
     &--with-nav {
@@ -67,7 +75,8 @@ h1.heading {font-size: 1rem;}
 }
 @media screen and (min-width: 960px) {
     .contain {max-width: 70vw;}
-    :root {font-size: 2vh;}
+    // #contact p, #portfolio .project p, #portfolio .button, #about li, #about p, #about h3 {font-size: 2vh !important;}
+    // #portfolio .project h2, #portfolio a {font-size: 1.75vh !important;}
 }
 @media screen and (min-width: 1344px) {
     .contain {max-width: 60vw;}

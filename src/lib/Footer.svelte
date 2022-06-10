@@ -1,5 +1,6 @@
 <script>
     import {y, h, socialDelay} from '$lib/stores'
+    import { fade } from 'svelte/transition'
 
     function pop (node, {delay=0, duration=400}) {
         const o = +getComputedStyle(node).opacity
@@ -39,11 +40,11 @@
                 <span class="iconify-inline" data-icon='simple-icons:linktree' in:pop="{{delay:800}}"/>
             </a>
         </div>
-        {/key}
-        <div style:text-align=center>
+        <div style:text-align=center in:fade="{{delay:$socialDelay+1200}}">
             Designed & Built by<br/>
             &copy; 2022 Elikya Bokanga
         </div>
+        {/key}
     </div>
 </footer>
 

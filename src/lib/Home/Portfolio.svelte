@@ -118,9 +118,9 @@
     }
     h2, li {
         font-size: 12px;
-        @media screen and (min-width: 960px) {
-            font-size: 1.5vh;
-        }
+        // @media screen and (min-width: 960px) {
+        //     font-size: 1.5vh;
+        // }
     }
     a {
         text-transform: uppercase;
