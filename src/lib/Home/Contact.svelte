@@ -17,7 +17,7 @@
     $: height = `${$h-$navH-titleH-52-24*2}px`
     $: animate = $y>$h*2.5
     $: timing = firstTime ? 2000 : 1000
-    $: $socialDelay = timing + 900 + timing/2
+    $: $socialDelay = timing*19/10 + 100
     $: if ($start) {
         form? document.querySelector('html').style.overflowY = 'hidden'
             : document.querySelector('html').style.overflowY = ''
@@ -93,20 +93,20 @@
                 <div class="frame left" in:spotlight>
                     <img src="assets/suitedup_square.jpg" alt="me" in:fade="{{delay:timing}}"/>
                 </div>
-                <div class="veil" in:textFall="{{delay:timing+100}}" style:height={p1h+'px'} style:width={p1w+'px'} style:margin-top={pad1}/>
-                <p bind:clientHeight={p1h} bind:clientWidth={p1w} style:margin-top={pad1} style:text-align=left in:fade="{{delay:timing+100}}">I'm open to opportunities of all kinds in the Boston area or remote. Whether it's a small passion project of yours or a corporate product, I'm always available to consult or collaborate.</p>
+                <div class="veil" in:textFall="{{delay:timing+100, duration:timing/5}}" style:height={p1h+'px'} style:width={p1w+'px'} style:margin-top={pad1}/>
+                <p bind:clientHeight={p1h} bind:clientWidth={p1w} style:margin-top={pad1} style:text-align=left in:fade="{{delay:timing+100, duration:timing/5}}">I'm open to opportunities of all kinds in the Boston area or remote. Whether it's a small passion project of yours or a corporate product, I'm always available to consult or collaborate.</p>
             </div>
             <br/>
             <div bind:clientHeight={outroH}>
-                <div class="frame right" in:fade="{{delay:timing+900}}">
-                    <button class="button m-auto is-warning is-outlined" in:bubble="{{delay:timing+900}}">
-                        <div in:fade="{{delay:timing+900+timing/2}}" on:click={toggleForm}>
+                <div class="frame right" in:fade="{{delay:timing*7/5+100, duration:timing/5}}">
+                    <button class="button m-auto is-warning is-outlined" in:bubble="{{delay:timing*7/5+100}}">
+                        <div in:fade="{{delay:timing*19/10+100, duration:timing/5}}" on:click={toggleForm}>
                             Say hello
                         </div>
                     </button>
                 </div>
-                <div class="veil" in:textFall="{{delay:timing+500}}" style:height={p2h+'px'} style:width={p2w+'px'} style:margin-top={pad2}/>
-                <p bind:clientHeight={p2h} bind:clientWidth={p2w} style:margin-top={pad2} style:text-align=right in:fade="{{delay:timing+500}}">I'm open to opportunities of all kinds in the Boston area or remote. Whether it's a small passion project of yours or a corporate product, I'm always available to consult or collaborate.</p>
+                <div class="veil" in:textFall="{{delay:timing*6/5+100, duration:timing/5}}" style:height={p2h+'px'} style:width={p2w+'px'} style:margin-top={pad2}/>
+                <p bind:clientHeight={p2h} bind:clientWidth={p2w} style:margin-top={pad2} style:text-align=right in:fade="{{delay:timing*6/5+100, duration:timing/5}}">I'm open to opportunities of all kinds in the Boston area or remote. Whether it's a small passion project of yours or a corporate product, I'm always available to consult or collaborate.</p>
             </div>
         </div>
         {#key form}
