@@ -12,8 +12,8 @@
     let p2w
     let firstTime = true
     let form = false
-    $: pad1 = `${(introH-p1h) / 2}px`
-    $: pad2 = `${(outroH-p2h) / 2}px`
+    $: pad1 = `${(introH-p1h) / 2}px 0px`
+    $: pad2 = `${(outroH-p2h) / 2}px 0px`
     $: height = `${$h-$navH-titleH-52-24*2}px`
     $: animate = $y>$h*2.5
     $: timing = firstTime ? 2000 : 1000
@@ -93,10 +93,9 @@
                 <div class="frame left" in:spotlight>
                     <img src="assets/suitedup_square.jpg" alt="me" in:fade="{{delay:timing}}"/>
                 </div>
-                <div class="veil" in:textFall="{{delay:timing+100, duration:timing/5}}" style:height={p1h+'px'} style:width={p1w+'px'} style:margin-top={pad1}/>
-                <p bind:clientHeight={p1h} bind:clientWidth={p1w} style:margin-top={pad1} style:text-align=left in:fade="{{delay:timing+100, duration:timing/5}}">I'm open to opportunities of all kinds in the Boston area or remote. Whether it's a small passion project of yours or a corporate product, I'm always available to consult or collaborate.</p>
+                <div class="veil" in:textFall="{{delay:timing+100, duration:timing/5}}" style:height={p1h+'px'} style:width={p1w+'px'} style:margin={pad1}/>
+                <p bind:clientHeight={p1h} bind:clientWidth={p1w} style:margin={pad1} style:text-align=left in:fade="{{delay:timing+100, duration:timing/5}}">As a global citizen, I was attracted to the potential of the web to create a world beyond borders. I strive to push the boundaries of what's possible, both for myself and the technology.</p>
             </div>
-            <br/>
             <div bind:clientHeight={outroH}>
                 <div class="frame right" in:fade="{{delay:timing*7/5+100, duration:timing/5}}">
                     <button class="button m-auto is-warning is-outlined" in:bubble="{{delay:timing*7/5+100}}">
@@ -105,17 +104,16 @@
                         </div>
                     </button>
                 </div>
-                <div class="veil" in:textFall="{{delay:timing*6/5+100, duration:timing/5}}" style:height={p2h+'px'} style:width={p2w+'px'} style:margin-top={pad2}/>
-                <p bind:clientHeight={p2h} bind:clientWidth={p2w} style:margin-top={pad2} style:text-align=right in:fade="{{delay:timing*6/5+100, duration:timing/5}}">I'm open to opportunities of all kinds in the Boston area or remote. Whether it's a small passion project of yours or a corporate product, I'm always available to consult or collaborate.</p>
+                <div class="veil" in:textFall="{{delay:timing*6/5+100, duration:timing/5}}" style:height={p2h+'px'} style:width={p2w+'px'} style:margin={pad2}/>
+                <p bind:clientHeight={p2h} bind:clientWidth={p2w} style:margin={pad2} style:text-align=right in:fade="{{delay:timing*6/5+100, duration:timing/5}}">I'm open to opportunities of all kinds in the Boston area or remote. Whether it's a small passion project or a corporate product, I'm always available to consult or collaborate.</p>
             </div>
         </div>
         {#key form}
-            <div class="modal" class:is-active={form}>
+            <div class="modal" class:is-active={form} transition:fade>
                 <div class="modal-background"/>
                 <div class="modal-content">
                   <Form {toggleForm}/>
                 </div>
-                <button class="modal-close is-large" aria-label="close" on:click={toggleForm}/>
             </div>
         {/key}
     </div>
@@ -155,6 +153,4 @@
         shape-outside: circle();
     }
     .veil {position: absolute; z-index: 1;}
-    .modal-close::before {background-color:$gold;}
-    .modal-close::after {background-color:$gold;}
 </style>

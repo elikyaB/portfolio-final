@@ -11,7 +11,12 @@
         scene:1800
     }
 
-    const pages = [['About','#about'],['Portfolio','#portfolio'],['Contact','#contact'],['Resume','']]
+    const pages = [
+        ['About','#about'],
+        ['Portfolio','#portfolio'],
+        ['Contact','#contact'],
+        ['Resume','https://github.com/elikyaB/files/raw/main/Eli%20Bokanga%20Resume%202022.pdf']
+    ]
 
     let menuH
     let settingsH

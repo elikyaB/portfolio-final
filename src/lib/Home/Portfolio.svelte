@@ -104,7 +104,7 @@
                 </div>
             {/each}
         </div>
-        <div class="button mx-auto is-warning is-outlined" bind:clientHeight={button} in:grow="{{i:dropNum-1}}">
+        <div class="button mx-auto is-warning is-outlined hide" bind:clientHeight={button} in:grow="{{i:dropNum-1}}">
             <div in:fade="{{delay:2000}}">See more</div>
         </div>
     </div>

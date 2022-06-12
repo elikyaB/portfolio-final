@@ -16,12 +16,7 @@
 
 // COLORS
 svg {color: $gold;} // don't work in <style> tags due to load?
-form svg {
-    color: $faded-white;
-    .invalid {}
-    .valid {color: $link}
-}
-
+form svg {color: $faded-white;}
 p {color: $white;}
 a {
     color: $link;
