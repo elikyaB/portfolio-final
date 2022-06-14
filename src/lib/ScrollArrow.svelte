@@ -1,6 +1,7 @@
 <script>
     import { y, start } from '$lib/stores'
     import { fade } from 'svelte/transition'
+    
     let size = 24
     let triggers = [false, false, false]
     $: left = `calc(98vw - ${size}px)`
@@ -24,14 +25,10 @@
 <figure>
     {#each triggers as trigger, i}
     {#if trigger}
-    <div style:top={`calc(98vh - ${size+0.5*size*i}px)`} style:left in:fade="{{delay:400-200*i}}" use:timer={i} out:fade="{{}}">
+    <div in:fade="{{delay:400-200*i}}" use:timer={i} out:fade style:top={`calc(98vh - ${size+0.5*size*i}px)`} style:left style:position=fixed>
         <span class="iconify-inline" data-width={size} data-height={size} data-icon='icons8:chevron-down'/>
     </div>
     {/if}
     {/each}
 </figure>
 {/if}
-
-<style>
-    div {position: fixed;}
-</style>
