@@ -3,12 +3,8 @@
     import Note from './Note.svelte';
 </script>
 
-<aside style:top=52px>
+<aside style:top=76px style:position=fixed>
     {#each $notes as note, i}
         <Note {note} {i}/>
     {/each}
 </aside>
-
-<style>
-    aside {position: fixed;}
-</style>

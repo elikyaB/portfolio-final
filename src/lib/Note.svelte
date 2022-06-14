@@ -7,8 +7,8 @@
     let timeout = false
 
     $: bG = colors[$mode].hL
-    $: mL = `calc(100vw - ${width}px - 1vw)`
-    $: x = width + $w/100
+    $: mL = `calc(98vw - ${width}px)`
+    $: x = width + 2*$w/100
 
     function timer (node) {
         const time = node.textContent.length * 200
