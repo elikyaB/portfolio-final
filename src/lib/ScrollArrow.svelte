@@ -1,10 +1,11 @@
 <script>
     import { y, start } from '$lib/stores'
     import { fade } from 'svelte/transition'
-    
+
     let size = 24
+    let left = `calc(98vw - ${size}px)`
     let triggers = [false, false, false]
-    $: left = `calc(98vw - ${size}px)`
+    
     $: if ($start) {
         setTimeout(()=>{triggers = [true, true, true]}, 16000)
     } 
