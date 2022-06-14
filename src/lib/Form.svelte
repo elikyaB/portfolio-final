@@ -1,10 +1,10 @@
 <script>
-    import {colors, mode} from '$lib/stores'
+    import {colors, mode, notes} from '$lib/stores'
     export let toggleForm
 
     let subject
     let name
-    let email = 'boy@oh.boy'
+    let email
     let message
     let valid
     let invalid
@@ -26,18 +26,24 @@
     $: color = colors[$mode].hL
 
     const submitForm = async () => {
-        const submit = await fetch("https://formspree.io/f/xyyovnqb", {
+        const request = await fetch("/api/contact", {
             method: "post",
-            headers: {''}
+            headers: {
+                "Accept": "application/json",
+                "Origin": "*"
+            },
             body: JSON.stringify({
                 subject, name, email, message
             })
         })
 
-        console.log(submit)
-
-        const data = await submit.json()
-        console.log(data)
+        const response = await request.json()
+        if (response?.message) {
+            $notes = [response.message, ...$notes]
+            toggleForm()
+        } else {
+            console.log('An error has occurred.')
+        }
     }
 </script>
 
@@ -49,10 +55,10 @@
         <div class="control is-expanded">
             <div class="select is-fullwidth">
                 <select id="subject" name="subject" class="select is-fullwidth" bind:value={subject}>
-                    <option value="freelance">Freelance Proposal</option>
-                    <option value="fulltime">Full-time Employment</option>
-                    <option value="startup">Startup Venture</option>
-                    <option value="consulting">Product Consulting</option>
+                    <option value="Freelance">Freelance Proposal</option>
+                    <option value="Fulltime">Full-time Employment</option>
+                    <option value="Startup">Startup Venture</option>
+                    <option value="Consulting">Product Consulting</option>
                 </select>
             </div>
         </div>
@@ -100,17 +106,17 @@
             </button>
         </div>
         <div class="control is-flex is-justify-content-center">
-            <!-- {#if !valid}
+            {#if !valid}
             <fieldset disabled>
                 <button class="button" style:color={colors[$mode].bG} style:background-color={color}>
                     Send
                 </button>
             </fieldset>
-            {:else} -->
+            {:else}
             <button class="button" type="submit" style:color={colors[$mode].bG} style:background-color={color}>
                 Send
             </button>
-            <!-- {/if} -->
+            {/if}
         </div>
     </div>
 </form>

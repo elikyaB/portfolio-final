@@ -8,6 +8,7 @@ export const start = writable(false)
 export const navH = writable(0)
 export const mode = writable('dark')
 export const socialDelay = writable(0)
+export const notes = writable([])
 
 export const colors = {
     dark: {

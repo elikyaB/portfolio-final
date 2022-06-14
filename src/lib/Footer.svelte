@@ -20,7 +20,7 @@
     }
 </script>
 
-<footer class="has-background-dark has-text-light pb-3">
+<footer class="has-background-dark has-text-light pb-4">
     <div class="contain">
         {#key $socialDelay>0 && $y>$h*2.5}
         <div id="socials" style:height=52px class="is-flex is-justify-content-space-evenly">
