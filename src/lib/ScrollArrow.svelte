@@ -22,14 +22,15 @@
     }
 </script>
 
-{#if $y==0}
-<figure>
-    {#each triggers as trigger, i}
-    {#if trigger}
-    <div in:fade="{{delay:400-200*i}}" use:timer={i} out:fade style:top={`calc(98vh - ${size+0.5*size*i}px)`} style:left style:position=fixed>
-        <span class="iconify-inline" data-width={size} data-height={size} data-icon='icons8:chevron-down'/>
-    </div>
+
+<figure style:z-index=1>
+    {#if $y==0}
+        {#each triggers as trigger, i}
+            {#if trigger}
+                <div in:fade="{{delay:400-200*i}}" use:timer={i} out:fade style:top={`calc(98vh - ${size+0.5*size*i}px)`} style:left style:position=fixed>
+                    <span class="iconify-inline" data-width={size} data-height={size} data-icon='icons8:chevron-down'/>
+                </div>
+            {/if}
+        {/each}
     {/if}
-    {/each}
 </figure>
-{/if}
