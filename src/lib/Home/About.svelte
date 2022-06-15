@@ -5,9 +5,15 @@
 
     const tabs = ['Web Development', 'Frontend', 'Backend', 'Workflow']
 
+    let top
     let tabWidth
     let scrollTab
+    let tabWidths = []
     let active = [true, false, false, false]
+    $: animate = $y > $h * 0.5
+    $: bottom = ($h-top-0.75*16*2-52)/$h*100 + 'vh'
+    $: sumTabs = tabWidths.reduce((a,c) => a+c, 0) * 1.1 
+        // * 1.1 adjusts for 5vw margins
 
     function changeActive(i) {
         active = [false, false, false, false]
@@ -18,18 +24,6 @@
                 behavior: 'smooth'
             })
         }
-    }
-
-    let top
-    let bottom
-    let tabWidths = []
-    let sumTabs
-    $: animate = $y > $h * 0.5
-
-    $: {
-        bottom = ($h-top-0.75*16*2-52)/$h*100 + 'vh';
-        sumTabs = tabWidths.reduce((a,c) => a+c, 0) * 1.1 
-        // * 1.1 adjusts for 5vw margins
     }
 
     function myFly(node, {delay=0, i=0, easing=cubicOut}) {

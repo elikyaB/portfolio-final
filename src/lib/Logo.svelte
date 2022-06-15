@@ -1,10 +1,9 @@
 <script>
     export let props
-    export let navH
-    export let responsive
+
     $: showFace = props.startingFace
-    $: full = (navH && responsive ? navH/2.5 : props.size) + props.units
-    $: half = (navH && responsive ? navH/2.5 : props.size)/2 + props.units
+    $: full = props.size + props.units
+    $: half = props.size/2 + props.units
     $: perspective = props.scene+props.units
     $: transition = `transform ${props.transition}s`
 
@@ -20,7 +19,7 @@
         }
     }
 
-    export function rollDie() {
+    function rollDie() {
         if (props.d6) {
             clearTimeout(timeoutID)
             clearInterval(intervalID)

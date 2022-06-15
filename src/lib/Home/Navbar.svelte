@@ -4,11 +4,11 @@
     import { cubicOut } from 'svelte/easing'
     
     const navbarLogo = {
-        d6:false, 
-        startingFace:'logo', 
-        size:20,
-        units:'px', 
-        scene:1800
+        d6: false, 
+        startingFace: 'logo', 
+        size: $w>=960 ? 30 : 20,
+        units: 'px', 
+        scene: 1800
     }
 
     const pages = [
@@ -25,9 +25,7 @@
     let section = ''
     let highlight = [false, false, false, false]
     let completed = false
-    
     $: height = `${menuH-settingsH}px`
-    // $: root = `:root {--navH: ${$navH}px;}`
 
     $: {
         let pos = Math.floor(($y+52)/$h)
@@ -103,7 +101,7 @@
 <nav class="navbar is-fixed-top" in:firstLoadFade bind:clientHeight={$navH}>
     <div id="bar" class="navbar-brand m-0 has-background-dark">
         <a id="logo" href="/#top" class="navbar-item ml-2">
-            <Logo props={navbarLogo} navH={$navH} responsive={$w>960}/>
+            <Logo props={navbarLogo}/>
         </a>
         {#if mobile && $start}
             {#key section}
