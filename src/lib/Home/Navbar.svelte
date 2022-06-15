@@ -103,7 +103,7 @@
 {#if $start}
 <nav class="navbar is-fixed-top" in:firstLoadFade bind:clientHeight={$navH}>
     <div id="bar" class="navbar-brand m-0 has-background-dark">
-        <a id="logo" href="/#top" class="navbar-item ml-2">
+        <a id="logo" href="/" class="navbar-item ml-2">
             <Logo props={navbarLogo}/>
         </a>
         {#if mobile && $start}
@@ -128,7 +128,7 @@
         </div>
         <div class="navbar-end" style:height>
             {#each pages as page, i}
-                <a href={page[1]} on:click={activate} id={`nav${i}`} transition:drop="{{i:i}}" class="navbar-item is-spaced 
+                <a href={page[1]} on:click={activate} id={`nav${i}`} transition:drop="{{i:i}}" sveltekit:noscroll class="navbar-item is-spaced 
                 {i===3 ? 'button is-warning is-outlined' : 'is-tab'}
                 {highlight[i] ? 'has-background-warning has-text-dark' : 'has-text-warning'}">
                     {page[0]}

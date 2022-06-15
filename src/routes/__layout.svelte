@@ -1,7 +1,5 @@
 <script>
   import "../app.scss";
-  import Footer from "$lib/Footer.svelte";
-  import Notifications from "$lib/Notifications.svelte";
 </script>
 
 <svelte:head>
@@ -9,5 +7,3 @@
 </svelte:head>
 
 <slot />
-<Footer/>
-<Notifications/>

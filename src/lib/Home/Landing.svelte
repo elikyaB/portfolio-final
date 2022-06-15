@@ -1,6 +1,5 @@
 <script>
     import { h, start, typewriter } from '$lib/stores'
-    import ScrollArrow from '$lib/ScrollArrow.svelte';
     
     const titles = ["programmer", "architect", "engineer", "developer"]
     let title = "webdev"
@@ -66,7 +65,6 @@
             {/key}
         {/if}
     </div>
-    <ScrollArrow/>
 </header>
 
 <style>
