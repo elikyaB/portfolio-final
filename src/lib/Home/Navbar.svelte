@@ -97,7 +97,7 @@
     }
 </script>
 
-{#key $start}
+{#if $start}
 <nav class="navbar is-fixed-top" in:firstLoadFade bind:clientHeight={$navH}>
     <div id="bar" class="navbar-brand m-0 has-background-dark">
         <a id="logo" href="/#top" class="navbar-item ml-2">
@@ -134,7 +134,7 @@
     </div>
     {/key}
 </nav>
-{/key}
+{/if}
     
 <style lang="scss">
     nav {

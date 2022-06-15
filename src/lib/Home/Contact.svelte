@@ -98,8 +98,8 @@
             </div>
             <div bind:clientHeight={outroH}>
                 <div class="frame right" in:fade="{{delay:timing*7/5+100, duration:timing/5}}">
-                    <button class="button m-auto is-warning is-outlined" in:bubble="{{delay:timing*7/5+100}}">
-                        <div in:fade="{{delay:timing*19/10+100, duration:timing/5}}" on:click={toggleForm}>
+                    <button class="button m-auto is-warning is-outlined" in:bubble="{{delay:timing*7/5+100}}" on:click={toggleForm}>
+                        <div in:fade="{{delay:timing*19/10+100, duration:timing/5}}">
                             Say hello
                         </div>
                     </button>
