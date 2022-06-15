@@ -25,29 +25,29 @@
     
     $: color = colors[$mode].hL
 
-    const submitForm = async () => {
-        const request = await fetch("/api/contact", {
-            method: "post",
-            headers: {
-                "Accept": "application/json",
-                "Origin": "*"
-            },
-            body: JSON.stringify({
-                subject, name, email, message
-            })
-        })
+    // const submitForm = async () => {
+    //     const request = await fetch("/api/contact", {
+    //         method: "post",
+    //         headers: {
+    //             "Accept": "application/json",
+    //             "Origin": "*"
+    //         },
+    //         body: JSON.stringify({
+    //             subject, name, email, message
+    //         })
+    //     })
 
-        const response = await request.json()
-        if (response?.message) {
-            $notes = [response.message, ...$notes]
-            toggleForm()
-        } else {
-            console.log('An error has occurred.')
-        }
-    }
+    //     const response = await request.json()
+    //     if (response?.message) {
+    //         $notes = [response.message, ...$notes]
+    //         toggleForm()
+    //     } else {
+    //         console.log('An error has occurred.')
+    //     }
+    // }
 </script>
 
-<form class="contain" on:submit|preventDefault={submitForm}>
+<form class="contain" name="contact" method="POST" data-netlify="true">
     <div class="field">
         <label for="subject" class="label" style:color>
             Subject
