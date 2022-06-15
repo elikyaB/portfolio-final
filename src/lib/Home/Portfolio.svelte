@@ -11,6 +11,7 @@
     let title
     let button
     let sampleHeight = 0
+    $: page = `${$h-52}px`
     $: dropNum = $projects.length+1
     $: height = `${$h-52-title-button-0.75*16*2}px`
     $: animate = $y > $h * 1.5
@@ -73,7 +74,7 @@
     }
 </script>
 
-<section id="portfolio" class="page--with-nav has-background-dark has-text-light">
+<section id="portfolio" class="has-background-dark has-text-light" style:height={page} style:padding-top=52px>
     {#if animate}
     <div class="contain is-flex is-flex-direction-column">
         <h1 class="heading has-text-warning" bind:clientHeight={title}>
@@ -116,12 +117,7 @@
         border: 1px solid $gold;
         border-radius: 5px;
     }
-    h2, li {
-        font-size: 12px;
-        // @media screen and (min-width: 960px) {
-        //     font-size: 1.5vh;
-        // }
-    }
+    h2, li {font-size: 12px;}
     a {
         text-transform: uppercase;
         &:hover {text-decoration: underline;}

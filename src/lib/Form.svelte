@@ -1,6 +1,5 @@
 <script>
-    import {colors, mode, notes} from '$lib/stores'
-    export let toggleForm
+    import {colors, mode, notes, openForm} from '$lib/stores'
 
     let subject
     let name
@@ -8,8 +7,10 @@
     let message
     let valid
     let invalid
+    $: color = colors[$mode].hL
 
-    $: if (email == '' || email == undefined) {
+    const handleChange = () => {
+        if (email == '' || email == undefined) {
             valid = false
             invalid = false 
         } else {
@@ -22,8 +23,7 @@
                 invalid = true
             }
         }
-    
-    $: color = colors[$mode].hL
+    }
 
     const submitForm = async () => {
         const request = await fetch("/api/contact", {
@@ -40,7 +40,7 @@
         const response = await request.json()
         if (response?.message) {
             $notes = [response.message, ...$notes]
-            toggleForm()
+            $openForm = false
         } else {
             console.log('An error has occurred.')
         }
@@ -77,7 +77,7 @@
         <div class="field">
             <label for="email" class="hide">Email</label>
             <div class="control is-expanded has-icons-left has-icons-right">
-                <input id="email" name="email" class="input" class:is-success={valid} class:is-danger={invalid} type="email" placeholder="Email" bind:value={email} required/>
+                <input id="email" name="email" class="input" class:is-success={valid} class:is-danger={invalid} type="email" placeholder="Email" bind:value={email} on:keyup={handleChange} required/>
                 <span class="icon is-small is-left">
                     <i class="iconify-inline" data-icon="fa:envelope"/>
                 </span>
@@ -101,7 +101,7 @@
     </div>
     <div class="field is-grouped is-grouped-centered mt-5">
         <div class="control is-flex is-justify-content-center">
-            <button class="button" type="button" on:click={toggleForm}>
+            <button class="button" type="button" on:click={()=>{$openForm=false}}>
                 Cancel
             </button>
         </div>

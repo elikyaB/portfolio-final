@@ -9,6 +9,7 @@ export const navH = writable(0)
 export const mode = writable('dark')
 export const socialDelay = writable(0)
 export const notes = writable([])
+export const openForm = writable(false)
 
 export const colors = {
     dark: {

@@ -1,5 +1,5 @@
 <script>
-    import { y, h, w, navH, typewriter, colors, mode, socialDelay, start } from "$lib/stores";
+    import { y, h, w, navH, typewriter, colors, mode, socialDelay, start, openForm } from "$lib/stores";
     import { fade } from 'svelte/transition'
     import Form from '$lib/Form.svelte'
 
@@ -11,19 +11,17 @@
     let p2h
     let p2w
     let firstTime = true
-    let form = false
     $: pad1 = `${(introH-p1h) / 2}px 0px`
     $: pad2 = `${(outroH-p2h) / 2}px 0px`
-    $: height = `${$h-$navH-titleH-52-24*2}px`
+    $: height = `${$h-titleH-52*2-24*2}px`
+    $: page = `${$h-52}px`
     $: animate = $y>$h*2.5
     $: timing = firstTime ? 2000 : 1000
     $: $socialDelay = timing*19/10 + 100
     $: if ($start) {
-        form? document.querySelector('html').style.overflowY = 'hidden'
+        $openForm? document.querySelector('html').style.overflowY = 'hidden'
             : document.querySelector('html').style.overflowY = ''
     }
-
-    function toggleForm () {form = !form}
 
     function spotlight (node, {delay=0, duration=timing}) {
         setTimeout(()=>{firstTime=false},5000)
@@ -80,7 +78,7 @@
     }
 </script>
 
-<section id="contact" class="page--with-nav--and-foot has-background-dark has-text-light">
+<section id="contact" class="has-background-dark has-text-light" style:height={page} style:padding-top=52px>
     {#if animate}
     <div class="contain">
         <div bind:clientHeight={titleH}>
@@ -98,7 +96,7 @@
             </div>
             <div bind:clientHeight={outroH}>
                 <div class="frame right" in:fade="{{delay:timing*7/5+100, duration:timing/5}}">
-                    <button class="button m-auto is-warning is-outlined" in:bubble="{{delay:timing*7/5+100}}" on:click={toggleForm}>
+                    <button class="button m-auto is-warning is-outlined" in:bubble="{{delay:timing*7/5+100}}" on:click={()=>{$openForm=true}}>
                         <div in:fade="{{delay:timing*19/10+100, duration:timing/5}}">
                             Say hello
                         </div>
@@ -108,14 +106,14 @@
                 <p bind:clientHeight={p2h} bind:clientWidth={p2w} style:margin={pad2} style:text-align=right in:fade="{{delay:timing*6/5+100, duration:timing/5}}">I'm open to opportunities of all kinds in the Boston area or remote. Whether it's a small passion project or a corporate product, I'm always available to consult or collaborate.</p>
             </div>
         </div>
-        {#key form}
-            <div class="modal" class:is-active={form} transition:fade>
+        {#if $openForm}
+            <div class="modal" class:is-active={$openForm} transition:fade>
                 <div class="modal-background"/>
                 <div class="modal-content">
-                  <Form {toggleForm}/>
+                  <Form/>
                 </div>
             </div>
-        {/key}
+        {/if}
     </div>
     {/if}
 </section>

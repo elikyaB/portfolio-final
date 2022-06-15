@@ -8,6 +8,7 @@
     let word
     let wordlock = false
     let startTitles
+    $: page = `${$h}px`
 
     function titleSwitch (t) {
         const current = titles.findIndex((w) => {return w === t})
@@ -44,7 +45,7 @@
     }
 </script>
 
-<header class="hero is-dark page">
+<header class="hero is-dark" style:height={page}>
     <div class="hero-body pb-0" style:padding-top={`${($h-hello-word)/2}px`}>
         {#if $start}
             <h1 class="title m-0" bind:clientHeight={hello}>

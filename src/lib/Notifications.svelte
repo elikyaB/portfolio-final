@@ -1,6 +1,6 @@
 <script>
     import { notes } from '$lib/stores'
-    import Note from './Note.svelte';
+    import Note from './Note.svelte'
 </script>
 
 <aside style:top=76px style:position=fixed>

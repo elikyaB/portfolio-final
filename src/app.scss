@@ -34,17 +34,17 @@ a {
 }
 
 // HOMEPAGE
-.page {
-    height: 100vh;
-    &--with-nav {
-        @extend .page;
-        padding-top: 3.25rem;
-        &--and-foot {
-            @extend .page--with-nav;
-            height: calc(100vh - 3.25rem);
-        }
-    }
-}
+// .page {
+//     height: 100vh;
+//     &--with-nav {
+//         @extend .page;
+//         padding-top: 3.25rem;
+//         &--and-foot {
+//             height: calc(100vh - 3.25rem);
+//             padding-top: 3.25rem;
+//         }
+//     }
+// }
 
 @supports (scroll-snap-align: start) {
     html {
