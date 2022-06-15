@@ -40,11 +40,11 @@
                 <span class="iconify-inline" data-icon='simple-icons:linktree' in:pop="{{delay:800}}"/>
             </a>
         </div>
-        <div style:text-align=center in:fade="{{delay:$socialDelay+1200}}">
+        {/key}
+        <div style:text-align=center>
             Designed & Built by<br/>
             &copy; 2022 Elikya Bokanga
         </div>
-        {/key}
     </div>
 </footer>
 

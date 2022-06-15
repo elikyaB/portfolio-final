@@ -10,7 +10,7 @@
     let scrollTab
     let tabWidths = []
     let active = [true, false, false, false]
-    $: page = `${$h-52}px`
+    $: page = `${$h}px`
     $: animate = $y > $h * 0.5
     $: bottom = ($h-top-0.75*16*2-52)/$h*100 + 'vh'
     $: sumTabs = tabWidths.reduce((a,c) => a+c, 0) * 1.1 

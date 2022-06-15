@@ -11,7 +11,7 @@
     let title
     let button
     let sampleHeight = 0
-    $: page = `${$h-52}px`
+    $: page = `${$h}px`
     $: dropNum = $projects.length+1
     $: height = `${$h-52-title-button-0.75*16*2}px`
     $: animate = $y > $h * 1.5
