@@ -74,7 +74,7 @@
     }
 </script>
 
-<section id="portfolio" class="has-background-dark has-text-light" style:height={page} style:padding-top=52px>
+<section id="portfolio" class="page--with-nav has-background-dark has-text-light">
     {#if animate}
     <div class="contain is-flex is-flex-direction-column">
         <h1 class="heading has-text-warning" bind:clientHeight={title}>

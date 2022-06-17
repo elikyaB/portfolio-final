@@ -14,7 +14,6 @@
     $: pad1 = `${(introH-p1h) / 2}px 0px`
     $: pad2 = `${(outroH-p2h) / 2}px 0px`
     $: height = `${$h-titleH-52*2-24*2}px`
-    $: page = `${$h-52}px`
     $: animate = $y>$h*2.5
     $: timing = firstTime ? 2000 : 1000
     $: $socialDelay = timing*19/10 + 100
@@ -78,7 +77,7 @@
     }
 </script>
 
-<section id="contact" class="has-background-dark has-text-light" style:height={page} style:padding-top=52px>
+<section id="contact" class="page--with-nav--and-foot has-background-dark has-text-light">
     {#if animate}
     <div class="contain">
         <div bind:clientHeight={titleH}>

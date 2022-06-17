@@ -10,9 +10,8 @@
     let scrollTab
     let tabWidths = []
     let active = [true, false, false, false]
-    $: page = `${$h}px`
     $: animate = $y > $h * 0.5
-    $: bottom = ($h-top-0.75*16*2-52)/$h*100 + 'vh'
+    $: bottom = `${$h-top-0.75*16*2-52}px`
     $: sumTabs = tabWidths.reduce((a,c) => a+c, 0) * 1.1 
         // * 1.1 adjusts for 5vw margins
 
@@ -40,7 +39,7 @@
     }
 </script>
 
-<section id="about" class="has-background-dark has-text-light" style:height={page} style:padding-top=52px>
+<section id="about" class="page--with-nav has-background-dark has-text-light">
     {#if animate}
     <div bind:clientHeight={top}>
         <div id="motto" class="contain">            

@@ -20,6 +20,7 @@
     bind:innerWidth={$w} 
     bind:innerHeight={$h} 
     bind:scrollY={$y}
+    on:resize={resizer}
 />
 
 <script>
@@ -31,6 +32,12 @@
         if (Document !== null) {$start = true}
         window.scrollTo(0,0)
     })
+
+    function resizer (e) {
+        console.log('resized')
+        let vh = $h/100
+        document.documentElement.style.setProperty('--vh', `${vh}px`)
+    }
 
     import Loading from "$lib/Loading.svelte";
     import Landing from "$lib/Home/Landing.svelte";
