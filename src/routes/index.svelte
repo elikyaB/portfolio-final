@@ -20,7 +20,7 @@
     bind:innerWidth={$w} 
     bind:innerHeight={$h} 
     bind:scrollY={$y}
-    on:resize={resizer}
+    on:mousewheel|capture|stopPropagation={scroller}
 />
 
 <script>
@@ -28,16 +28,32 @@
     import { w, h, y, start } from "$lib/stores";
 
     import { onMount } from 'svelte'
-    onMount(() => {
-        if (Document !== null) {$start = true}
-        window.scrollTo(0,0)
-    })
+    onMount(() => {if (Document !== null) {$start = true}})
 
-    function resizer (e) {
-        console.log('resized')
-        let vh = $h/100
-        document.documentElement.style.setProperty('--vh', `${vh}px`)
+    // function resizer (e) {
+    //     document.documentElement.style.setProperty('--vh', `${$h/100}px`)
+    // }
+
+    let scrolling = false
+    let target = 0
+    $: if ($start) {window.scrollTo({top: target*$h, behavior:'smooth'})}
+
+
+    function scroller (e) {
+        // console.time(e.timeStamp)
+        if (!scrolling) {
+            scrolling = true
+            // setTimeout(()=>{
+                if (e.deltaY>0) { pageDown() }
+                if (e.deltaY<0) { pageUp() }
+                setTimeout(()=>{scrolling=false; $scrollD=null}, 100)
+            // }, 200)
+        }
+        // console.timeEnd(e.timeStamp)
     }
+
+    function pageDown () { target = Math.ceil($y/$h) }
+    function pageUp () { target = Math.floor($y/$h) }
 
     import Loading from "$lib/Loading.svelte";
     import Landing from "$lib/Home/Landing.svelte";

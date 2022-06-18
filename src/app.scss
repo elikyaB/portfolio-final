@@ -36,27 +36,27 @@ a {
 // HOMEPAGE
 .page {
     height: 100vh; // fallback
-    height: calc(var(--vh, 1vh) * 100);
+    // height: calc(var(--vh, 1vh) * 100);
     &--with-nav {
         @extend .page;
-        padding-top: 3.25rem;
+        padding-top: 52px;
         &--and-foot {
             @extend .page--with-nav;
-            height: calc(100vh - 3.25rem); // fallback
-            height: calc(var(--vh, 1vh) * 100 - 3.25rem);
+            height: calc(100vh - 52px); // fallback
+            // height: calc(var(--vh, 1vh) * 100 - 3.25rem);
         }
     }
 }
 
-@supports (scroll-snap-align: start) {
-    html {
-        @extend .no-scrollbars;
-        scroll-behavior: smooth;
-        scroll-snap-type: y mandatory; 
-        overscroll-behavior-y: none;
-    }
-    header, section, footer {scroll-snap-align: start;}
-}
+// @supports (scroll-snap-align: start) {
+//     html, body {
+//         @extend .no-scrollbars;
+//         scroll-behavior: smooth;
+//         scroll-snap-type: y mandatory; 
+//         overscroll-behavior-y: none;
+//     }
+//     header, section, footer {scroll-snap-align: start;}
+// }
 
 // SIZING
 .contain {margin: 0 auto; max-width: 90vw;}
