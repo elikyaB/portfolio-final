@@ -46,7 +46,7 @@
             // setTimeout(()=>{
                 if (e.deltaY>0) { pageDown() }
                 if (e.deltaY<0) { pageUp() }
-                setTimeout(()=>{scrolling=false; $scrollD=null}, 100)
+                setTimeout(()=>{scrolling=false;}, 100)
             // }, 200)
         }
         // console.timeEnd(e.timeStamp)
