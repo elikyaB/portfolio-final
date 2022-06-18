@@ -1,5 +1,5 @@
 <script>
-    import { w, h, y, start, navH, colors, mode, scrollD } from '$lib/stores'
+    import { w, h, y, start, navH, colors, mode } from '$lib/stores'
     import Logo from "$lib/Logo.svelte"
     import { cubicOut } from 'svelte/easing'
     
