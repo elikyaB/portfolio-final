@@ -31,9 +31,10 @@
     onMount(() => {if (Document !== null) {$start = true}})
 
     function resizer (e) {
-        document.documentElement.style.setProperty('--vh', `${$h/100}px`)
         setTimeout(()=>{adjuster()}, 500)
     }
+
+    $: document.documentElement.style.setProperty('--vh', `${$h/100}px`)
 
     // function checkScrollStop () {
     //     let y1 = $y
