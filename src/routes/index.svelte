@@ -34,7 +34,7 @@
     })
 
     function resizer (e) {
-        setTimeout(()=>{adjuster()}, 500)
+        // setTimeout(()=>{adjuster()}, 500)
     }
 
     $: if ($start) {document.documentElement.style.setProperty('--vh', `${$h/100}px`)}
