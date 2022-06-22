@@ -28,7 +28,10 @@
     import { w, h, y, start } from "$lib/stores";
 
     import { onMount } from 'svelte'
-    onMount(() => {if (Document !== null) {$start = true}})
+    onMount(() => {
+        if (Document !== null) {$start = true}
+        if ($start) {window.scrollTo(0,0)}
+    })
 
     function resizer (e) {
         setTimeout(()=>{adjuster()}, 500)

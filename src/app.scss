@@ -48,15 +48,15 @@ a {
     }
 }
 
-@supports (scroll-snap-align: start) {
-    html, body {
-        @extend .no-scrollbars;
-        scroll-behavior: smooth;
-        scroll-snap-type: y mandatory; 
-        overscroll-behavior-y: none;
-    }
-    header, section, footer {scroll-snap-align: start;}
-}
+// @supports (scroll-snap-align: start) {
+//     html, body {
+//         @extend .no-scrollbars;
+//         scroll-behavior: smooth;
+//         scroll-snap-type: y mandatory; 
+//         overscroll-behavior-y: none;
+//     }
+//     header, section, footer {scroll-snap-align: start;}
+// }
 
 // SIZING
 .contain {margin: 0 auto; max-width: 90vw;}

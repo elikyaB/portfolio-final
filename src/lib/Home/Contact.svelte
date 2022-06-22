@@ -11,10 +11,12 @@
     let p2h
     let p2w
     let firstTime = true
+    let firstRender = true
     $: pad1 = `${(introH-p1h) / 2}px 0px`
     $: pad2 = `${(outroH-p2h) / 2}px 0px`
     $: height = `${$h-titleH-52*2-24*2}px`
     $: animate = $y>$h*2.5
+    $: if (animate) {firstRender = false}
     $: timing = firstTime ? 2000 : 1000
     $: $socialDelay = timing*19/10 + 100
     $: if ($start) {
@@ -78,7 +80,7 @@
 </script>
 
 <section id="contact" class="page--with-nav--and-foot has-background-dark has-text-light">
-    {#if animate}
+    {#if animate || !firstRender}
     <div class="contain">
         <div bind:clientHeight={titleH}>
             <h1 class="heading block has-text-warning" transition:typewriter="{{speed:3}}">
