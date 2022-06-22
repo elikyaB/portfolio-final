@@ -34,7 +34,7 @@
         setTimeout(()=>{adjuster()}, 500)
     }
 
-    $: document.documentElement.style.setProperty('--vh', `${$h/100}px`)
+    $: if ($start) {document.documentElement.style.setProperty('--vh', `${$h/100}px`)}
 
     // function checkScrollStop () {
     //     let y1 = $y
