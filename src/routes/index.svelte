@@ -34,7 +34,7 @@
     })
 
     function resizer (e) {
-        if (!$openForm) setTimeout(()=>{adjuster()}, 500)
+        if (!$openForm) setTimeout(()=>{adjuster()}, 700)
     }
 
     function adjuster () {
