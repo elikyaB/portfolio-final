@@ -8,6 +8,7 @@
     let wordlock = false
     let startTitles
     $: pT = `${($h-hello-word)/2-52}px`
+    $: height = $start ? document.querySelector('header').style.height : 0
 
     function titleSwitch (t) {
         const current = titles.findIndex((w) => {return w === t})
@@ -63,6 +64,7 @@
                     {/if}
                 </figure>
             {/key}
+            <div class="has-text-warning is-size-3">{height}</div>
         {/if}
     </div>
 </header>
