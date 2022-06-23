@@ -101,7 +101,7 @@
     </div>
     <div class="field is-grouped is-grouped-centered mt-5">
         <div class="control is-flex is-justify-content-center">
-            <button class="button" type="button" on:click|preventDefault={()=>{$openForm=false}}>
+            <button class="button" type="button" on:click|preventDefault={async () => { $openForm=false }}>
                 Cancel
             </button>
         </div>

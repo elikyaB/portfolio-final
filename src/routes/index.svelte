@@ -25,7 +25,7 @@
 
 <script>
     export let content
-    import { w, h, y, start } from "$lib/stores";
+    import { w, h, y, start, openForm } from "$lib/stores";
 
     import { onMount } from 'svelte'
     onMount(() => {
@@ -34,14 +34,14 @@
     })
 
     function resizer (e) {
-        setTimeout(()=>{adjuster()}, 500)
+        if (!$openForm) setTimeout(()=>{adjuster()}, 500)
     }
 
     function adjuster () {
         window.scrollTo({top: Math.round($y/$h)*$h, behavior: 'smooth'})
     }
 
-    $: if ($start) {document.documentElement.style.setProperty('--vh', `${$h/100}px`)}
+    $: if ($start && !$openForm) {document.documentElement.style.setProperty('--vh', `${$h/100}px`)}
 
     import Loading from "$lib/Loading.svelte";
     import Landing from "$lib/Home/Landing.svelte";
