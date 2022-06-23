@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte"
-    import { h, y, projects, typewriter, mode, colors } from "$lib/stores"
+    import { w, h, y, projects, typewriter, mode, colors } from "$lib/stores"
     import { fade } from "svelte/transition"
     import { cubicOut } from "svelte/easing"
 
@@ -11,12 +11,12 @@
     let title
     let button
     let sampleHeight = 0
-    let firstRender = true
+    // let firstRender = true
     $: page = `${$h}px`
     $: dropNum = $projects.length+1
     $: height = `${$h-52-title-button-0.75*16*2}px`
     $: animate = $y > $h * 1.5
-    $: if (animate) {firstRender = false}
+    // $: if (animate) {firstRender = false}
     $: clr = colors[$mode]
     
     function grow(node, {delay=0, i=0, easing=cubicOut}) {
@@ -77,7 +77,7 @@
 </script>
 
 <section id="portfolio" class="page--with-nav has-background-dark has-text-light">
-    {#if animate || !firstRender}
+    {#if animate}
     <div class="contain is-flex is-flex-direction-column">
         <h1 class="heading has-text-warning" bind:clientHeight={title}>
             <div transition:typewriter="{{speed:3}}">

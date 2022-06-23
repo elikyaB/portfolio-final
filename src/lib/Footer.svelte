@@ -1,6 +1,8 @@
 <script>
     import {y, h, socialDelay} from '$lib/stores'
-    import { fade } from 'svelte/transition'
+
+    // let firstRender = true
+    // $: if ($y>$h*2.5) { setTimeout(()=>{firstRender = false}, 1200) }
 
     function pop (node, {delay=0, duration=400}) {
         const o = +getComputedStyle(node).opacity
@@ -22,8 +24,8 @@
 
 <footer class="has-background-dark has-text-light pb-4">
     <div class="contain">
-        {#key $socialDelay>0 && $y>$h*2.5}
         <div id="socials" style:height=52px class="is-flex is-justify-content-space-evenly">
+            {#key $socialDelay>0 && $y>$h*2.5}
             <a href='https://www.linkedin.com/in/ebokanga/'>
                 <span class="iconify-inline" data-icon='fa:linkedin' in:pop/>
             </a>
@@ -39,8 +41,8 @@
             <a href='https://linktr.ee/elikya.dev'>
                 <span class="iconify-inline" data-icon='simple-icons:linktree' in:pop="{{delay:800}}"/>
             </a>
+            {/key}
         </div>
-        {/key}
         <div style:text-align=center>
             Designed & Built by<br/>
             &copy; 2022 Elikya Bokanga

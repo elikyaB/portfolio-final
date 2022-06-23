@@ -34,53 +34,14 @@
     })
 
     function resizer (e) {
-        // setTimeout(()=>{adjuster()}, 500)
+        setTimeout(()=>{adjuster()}, 500)
     }
-
-    $: if ($start) {document.documentElement.style.setProperty('--vh', `${$h/100}px`)}
-
-    // function checkScrollStop () {
-    //     let y1 = $y
-    //     let y2, dY
-    //     setTimeout(()=>{
-    //         y2 = $y
-    //         dY = y2-y1
-    //         console.log(dY)
-    //         if (dY !== 0) {
-    //             console.log('scrolling')
-    //         } else { 'not scrolling' }
-    //     }, 50)
-    // }
 
     function adjuster () {
         window.scrollTo({top: Math.round($y/$h)*$h, behavior: 'smooth'})
     }
 
-    // let scrolling = false
-    // let target = 0
-    // $: if ($start) {window.scrollTo({top: target*$h, behavior:'smooth'})}
-    // $: while (scrolling) {
-    //     if ($y == target*$h) {scrolling=false}
-    // }
-
-
-    // function scroller (e) {
-    //     if (!scrolling) {
-    //         scrolling = true
-    //         let y1 = $y
-    //         let y2, dY
-    //         setTimeout(() => {
-    //             y2 = $y
-    //             dY = y2-y1
-    //             if (dY>0) { pageDown() }
-    //             if (dY<0) { pageUp() }
-    //             setInterval(()=>{if ($y==target*$h) {scrolling=false;}}, 50)
-    //         }, 10);
-    //     }
-    // }
-
-    // function pageDown () { target = Math.ceil($y/$h) }
-    // function pageUp () { target = Math.floor($y/$h) }
+    // $: if ($start) {document.documentElement.style.setProperty('--vh', `${$h/100}px`)}
 
     import Loading from "$lib/Loading.svelte";
     import Landing from "$lib/Home/Landing.svelte";
