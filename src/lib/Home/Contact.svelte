@@ -108,7 +108,7 @@
             </div>
         </div>
         {#if $openForm}
-            <div class="modal" class:is-active={$openForm} transition:fade>
+            <div class="modal is-active" transition:fade>
                 <div class="modal-background"/>
                 <div class="modal-content">
                   <Form/>

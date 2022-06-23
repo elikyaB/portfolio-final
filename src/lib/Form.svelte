@@ -9,7 +9,7 @@
     let invalid
     $: color = colors[$mode].hL
 
-    const handleChange = () => {
+    const handleChange = async () => {
         if (email == '' || email == undefined) {
             valid = false
             invalid = false 
@@ -77,7 +77,7 @@
         <div class="field">
             <label for="email" class="hide">Email</label>
             <div class="control is-expanded has-icons-left has-icons-right">
-                <input id="email" name="email" class="input" class:is-success={valid} class:is-danger={invalid} type="email" placeholder="Email" bind:value={email} on:keyup={handleChange} required/>
+                <input id="email" name="email" class="input" class:is-success={valid} class:is-danger={invalid} type="email" placeholder="Email" bind:value={email} on:input|preventDefault={handleChange} required/>
                 <span class="icon is-small is-left">
                     <i class="iconify-inline" data-icon="fa:envelope"/>
                 </span>
@@ -101,7 +101,7 @@
     </div>
     <div class="field is-grouped is-grouped-centered mt-5">
         <div class="control is-flex is-justify-content-center">
-            <button class="button" type="button" on:click={()=>{$openForm=false}}>
+            <button class="button" type="button" on:click|preventDefault={()=>{$openForm=false}}>
                 Cancel
             </button>
         </div>
