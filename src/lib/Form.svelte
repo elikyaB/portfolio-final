@@ -1,5 +1,5 @@
 <script>
-    import {colors, mode, notes, openForm} from '$lib/stores'
+    import {colors, mode, start, notes, openForm} from '$lib/stores'
 
     let subject
     let name
