@@ -7,6 +7,7 @@
     let word
     let wordlock = false
     let startTitles
+    $: pT = `${($h-hello-word)/2-52}px`
 
     function titleSwitch (t) {
         const current = titles.findIndex((w) => {return w === t})
@@ -43,8 +44,8 @@
     }
 </script>
 
-<header class="hero is-dark page">
-    <div class="hero-body pb-0" style:padding-top={`${($h-hello-word)/2}px`}>
+<header class="hero is-dark page--with-nav">
+    <div class="hero-body pb-0" style:padding-top={pT}>
         {#if $start}
             <h1 class="title m-0" bind:clientHeight={hello}>
                 <div in:typewriter>Hi!</div>
