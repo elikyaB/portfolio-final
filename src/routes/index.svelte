@@ -41,7 +41,7 @@
         window.scrollTo({top: Math.round($y/$h)*$h, behavior: 'smooth'})
     }
 
-    // $: if ($start) {document.documentElement.style.setProperty('--vh', `${$h/100}px`)}
+    $: if ($start) {document.documentElement.style.setProperty('--vh', `${$h/100}px`)}
 
     import Loading from "$lib/Loading.svelte";
     import Landing from "$lib/Home/Landing.svelte";
