@@ -1,5 +1,6 @@
 <script>
     import { h, start, typewriter } from '$lib/stores'
+import { onMount } from 'svelte';
     
     const titles = ["programmer", "architect", "engineer", "developer"]
     let title = "webdev"
@@ -8,8 +9,15 @@
     let wordlock = false
     let startTitles
     $: pT = `${($h-hello-word)/2-52}px`
-    $: height = $start ? document.querySelector('#landing').clientHeight : 0
-    $: console.log(height)
+    
+    let height
+    function heightCheck () {
+        setInterval(()=>{
+            height = document.querySelector('#landing').clientHeight
+            heightCheck()
+        }, 1000)
+    }
+    onMount(()=>{heightCheck()})
 
     function titleSwitch (t) {
         const current = titles.findIndex((w) => {return w === t})
