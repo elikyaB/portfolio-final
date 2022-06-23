@@ -1,5 +1,5 @@
 <script>
-    import { w, h, y, start, navH, colors, mode } from '$lib/stores'
+    import { w, h, y, start, navH, colors, mode, openForm } from '$lib/stores'
     import Logo from "$lib/Logo.svelte"
     import { cubicOut } from 'svelte/easing'
     
@@ -43,7 +43,8 @@
             }
             else {
                 document.querySelector('html').style.overflowY = ''
-                section = pos>0 ? `<${pages[pos-1][0].toLowerCase()}>` : ''
+                section = $openForm ? '<form>' 
+                    : pos>0 && pos<4 ? `<${pages[pos-1][0].toLowerCase()}>` : ''
             }
         }
     }
