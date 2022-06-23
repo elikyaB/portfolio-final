@@ -8,7 +8,8 @@
     let wordlock = false
     let startTitles
     $: pT = `${($h-hello-word)/2-52}px`
-    $: height = $start ? document.querySelector('header').style.height : 0
+    $: height = $start ? document.querySelector('#landing').clientHeight : 0
+    $: console.log(height)
 
     function titleSwitch (t) {
         const current = titles.findIndex((w) => {return w === t})
@@ -45,7 +46,7 @@
     }
 </script>
 
-<header class="hero is-dark page--with-nav">
+<header id="landing" class="hero is-dark page--with-nav">
     <div class="hero-body pb-0" style:padding-top={pT}>
         {#if $start}
             <h1 class="title m-0" bind:clientHeight={hello}>
@@ -64,7 +65,7 @@
                     {/if}
                 </figure>
             {/key}
-            <div class="has-text-warning is-size-3">{height}</div>
+            <div class="has-text-warning is-size-3 mt-6">{height}</div>
         {/if}
     </div>
 </header>
