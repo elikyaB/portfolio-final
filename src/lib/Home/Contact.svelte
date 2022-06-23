@@ -19,10 +19,6 @@
     // $: if (animate) {firstRender = false}
     $: timing = firstTime ? 2000 : 1000
     $: $socialDelay = timing*19/10 + 100
-    $: if ($start) {
-        $openForm? document.querySelector('html').style.overflowY = 'hidden'
-            : document.querySelector('html').style.overflowY = ''
-    }
 
     function spotlight (node, {delay=0, duration=timing}) {
         setTimeout(()=>{firstTime=false},5000)

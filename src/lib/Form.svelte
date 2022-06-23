@@ -8,6 +8,10 @@
     let valid
     let invalid
     $: color = colors[$mode].hL
+    $: if ($start) {
+        $openForm? document.querySelector('html').style.overflowY = 'hidden'
+            : document.querySelector('html').style.overflowY = ''
+    }
 
     const handleChange = async () => {
         if (email == '' || email == undefined) {
