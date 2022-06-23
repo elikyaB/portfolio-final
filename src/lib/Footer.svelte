@@ -4,6 +4,16 @@
     // let firstRender = true
     // $: if ($y>$h*2.5) { setTimeout(()=>{firstRender = false}, 1200) }
 
+    const socials = ['linkedIn', 'twitter', 'gitHub', 'codePen', 'linkTree']
+
+    const dic = {
+        linkedIn: { href: "https://www.linkedin.com/in/ebokanga/", i_class: "fa:linkedin" },
+        twitter: { href: "https://twitter.com/eliB3webdev", i_class: "fa:twitter" },
+        gitHub: { href: "https://github.com/elikyaB", i_class: "fa:github" },
+        codePen: { href: "https://codepen.io/Elikya", i_class: "fa:codepen" },
+        linkTree: { href: "https://linktr.ee/elikya.dev", i_class: "simple-icons:linktree" }
+    }
+
     function pop (node, {delay=0, duration=400}) {
         const o = +getComputedStyle(node).opacity
         delay += $socialDelay
@@ -26,21 +36,11 @@
     <div class="contain">
         <div id="socials" style:height=52px class="is-flex is-justify-content-space-evenly">
             {#key $socialDelay>0 && $y>$h*2.5}
-            <a href='https://www.linkedin.com/in/ebokanga/'>
-                <span class="iconify-inline" data-icon='fa:linkedin' in:pop/>
-            </a>
-            <a href='https://twitter.com/eliB3webdev'>
-                <span class="iconify-inline" data-icon='fa:twitter' in:pop="{{delay:200}}"/>
-            </a>
-            <a href='https://github.com/elikyaB'>
-                <span class="iconify-inline" data-icon='fa:github' in:pop="{{delay:400}}"/>
-            </a>
-            <a href='https://codepen.io/Elikya'>
-                <span class="iconify-inline" data-icon='fa:codepen' in:pop="{{delay:600}}"/>
-            </a>
-            <a href='https://linktr.ee/elikya.dev'>
-                <span class="iconify-inline" data-icon='simple-icons:linktree' in:pop="{{delay:800}}"/>
-            </a>
+                {#each socials as icon, i}
+                    <a href={dic[icon].href} in:pop="{{delay:i*200}}" target="_blank" rel="noopener noreferrer">
+                        <span class="iconify-inline" data-icon={dic[icon].i_class}/>
+                    </a>
+                {/each}
             {/key}
         </div>
         <div style:text-align=center>

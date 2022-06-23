@@ -97,7 +97,7 @@
                         <ul class="is-flex is-justify-content-space-between">
                             {#each proj.links.array as link}
                                 <li>
-                                    <a href={link.url} in:uncensor="{{color:clr.link, i:i+2/3, exact:true}}">
+                                    <a href={link.url} in:uncensor="{{color:clr.link, i:i+2/3, exact:true}}" target="_blank" rel="noopener noreferrer">
                                         {link.text}
                                     </a>
                                 </li>
