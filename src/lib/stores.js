@@ -10,6 +10,7 @@ export const mode = writable('dark')
 export const socialDelay = writable(0)
 export const notes = writable([])
 export const openForm = writable(false)
+export const initialH = writable(0)
 
 export const colors = {
     dark: {

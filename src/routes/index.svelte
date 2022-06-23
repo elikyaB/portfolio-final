@@ -25,16 +25,17 @@
 
 <script>
     export let content
-    import { w, h, y, start, openForm } from "$lib/stores";
+    import { w, h, y, start, openForm, initialH } from "$lib/stores";
 
     import { onMount } from 'svelte'
     onMount(() => {
         if (Document !== null) {$start = true}
         if ($start) {window.scrollTo(0,0)}
+        $initialH = $h
     })
 
     function resizer (e) {
-        if (!$openForm) setTimeout(()=>{adjuster()}, 400)
+        if (!$openForm) {setTimeout(()=>{adjuster()}, 400)}
     }
 
     function adjuster () {
