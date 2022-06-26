@@ -10,14 +10,14 @@ import { onMount } from 'svelte';
     let startTitles
     $: pT = `${($h-hello-word)/2-52}px`
     
-    let height
-    function heightCheck () {
-        setInterval(()=>{
-            height = document.querySelector('#landing').clientHeight
-            heightCheck()
-        }, 1000)
-    }
-    onMount(()=>{heightCheck()})
+    // let height
+    // function heightCheck () {
+    //     setInterval(()=>{
+    //         height = document.querySelector('#landing').clientHeight
+    //         heightCheck()
+    //     }, 1000)
+    // }
+    // onMount(()=>{heightCheck()})
 
     function titleSwitch (t) {
         const current = titles.findIndex((w) => {return w === t})
@@ -73,7 +73,7 @@ import { onMount } from 'svelte';
                     {/if}
                 </figure>
             {/key}
-            <div class="has-text-warning is-size-3 mt-6">{height}</div>
+            <!-- <div class="has-text-warning is-size-3 mt-6">{height}</div> -->
         {/if}
     </div>
 </header>
