@@ -36,14 +36,14 @@ a {
 // HOMEPAGE
 .page {
     height: 100vh; // fallback
-    height: calc(var(--vh, 1vh) * 100);
+    height: calc(var(--vh, 1vh) * 100) !important;
     &--with-nav {
         @extend .page;
         padding-top: 52px;
         &--and-foot {
             @extend .page--with-nav;
             height: calc(100vh - 52px); // fallback
-            height: calc(var(--vh, 1vh) * 100 - 3.25rem);
+            height: calc(var(--vh, 1vh) * 100 - 3.25rem) !important;
         }
     }
 }

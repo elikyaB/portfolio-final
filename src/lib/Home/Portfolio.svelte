@@ -6,17 +6,15 @@
 
     export let content
     onMount(async () => {projects.set(content)})
-    // $: {console.log($projects)}
 
     let title
     let button
     let sampleHeight = 0
-    // let firstRender = true
-    $: page = `${$h}px`
+    let firstRender = true
     $: dropNum = $projects.length+1
     $: height = `${$h-52-title-button-0.75*16*2}px`
     $: animate = $y > $h * 1.5
-    // $: if (animate) {firstRender = false}
+    $: if (animate) {firstRender = false}
     $: clr = colors[$mode]
     
     function grow(node, {delay=0, i=0, easing=cubicOut}) {
@@ -77,7 +75,7 @@
 </script>
 
 <section id="portfolio" class="page--with-nav has-background-dark has-text-light">
-    {#if animate}
+    {#if animate || ($w<576 && !firstRender)}
     <div class="contain is-flex is-flex-direction-column">
         <h1 class="heading has-text-warning" bind:clientHeight={title}>
             <div transition:typewriter="{{speed:3}}">

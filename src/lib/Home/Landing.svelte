@@ -54,7 +54,7 @@ import { onMount } from 'svelte';
     }
 </script>
 
-<header id="landing" class="hero is-dark page--with-nav">
+<header id="landing" class="hero is-dark page">
     <div class="hero-body pb-0" style:padding-top={pT}>
         {#if $start}
             <h1 class="title m-0" bind:clientHeight={hello}>
