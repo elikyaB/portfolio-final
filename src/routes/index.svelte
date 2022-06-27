@@ -34,12 +34,11 @@
     })
 
     function resizer (e) {
-        $notes = [`H:${$h} Y:${$y}`, ...$notes]
         if (!$openForm) {setTimeout(()=>{adjuster()}, 700)}
     }
 
     function adjuster () {
-        $notes = [`T: ${Math.round($y/$h)*$h}`, ...$notes]
+        $notes = [`H:${$h}`, `Y:${Math.round($y)}`, `T: ${Math.round($y/$h)}`, ...$notes]
         window.scrollTo({top: Math.round($y/$h)*$h, behavior: 'smooth'})
     }
 

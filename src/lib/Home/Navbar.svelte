@@ -25,7 +25,8 @@
     let section = ''
     let highlight = [false, false, false, false]
     let completed = false
-    $: height = active ? `${$h-52-settingsH}px` : '0px'
+    let dropdownH
+    $: dropdownH = `${$h-52-settingsH}px`
 
     // let availableH
     // $: if ($start) {availableH = window.screen.availHeight}
@@ -127,7 +128,7 @@
             <!-- TODO: menu settings for light mode and language select -->
             <div class="has-text-warning">H-navH: {$h-52-settingsH}; menu: {menuH-settingsH}</div>
         </div>
-        <div class="navbar-end" style:height>
+        <div class="navbar-end" bind:clientHeight={dropdownH}>
             {#each pages as page, i}
                 <a href={page[1]} on:click={activate} id={`nav${i}`} transition:drop="{{i:i}}" sveltekit:noscroll class="navbar-item is-spaced 
                 {i===3 ? 'button is-warning is-outlined' : 'is-tab'}
