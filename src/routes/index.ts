@@ -16,9 +16,6 @@ export const get: RequestHandler = async () => {
     })
   }
 
-  // console.log(response.status)
-  // console.log(apiData)
-
   return {
     status: response?.status,
     body: {content: apiData}

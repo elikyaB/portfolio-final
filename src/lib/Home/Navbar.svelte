@@ -2,6 +2,7 @@
     import { w, h, y, start, navH, colors, mode, openForm } from '$lib/stores'
     import Logo from "$lib/Logo.svelte"
     import { cubicOut } from 'svelte/easing'
+    // export let skipFade
     
     const navbarLogo = {
         d6: false, 
@@ -18,27 +19,21 @@
         ['Resume','https://github.com/elikyaB/files/raw/main/Eli%20Bokanga%20Resume%202022.pdf']
     ]
 
-    let menuH
-    let settingsH
     let mobile
     let active = false
     let section = ''
     let highlight = [false, false, false, false]
     let completed = false
+    let menu
     let dropdown
-    $: {if ($start && mobile && dropdown != null) {dropdown.style.height = `${$h-52-settingsH}px`}}
+    let settingsH
     
-    $: {
-        if ($start && active && mobile && dropdown != null) {
-            // console.log(document.querySelector('.mobile'))
-            // console.log(dropdown.style.height)
-            document.querySelector('.mobile').style.height = `${$h}px`
-        }
+    $: if ($start && mobile) {
+            $h; window.innerHeight;
+            if (dropdown) {dropdown.style.height = `${window.innerHeight-52-settingsH}px`}
+            if (menu) {menu.style.height = `${window.innerHeight}px`}
     }
-
-    // let availableH
-    // $: if ($start) {availableH = window.screen.availHeight}
-
+    
     $: {
         let pos = Math.floor(($y+52)/$h)
         highlight = [false, false, false, false]
@@ -55,7 +50,7 @@
                 section = $openForm ? '<form>' 
                     : pos>0 && pos<4 ? `<${pages[pos-1][0].toLowerCase()}>` : ''
             }
-        }
+        } else {active = false}
     }
 
     function activate() {if (mobile) {active = !active}}
@@ -131,10 +126,9 @@
         </div>
     </div>
     {#key active}
-    <div class="navbar-menu m-0 py-0" class:is-active={active} class:mobile bind:clientHeight={menuH} transition:veil>
+    <div class="navbar-menu m-0 py-0" class:is-active={active} class:mobile bind:this={menu} in:veil="{{duration:100}}" out:veil="{{duration:400}}">
         <div class="navbar-start" bind:clientHeight={settingsH}>
             <!-- TODO: menu settings for light mode and language select -->
-            <!-- <div class="has-text-warning">H-navH: {$h-52-settingsH}; menu: {menuH-settingsH}</div> -->
         </div>
         <div class="navbar-end" bind:this={dropdown}>
             {#each pages as page, i}
@@ -158,8 +152,6 @@
     .navbar-menu {justify-content:space-between; background: $dark;}
     .navbar-burger:hover {background-color: $dark;}
     .mobile {
-        // height: 100vh; // fallback
-        // height: calc(var(--vh, 1vh) * 100) !important;
         .is-tab {border-top: 1px solid $dark !important;}
         .navbar-end {
             display: flex;

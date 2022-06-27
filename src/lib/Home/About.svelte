@@ -116,7 +116,7 @@
                         <span class="iconify-inline" data-icon="fa-brands:node-js"/>
                         <h3 class="heading has-text-warning is-inline">Node.js</h3>
                     </div>
-                    <div class="is-inline-block right">
+                    <div class="is-inline-block" style:float=right>
                         <span class="iconify-inline" data-icon="ion:logo-python"/>
                         <h3 class="heading has-text-warning is-inline">Python</h3>
                     </div>
@@ -127,7 +127,7 @@
                         <span class="iconify-inline" data-icon="simple-icons:mongodb"/>
                         <h3 class="heading has-text-warning is-inline">MongoDB</h3>
                     </div>
-                    <div class="is-inline-block right">
+                    <div class="is-inline-block" style:float=right>
                         <span class="iconify-inline" data-icon="simple-icons:postgresql"/>
                         <h3 class="heading has-text-warning is-inline">Postgres</h3>
                     </div>
@@ -170,7 +170,3 @@
     </div>
     {/if}
 </section>
-
-<style>
-    .right {float:right;}
-</style>

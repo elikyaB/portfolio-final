@@ -32,9 +32,8 @@
         if ($start) {window.scrollTo(0,0)}
     })
 
+    // let skipFade = false
     let timeout
-    // let target
-    // const pages = ['#landing', '#about', '#portfolio', '#contact']
 
     function resizer (e) {
         if ($start && !$openForm) {
@@ -48,12 +47,6 @@
     }
 
     function adjuster () {
-        // $notes = [`H:${$h}`, ...$notes]
-        // $notes = [`Y:${Math.round($y)}`, ...$notes]
-        // $notes = [`T: ${Math.round($y/$h)}`, ...$notes]
-
-        // target = y>window.scrollY ? Math.floor(window.scrollY/window.innerHeight) : Math.ceil(window.scrollY/window.innerHeight)
-        // document.querySelector(pages[target]).scrollIntoView({behavior: "smooth"})
         window.scroll({top: Math.round(window.scrollY/window.innerHeight)*window.innerHeight, behavior: 'smooth'})
         clearTimeout(timeout)
     }

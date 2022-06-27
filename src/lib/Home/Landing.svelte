@@ -1,6 +1,5 @@
 <script>
     import { h, start, typewriter } from '$lib/stores'
-import { onMount } from 'svelte';
     
     const titles = ["programmer", "architect", "engineer", "developer"]
     let title = "webdev"

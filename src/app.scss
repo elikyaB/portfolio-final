@@ -35,15 +35,13 @@ a {
 
 // HOMEPAGE
 .page {
-    height: 100vh; // fallback
-    // height: calc(var(--vh, 1vh) * 100) !important;
+    height: 100vh;
     &--with-nav {
         @extend .page;
         padding-top: 52px;
         &--and-foot {
             @extend .page--with-nav;
-            height: calc(100vh - 52px); // fallback
-            // height: calc(var(--vh, 1vh) * 100 - 3.25rem) !important;
+            height: calc(100vh - 52px);
         }
     }
 }
@@ -72,7 +70,7 @@ h3.heading {font-size: 16px;}
 }
 @media screen and (min-width: 960px) {
     .contain {max-width: 70vw;}
-    #about .tabs, #about #skills *, #portfolio .project p, #portfolio .button, #contact p, footer {
+    #about .tabs, #about #skills *, #portfolio .project p, #portfolio .button, #contact p, footer, #error {
         font-size: 2vh !important;
     }
     #portfolio .project h2, #portfolio a {
