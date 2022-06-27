@@ -25,10 +25,10 @@
     let section = ''
     let highlight = [false, false, false, false]
     let completed = false
-    $: height = `${menuH-settingsH}px`
+    $: height = `${$h-52-settingsH}px`
 
-    let availableH
-    $: if ($start) {availableH = window.screen.availHeight}
+    // let availableH
+    // $: if ($start) {availableH = window.screen.availHeight}
 
     $: {
         let pos = Math.floor(($y+52)/$h)
@@ -125,7 +125,7 @@
     <div class="navbar-menu m-0 py-0" class:is-active={active} class:mobile bind:clientHeight={menuH} transition:veil>
         <div class="navbar-start" bind:clientHeight={settingsH}>
             <!-- TODO: menu settings for light mode and language select -->
-            <!-- <div class="has-text-warning">H: {$h}, iH: {$initialH}</div> -->
+            <div class="has-text-warning">H-navH: {$h-52}; menu: {menuH}</div>
         </div>
         <div class="navbar-end" style:height>
             {#each pages as page, i}

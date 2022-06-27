@@ -1,8 +1,9 @@
 <script>
-    import {y, h, socialDelay} from '$lib/stores'
+    import {w, y, h, socialDelay} from '$lib/stores'
 
-    // let firstRender = true
-    // $: if ($y>$h*2.5) { setTimeout(()=>{firstRender = false}, 1200) }
+    let firstRender = true
+    $: animate = $y>$h*2.5
+    $: if (animate) {firstRender = false}
 
     const socials = ['linkedIn', 'twitter', 'gitHub', 'codePen', 'linkTree']
 
@@ -35,7 +36,7 @@
 <footer class="has-background-dark has-text-light pb-4">
     <div class="contain">
         <div id="socials" style:height=52px class="is-flex is-justify-content-space-evenly">
-            {#key $socialDelay>0 && $y>$h*2.5}
+            {#key $socialDelay>0 && (animate || !firstRender)}
                 {#each socials as icon, i}
                     <a href={dic[icon].href} in:pop="{{delay:i*200}}" target="_blank" rel="noopener noreferrer">
                         <span class="iconify-inline" data-icon={dic[icon].i_class}/>
