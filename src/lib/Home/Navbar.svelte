@@ -26,7 +26,7 @@
     let highlight = [false, false, false, false]
     let completed = false
     let dropdown
-    $: {if ($start) {console.log(dropdown?.style)}}
+    $: {if ($start && dropdown != null) {dropdown.style.height = `${$h-52-settingsH}px`}}
 
     // let availableH
     // $: if ($start) {availableH = window.screen.availHeight}
@@ -151,7 +151,7 @@
     .navbar-burger:hover {background-color: $dark;}
     .mobile {
         height: 100vh; // fallback
-        height: calc(var(--vh, 1vh) * 100) !important;
+        // height: calc(var(--vh, 1vh) * 100) !important;
         .is-tab {border-top: 1px solid $dark !important;}
         .navbar-end {
             display: flex;

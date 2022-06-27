@@ -45,7 +45,16 @@
         window.scrollTo({top: Math.round($y/$h)*$h, behavior: 'smooth'})
     }
 
-    $: if ($start && !$openForm) {document.documentElement.style.setProperty('--vh', `${$h/100}px`)}
+    $: if ($start && !$openForm) {
+        document.documentElement.style.setProperty('--vh', `${$h/100}px`)
+        document.querySelector('header').style.height = `${$h}px`
+        // console.log(document.querySelector('header').style.height)
+        document.querySelectorAll('section')[0].style.height = `${$h}px`
+        document.querySelectorAll('section')[1].style.height = `${$h}px`
+        document.querySelectorAll('section')[2].style.height = `${$h-52}px`
+        // console.log(document.querySelectorAll('section')[2].style.height)
+       
+    }
 
     import Loading from "$lib/Loading.svelte";
     import Landing from "$lib/Home/Landing.svelte";
