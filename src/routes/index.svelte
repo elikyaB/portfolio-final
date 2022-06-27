@@ -33,8 +33,8 @@
     })
 
     let timeout
-    let target
-    const pages = ['#landing', '#about', '#portfolio', '#contact']
+    // let target
+    // const pages = ['#landing', '#about', '#portfolio', '#contact']
 
     function resizer (e) {
         if ($start && !$openForm) {
@@ -44,16 +44,17 @@
             document.querySelectorAll('section')[1].style.height = `${window.innerHeight}px`
             document.querySelectorAll('section')[2].style.height = `${window.innerHeight-52}px`       
         }
-        if (!$openForm) {timeout = setTimeout(()=>{adjuster()}, 600)}
+        if (!$openForm) {timeout = setTimeout(()=>{adjuster()}, 800)}
     }
 
     function adjuster () {
         // $notes = [`H:${$h}`, ...$notes]
         // $notes = [`Y:${Math.round($y)}`, ...$notes]
         // $notes = [`T: ${Math.round($y/$h)}`, ...$notes]
-        target = Math.round(window.scrollY/window.innerHeight)
-        document.querySelector(pages[target]).scrollIntoView({behavior: "smooth"})
-        // window.scroll({top: Math.round(window.scrollY/window.innerHeight)*window.innerHeight, behavior: 'smooth'})
+
+        // target = y>window.scrollY ? Math.floor(window.scrollY/window.innerHeight) : Math.ceil(window.scrollY/window.innerHeight)
+        // document.querySelector(pages[target]).scrollIntoView({behavior: "smooth"})
+        window.scroll({top: Math.round(window.scrollY/window.innerHeight)*window.innerHeight, behavior: 'smooth'})
         clearTimeout(timeout)
     }
 

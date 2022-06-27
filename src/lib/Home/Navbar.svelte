@@ -134,7 +134,7 @@
     <div class="navbar-menu m-0 py-0" class:is-active={active} class:mobile bind:clientHeight={menuH} transition:veil>
         <div class="navbar-start" bind:clientHeight={settingsH}>
             <!-- TODO: menu settings for light mode and language select -->
-            <div class="has-text-warning">H-navH: {$h-52-settingsH}; menu: {menuH-settingsH}</div>
+            <!-- <div class="has-text-warning">H-navH: {$h-52-settingsH}; menu: {menuH-settingsH}</div> -->
         </div>
         <div class="navbar-end" bind:this={dropdown}>
             {#each pages as page, i}
