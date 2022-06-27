@@ -1,5 +1,5 @@
 <script>
-    import { w, h, y, start, navH, colors, mode, openForm, initialH } from '$lib/stores'
+    import { w, h, y, start, navH, colors, mode, openForm } from '$lib/stores'
     import Logo from "$lib/Logo.svelte"
     import { cubicOut } from 'svelte/easing'
     
@@ -125,7 +125,7 @@
     <div class="navbar-menu m-0 py-0" class:is-active={active} class:mobile bind:clientHeight={menuH} transition:veil>
         <div class="navbar-start" bind:clientHeight={settingsH}>
             <!-- TODO: menu settings for light mode and language select -->
-            <div class="has-text-warning">H-navH: {$h-52-settingsH}; menu: {menuH}</div>
+            <div class="has-text-warning">H-navH: {$h-52}; menu: {menuH-settingsH}</div>
         </div>
         <div class="navbar-end" style:height>
             {#each pages as page, i}

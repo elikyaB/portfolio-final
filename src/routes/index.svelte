@@ -25,20 +25,21 @@
 
 <script>
     export let content
-    import { w, h, y, start, openForm, initialH } from "$lib/stores";
+    import { w, h, y, start, openForm, notes } from "$lib/stores";
 
     import { onMount } from 'svelte'
     onMount(() => {
         if (Document !== null) {$start = true}
         if ($start) {window.scrollTo(0,0)}
-        $initialH = $h
     })
 
     function resizer (e) {
-        if (!$openForm) {setTimeout(()=>{adjuster()}, 500)}
+        $notes = [`H:${$h} Y:${$y}`, ...$notes]
+        if (!$openForm) {setTimeout(()=>{adjuster()}, 700)}
     }
 
     function adjuster () {
+        $notes = [`T: ${Math.round($y/$h)*$h}`, ...$notes]
         window.scrollTo({top: Math.round($y/$h)*$h, behavior: 'smooth'})
     }
 
