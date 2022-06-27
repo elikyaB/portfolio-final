@@ -39,9 +39,9 @@
     }
 
     function adjuster () {
-        $notes = [`H:${$h}`, ...$notes]
-        $notes = [`Y:${Math.round($y)}`, ...$notes]
-        $notes = [`T: ${Math.round($y/$h)}`, ...$notes]
+        // $notes = [`H:${$h}`, ...$notes]
+        // $notes = [`Y:${Math.round($y)}`, ...$notes]
+        // $notes = [`T: ${Math.round($y/$h)}`, ...$notes]
         window.scrollTo({top: Math.round($y/$h)*$h, behavior: 'smooth'})
     }
 
@@ -56,7 +56,7 @@
        
     }
 
-    import Loading from "$lib/Loading.svelte";
+    // import Loading from "$lib/Loading.svelte";
     import Landing from "$lib/Home/Landing.svelte";
     import Navbar from "$lib/Home/Navbar.svelte";
     import About from "$lib/Home/About.svelte";

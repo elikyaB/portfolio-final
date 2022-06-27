@@ -27,6 +27,12 @@
     let completed = false
     let dropdown
     $: {if ($start && dropdown != null) {dropdown.style.height = `${$h-52-settingsH}px`}}
+    
+    $: {
+        if ($start && active && dropdown != null) {
+            document.querySelector('.mobile').style.height = `${$h}px`
+        }
+    }
 
     // let availableH
     // $: if ($start) {availableH = window.screen.availHeight}
@@ -150,7 +156,7 @@
     .navbar-menu {justify-content:space-between; background: $dark;}
     .navbar-burger:hover {background-color: $dark;}
     .mobile {
-        height: 100vh; // fallback
+        // height: 100vh; // fallback
         // height: calc(var(--vh, 1vh) * 100) !important;
         .is-tab {border-top: 1px solid $dark !important;}
         .navbar-end {
