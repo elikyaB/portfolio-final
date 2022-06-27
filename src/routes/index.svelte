@@ -3,7 +3,7 @@
 <Notifications/>
 <ScrollArrow/>
 <main>
-    <Landing/>
+    <Landing />
     <About/>
     <Portfolio {content}/>
     <Contact/>
@@ -26,12 +26,15 @@
 <script>
     export let content
     import { w, h, y, start, openForm, notes } from "$lib/stores";
-
     import { onMount } from 'svelte'
     onMount(() => {
         if (Document !== null) {$start = true}
         if ($start) {window.scrollTo(0,0)}
     })
+
+    let timeout
+    let target
+    const pages = ['#landing', '#about', '#portfolio', '#contact']
 
     function resizer (e) {
         if ($start && !$openForm) {
@@ -41,14 +44,17 @@
             document.querySelectorAll('section')[1].style.height = `${window.innerHeight}px`
             document.querySelectorAll('section')[2].style.height = `${window.innerHeight-52}px`       
         }
-        if (!$openForm) {setTimeout(()=>{adjuster()}, 600)}
+        if (!$openForm) {timeout = setTimeout(()=>{adjuster()}, 600)}
     }
 
     function adjuster () {
         // $notes = [`H:${$h}`, ...$notes]
         // $notes = [`Y:${Math.round($y)}`, ...$notes]
         // $notes = [`T: ${Math.round($y/$h)}`, ...$notes]
-        window.scrollTo({top: Math.round(window.scrollY/window.innerHeight)*window.innerHeight, behavior: 'smooth'})
+        target = Math.round(window.scrollY/window.innerHeight)
+        document.querySelector(pages[target]).scrollIntoView({behavior: "smooth"})
+        // window.scroll({top: Math.round(window.scrollY/window.innerHeight)*window.innerHeight, behavior: 'smooth'})
+        clearTimeout(timeout)
     }
 
     // import Loading from "$lib/Loading.svelte";

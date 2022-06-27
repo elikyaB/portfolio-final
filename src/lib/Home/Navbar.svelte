@@ -30,6 +30,8 @@
     
     $: {
         if ($start && active && dropdown != null) {
+            // console.log(document.querySelector('.mobile'))
+            // console.log(dropdown.style.height)
             document.querySelector('.mobile').style.height = `${$h}px`
         }
     }
