@@ -20,7 +20,7 @@
     bind:innerWidth={$w} 
     bind:innerHeight={$h} 
     bind:scrollY={$y}
-    on:resize={resizer}
+    on:resize|capture={resizer}
 />
 
 <script>
@@ -34,7 +34,8 @@
     })
 
     function resizer (e) {
-        if (!$openForm) {setTimeout(()=>{adjuster()}, 700)}
+        // console.log(e)
+        if (!$openForm) {setTimeout(()=>{adjuster()}, 500)}
     }
 
     function adjuster () {
