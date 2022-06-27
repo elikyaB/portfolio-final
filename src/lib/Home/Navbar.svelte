@@ -26,10 +26,10 @@
     let highlight = [false, false, false, false]
     let completed = false
     let dropdown
-    $: {if ($start && dropdown != null) {dropdown.style.height = `${$h-52-settingsH}px`}}
+    $: {if ($start && mobile && dropdown != null) {dropdown.style.height = `${$h-52-settingsH}px`}}
     
     $: {
-        if ($start && active && dropdown != null) {
+        if ($start && active && mobile && dropdown != null) {
             // console.log(document.querySelector('.mobile'))
             // console.log(dropdown.style.height)
             document.querySelector('.mobile').style.height = `${$h}px`
