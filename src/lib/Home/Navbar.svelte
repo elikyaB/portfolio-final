@@ -26,7 +26,7 @@
     let highlight = [false, false, false, false]
     let completed = false
     let dropdownH
-    $: dropdownH = `${$h-52-settingsH}px`
+    $: dropdownH = $h-52-settingsH
 
     // let availableH
     // $: if ($start) {availableH = window.screen.availHeight}

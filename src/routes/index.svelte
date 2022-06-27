@@ -38,7 +38,9 @@
     }
 
     function adjuster () {
-        $notes = [`H:${$h}`, `Y:${Math.round($y)}`, `T: ${Math.round($y/$h)}`, ...$notes]
+        $notes = [`H:${$h}`, ...$notes]
+        $notes = [`Y:${Math.round($y)}`, ...$notes]
+        $notes = [`T: ${Math.round($y/$h)}`, ...$notes]
         window.scrollTo({top: Math.round($y/$h)*$h, behavior: 'smooth'})
     }
 

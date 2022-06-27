@@ -11,7 +11,7 @@
     $: x = width + 2*$w/100
 
     function timer (node) {
-        const time = node.textContent.length * 200
+        const time = node.textContent.length * 1000
         setTimeout(()=>{timeout = true}, time)
         return {
             destroy() {
