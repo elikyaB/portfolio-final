@@ -1,5 +1,5 @@
 <script>
-    import { y, h, w, navH, typewriter, colors, mode, socialDelay, start, openForm } from "$lib/stores";
+    import { y, h, w, typewriter, colors, mode, socialDelay, openForm } from "$lib/stores";
     import { fade } from 'svelte/transition'
     import Form from '$lib/Form.svelte'
 

@@ -1,5 +1,5 @@
 <script>
-    import {w, y, h, socialDelay} from '$lib/stores'
+    import {y, h, socialDelay} from '$lib/stores'
 
     let firstRender = true
     $: animate = $y>$h*2.5
