@@ -45,7 +45,9 @@
     {#if animate || ($w<576 && !firstRender)}
     <div bind:clientHeight={top}>
         <div id="motto" class="contain">            
-            <h1 class="heading has-text-warning" transition:typewriter="{{speed:3}}">From ideation to realization</h1>
+            <h1 class="heading has-text-warning" style:text-align=center transition:typewriter="{{speed:3}}">
+                From ideation to realization
+            </h1>
             <p class="has-text-centered" in:fade="{{delay:200}}">
                 Ever curious, ever learning.
             </p>

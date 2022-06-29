@@ -79,7 +79,7 @@
     {#if animate || ($w<576 && !firstRender)}
     <div class="contain">
         <div bind:clientHeight={titleH}>
-            <h1 class="heading block has-text-warning" transition:typewriter="{{speed:3}}">
+            <h1 class="heading block has-text-warning" style:text-align=center transition:typewriter="{{speed:3}}">
                 Let's get in touch
             </h1>
         </div>

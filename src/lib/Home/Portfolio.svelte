@@ -77,7 +77,7 @@
 <section id="portfolio" class="page--with-nav has-background-dark has-text-light">
     {#if animate || ($w<576 && !firstRender)}
     <div class="contain is-flex is-flex-direction-column">
-        <h1 class="heading has-text-warning" bind:clientHeight={title}>
+        <h1 class="heading has-text-warning" style:text-align=center bind:clientHeight={title}>
             <div transition:typewriter="{{speed:3}}">
                 A curated sample of my work
             </div>
