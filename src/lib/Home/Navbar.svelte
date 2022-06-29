@@ -15,7 +15,7 @@
         ['About','#about'],
         ['Portfolio','#portfolio'],
         ['Contact','#contact'],
-        ['Resume','https://github.com/elikyaB/files/raw/main/Eli%20Bokanga%20Resume%202022.pdf']
+        ['Resume','/resume']
     ]
 
     let pos = 0
@@ -135,7 +135,7 @@
         </div>
         <div class="navbar-end" bind:this={dropdown}>
             {#each pages as page, i}
-                <a href={page[1]} on:click={activate} id={`nav${i}`} transition:drop="{{i:i}}" class="navbar-item is-spaced 
+                <a href={page[1]} sveltekit:reload on:click={activate} id={`nav${i}`} transition:drop="{{i:i}}" class="navbar-item is-spaced 
                 {i===3 ? 'button is-warning is-outlined' : 'is-tab'}
                 {highlight[i] ? 'has-background-warning has-text-dark' : 'has-text-warning'}">
                     {page[0]}
