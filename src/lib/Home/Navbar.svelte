@@ -2,7 +2,6 @@
     import { w, h, y, start, navH, colors, mode, openForm } from '$lib/stores'
     import Logo from "$lib/Logo.svelte"
     import { cubicOut } from 'svelte/easing'
-    // export let skipFade
     
     const navbarLogo = {
         d6: false, 
@@ -19,6 +18,7 @@
         ['Resume','https://github.com/elikyaB/files/raw/main/Eli%20Bokanga%20Resume%202022.pdf']
     ]
 
+    let pos = 0
     let mobile
     let active = false
     let section = ''
@@ -34,8 +34,7 @@
             if (menu) {menu.style.height = `${window.innerHeight}px`}
     }
     
-    $: {
-        let pos = Math.floor(($y+52)/$h)
+    $: {pos = Math.floor(($y+52)/$h)
         highlight = [false, false, false, false]
         if (pos>0) {highlight[pos-1] = true}
 
@@ -50,7 +49,11 @@
                 section = $openForm ? '<form>' 
                     : pos>0 && pos<4 ? `<${pages[pos-1][0].toLowerCase()}>` : ''
             }
-        } else {active = false}
+        } else {
+            active = false
+            if (menu) {menu.style.height = 'inherit'}
+            if (dropdown) {dropdown.style.height = 'inherit'}
+        }
     }
 
     function activate() {if (mobile) {active = !active}}
@@ -132,7 +135,7 @@
         </div>
         <div class="navbar-end" bind:this={dropdown}>
             {#each pages as page, i}
-                <a href={page[1]} on:click={activate} id={`nav${i}`} transition:drop="{{i:i}}" sveltekit:noscroll class="navbar-item is-spaced 
+                <a href={page[1]} on:click={activate} id={`nav${i}`} transition:drop="{{i:i}}" class="navbar-item is-spaced 
                 {i===3 ? 'button is-warning is-outlined' : 'is-tab'}
                 {highlight[i] ? 'has-background-warning has-text-dark' : 'has-text-warning'}">
                     {page[0]}

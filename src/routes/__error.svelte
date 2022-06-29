@@ -1,7 +1,4 @@
 <script context="module">
-    // import Navbar from '$lib/Home/Navbar.svelte';
-    // let skipFade = false
-
     export function load({ error, status }) {
         console.log(error, status)
         return {
@@ -15,8 +12,6 @@
   
 <script>
     import '../app.scss'
-    // import Navbar from '$lib/Home/Navbar.svelte';
-    // let skipFade = false
     export let title, status
 </script>
 
@@ -25,7 +20,7 @@
     <div class="contain">
         <h1 id="status" class="heading has-text-warning">{status}</h1>
         <div id="error">
-            <p>{title}</p>
+            <p style:margin-top=5vh>{title}</p>
             <a href="/">Back to Home</a>
         </div>
     </div>
@@ -40,8 +35,9 @@
     }
     p {overflow-wrap:break-word;}
     #status {
-        font-size: 20vw;
+        font-size: 30vw;
         line-height: 20vw;
     }
+    #error {font-size: 5vw;}
 </style>
 

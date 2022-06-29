@@ -9,30 +9,16 @@
     <Contact/>
     <Footer/>
 </main>
-    
-<svelte:head>
-	<title>Eli B3 Web Dev</title>
-    <meta name="description" content="Elikya Bokanga, a full stack Web Developer prioritizing in web, app, and game design with a special interest in blockchain technologies.">
-    <meta name="author" content="Elikya Bokanga">
-</svelte:head>
-
-<svelte:window 
-    bind:innerWidth={$w} 
-    bind:innerHeight={$h} 
-    bind:scrollY={$y}
-    on:resize|capture={resizer}
-/>
 
 <script>
     export let content
-    import { w, h, y, start, openForm, notes } from "$lib/stores";
+    import { w, h, y, start, openForm } from "$lib/stores"
     import { onMount } from 'svelte'
     onMount(() => {
         if (Document !== null) {$start = true}
         if ($start) {window.scrollTo(0,0)}
     })
 
-    // let skipFade = false
     let timeout
 
     function resizer (e) {
@@ -61,3 +47,16 @@
     import Notifications from "$lib/Notifications.svelte";
     import ScrollArrow from "$lib/ScrollArrow.svelte";
 </script>
+
+<svelte:head>
+	<title>Eli B3 Web Dev</title>
+    <meta name="description" content="Elikya Bokanga, a full stack Web Developer prioritizing in web, app, and game design with a special interest in blockchain technologies.">
+    <meta name="author" content="Elikya Bokanga">
+</svelte:head>
+
+<svelte:window 
+    bind:innerWidth={$w} 
+    bind:innerHeight={$h} 
+    bind:scrollY={$y}
+    on:resize|capture={resizer}
+/>
