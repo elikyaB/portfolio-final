@@ -15,7 +15,7 @@
         ['About','#about'],
         ['Portfolio','#portfolio'],
         ['Contact','#contact'],
-        ['Resume','/resume']
+        ['Resume','https://github.com/elikyaB/files/blob/main/Eli%20Bokanga%20Resume%202022.pdf']
     ]
 
     let pos = 0
@@ -59,6 +59,7 @@
     function activate() {if (mobile) {active = !active}}
 
     function firstLoadFade(node, {delay=0, duration=7000}) {
+        // TODO: skip fade afterNavigate from other page on site
         return {delay, duration, tick: t => {
             if ($y !== 0) {completed = true}
             if (completed) {document.querySelector('nav').style.opacity = '1'}
@@ -135,11 +136,19 @@
         </div>
         <div class="navbar-end" bind:this={dropdown}>
             {#each pages as page, i}
-                <a href={page[1]} sveltekit:reload on:click={activate} id={`nav${i}`} transition:drop="{{i:i}}" class="navbar-item is-spaced 
-                {i===3 ? 'button is-warning is-outlined' : 'is-tab'}
-                {highlight[i] ? 'has-background-warning has-text-dark' : 'has-text-warning'}">
-                    {page[0]}
-                </a>
+                {#if page[1][0]==='#'}
+                    <a href={page[1]} on:click={activate} transition:drop="{{i:i}}" class="navbar-item is-spaced is-tab {highlight[i] ? 'has-background-warning has-text-dark' : 'has-text-warning'}">
+                        {page[0]}
+                    </a>
+                {:else if page[1][0]==='/'}
+                    <a href={page[1]} sveltekit:reload on:click={activate} transition:drop="{{i:i}}" class="navbar-item navlink is-spaced button is-warning is-outlined has-text-warning">
+                        {page[0]}
+                    </a>
+                {:else}
+                    <a href={page[1]} target="_blank" rel="noopener noreferrer" on:click={activate} transition:drop="{{i:i}}" class="navbar-item navlink is-spaced button is-warning is-outlined has-text-warning">
+                        {page[0]}
+                    </a>
+                {/if}
             {/each}
         </div>
     </div>
@@ -166,7 +175,7 @@
                 padding: 6vh;
                 align-items: center;
             }
-            #nav3 {margin: 3vh 19vw; padding: 3vh;}
+            .navlink {margin: 3vh 19vw; padding: 3vh;}
         }
     }
     .is-spaced {
@@ -179,7 +188,7 @@
         border-bottom: 1px solid $dark !important;
         &:hover {border-color: $gold !important;}
     }
-    #nav3 {
+    .navlink {
         margin: 0.5rem 0.75rem;
         &:hover {
             background-color: $gold;
