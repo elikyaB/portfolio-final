@@ -1,5 +1,5 @@
 <script>
-    import {y, h, socialDelay} from '$lib/stores'
+    import {w, y, h, socialDelay} from '$lib/stores'
 
     let firstRender = true
     $: animate = $y>$h*2.5
@@ -36,7 +36,7 @@
 <footer class="has-background-dark has-text-light pb-4">
     <div class="contain">
         <div id="socials" style:height=52px class="is-flex is-justify-content-space-evenly">
-            {#key $socialDelay>0 && (animate || !firstRender)}
+            {#key $socialDelay>0 && (animate || ($w<576 && !firstRender))}
                 {#each socials as icon, i}
                     <a href={dic[icon].href} in:pop="{{delay:i*200}}" target="_blank" rel="noopener noreferrer">
                         <span class="iconify-inline" data-icon={dic[icon].i_class}/>
