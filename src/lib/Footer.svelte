@@ -2,7 +2,7 @@
     import {w, y, h, socialDelay} from '$lib/stores'
 
     let firstRender = true
-    $: animate = $y>$h*2.5
+    $: animate = $y>$h*2.25
     $: if (animate) {firstRender = false}
 
     const socials = ['linkedIn', 'twitter', 'gitHub', 'codePen', 'linkTree']

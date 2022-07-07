@@ -26,7 +26,7 @@ export const colors = {
     }
 }
 
-export const typewriter = (node, { delay=0, speed=0.5, next=null, fn=null }) => {
+export const typewriter = (node, { delay=0, speed=1, next=null, fn=null }) => {
     const valid = (
         node.childNodes.length === 1 &&
         node.childNodes[0].nodeType === Node.TEXT_NODE

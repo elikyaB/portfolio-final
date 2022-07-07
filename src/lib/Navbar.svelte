@@ -12,9 +12,9 @@
     }
 
     const pages = [
-        ['About','#about'],
         ['Portfolio','#portfolio'],
-        ['Contact','#contact'],
+        ['Process','#process'],
+        ['Person','#person'],
         ['Resume','https://github.com/elikyaB/files/blob/main/Eli%20Bokanga%20Resume%202022.pdf']
     ]
 
@@ -58,7 +58,7 @@
 
     function activate() {if (mobile) {active = !active}}
 
-    function firstLoadFade(node, {delay=0, duration=7000}) {
+    function firstLoadFade(node, {delay=0, duration=3000}) {
         // TODO: skip fade afterNavigate from other page on site
         return {delay, duration, tick: t => {
             if ($y !== 0) {completed = true}

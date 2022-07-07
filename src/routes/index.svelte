@@ -1,13 +1,9 @@
-<!-- <Loading/> -->
-<Navbar/>
-<Notifications/>
 <ScrollArrow/>
 <main>
-    <Landing />
-    <About/>
+    <Landing/>
     <Portfolio {content}/>
-    <Contact/>
-    <Footer/>
+    <Process/>
+    <Person/>
 </main>
 
 <script>
@@ -23,29 +19,15 @@
 
     function resizer (e) {
         if ($start && !$openForm) {
-            document.documentElement.style.setProperty('--vh', `${window.innerHeight/100}px`)
-            document.querySelector('header').style.height = `${window.innerHeight}px`
-            document.querySelectorAll('section')[0].style.height = `${window.innerHeight}px`
-            document.querySelectorAll('section')[1].style.height = `${window.innerHeight}px`
-            document.querySelectorAll('section')[2].style.height = `${window.innerHeight-52}px`       
+            document.documentElement.style.setProperty('--vh', `${window.innerHeight/100}px`)     
         }
-        if (!$openForm) {timeout = setTimeout(()=>{adjuster()}, 800)}
     }
 
-    function adjuster () {
-        window.scroll({top: Math.round(window.scrollY/window.innerHeight)*window.innerHeight, behavior: 'smooth'})
-        clearTimeout(timeout)
-    }
-
-    // import Loading from "$lib/Loading.svelte";
     import Landing from "$lib/Home/Landing.svelte";
-    import Navbar from "$lib/Home/Navbar.svelte";
-    import About from "$lib/Home/About.svelte";
     import Portfolio from "$lib/Home/Portfolio.svelte";
-    import Contact from "$lib/Home/Contact.svelte";
-    import Footer from "$lib/Footer.svelte";
-    import Notifications from "$lib/Notifications.svelte";
-    import ScrollArrow from "$lib/ScrollArrow.svelte";
+    import Process from "$lib/Home/Process.svelte";
+    import Person from "$lib/Home/Person.svelte";
+    import ScrollArrow from "$lib/Home/ScrollArrow.svelte";
 </script>
 
 <svelte:head>

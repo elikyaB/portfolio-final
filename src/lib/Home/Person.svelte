@@ -1,7 +1,7 @@
 <script>
     import { y, h, w, typewriter, colors, mode, socialDelay, openForm } from "$lib/stores";
     import { fade } from 'svelte/transition'
-    import Form from '$lib/Form.svelte'
+    import Form from '$lib/Home/Form.svelte'
 
     let titleH
     let introH
@@ -15,7 +15,7 @@
     $: pad1 = `${(introH-p1h) / 2}px 0px`
     $: pad2 = `${(outroH-p2h) / 2}px 0px`
     $: height = `${$h-titleH-52*2-24*2}px`
-    $: animate = $y>$h*2.5
+    $: animate = $y>$h*2.25
     $: if (animate) {firstRender = false}
     $: timing = firstTime ? 2000 : 1000
     $: $socialDelay = timing*19/10 + 100
@@ -24,7 +24,7 @@
         setTimeout(()=>{firstTime=false},5000)
         return {delay, duration, css: t => `
             background-color: ${colors[$mode].hL};
-            filter: blur(0.5rem);
+            filter: ${t<1? 'blur(0.5rem)' : 'none'};
             transform: translate(
                 ${t<1/5 ? $w/2 * (5*t) 
                 : t<3/5 ? $w/2 
@@ -75,7 +75,7 @@
     }
 </script>
 
-<section id="contact" class="page--with-nav--and-foot has-background-dark has-text-light">
+<section id="person" class="page--with-nav--and-foot has-background-dark has-text-light">
     {#if animate || ($w<576 && !firstRender)}
     <div class="contain">
         <div bind:clientHeight={titleH}>

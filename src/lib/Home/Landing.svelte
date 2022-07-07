@@ -17,10 +17,10 @@
     }
 
     function titleStarter () {
-        setTimeout(() => {startTitles = true}, 1000)
+        setTimeout(() => {startTitles = true}, 100)
     }
 
-    function roll(node, {delay=0, duration=1000, previous=false, i}) {
+    function roll(node, {delay=0, duration=500, previous=false, i}) {
         if (!wordlock) {
             duration = 0
             delay = (1000 / title.length) * i
@@ -49,7 +49,7 @@
         {#if $start}
             <h1 class="title m-0" bind:clientHeight={hello}>
                 <div in:typewriter>Hi!</div>
-                <div in:typewriter="{{delay:1000, next:true, fn:titleStarter}}">I'm Eli</div>
+                <div in:typewriter="{{delay:300, next:true, fn:titleStarter}}">I'm Elikya</div>
             </h1>
             {#key title}
                 <figure class='title m-0 is-flex has-text-warning' bind:clientHeight={word}>

@@ -7,7 +7,7 @@
     let triggers = [false, false, false]
     
     $: if ($start) {
-        setTimeout(()=>{triggers = [true, true, true]}, 8000)
+        setTimeout(()=>{triggers = [true, true, true]}, 3000)
     }
 
     function timer (node, i) {

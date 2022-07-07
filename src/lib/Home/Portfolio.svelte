@@ -13,7 +13,7 @@
     let firstRender = true
     $: dropNum = $projects.length+1
     $: height = `${$h-52-title-button-0.75*16*2}px`
-    $: animate = $y > $h * 1.5
+    $: animate = $y > $h * 0.25
     $: if (animate) {firstRender = false}
     $: clr = colors[$mode]
     
